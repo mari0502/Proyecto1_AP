@@ -1,4 +1,4 @@
-<!-- res/drawable/round_buttonWhite_background.xml -->
+<!-- res/drawable/round_button_white_background.xml -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#FFFFFF" /> <!-- Color de fondo del botón -->
     <corners android:radius="50dp" /> <!-- Radio de las esquinas -->
