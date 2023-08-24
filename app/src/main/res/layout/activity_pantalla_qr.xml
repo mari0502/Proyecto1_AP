@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_background"
+    android:clickable="true"
+    tools:context=".Pantalla_Foro">
+
+        <TextView
+            android:id="@+id/qr"
+            android:layout_width="167dp"
+            android:layout_height="49dp"
+            android:layout_marginEnd="37dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="QR"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.077" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="253dp"
+            android:layout_height="368dp"
+            app:srcCompat="@drawable/rectangulo_fondo_mediano"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="28dp" />
+
+        <TextView
+            android:id="@+id/solicitudAdm"
+            android:layout_width="205dp"
+            android:layout_height="55dp"
+            android:text="¡Su solicitud fue admitida!"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_secondary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="119dp" />
+
+        <TextView
+            android:id="@+id/solicitudAdm2"
+            android:layout_width="205dp"
+            android:layout_height="55dp"
+            android:text="Con este QR podrá ingrear al evento."
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="222dp" />
+
+        <TextView
+            android:id="@+id/solicitudAdm3"
+            android:layout_width="205dp"
+            android:layout_height="55dp"
+            android:text="Consulte su correo para más información"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="266dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
