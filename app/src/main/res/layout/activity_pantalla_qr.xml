@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/design_default_color_background"
     android:clickable="true"
-    tools:context=".Pantalla_Foro">
+    tools:context=".Pantalla_QR">
 
     <TextView
         android:id="@+id/eliminacionQR"
