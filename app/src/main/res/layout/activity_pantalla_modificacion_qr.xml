@@ -10,21 +10,20 @@
 
     <TextView
         android:id="@+id/eliminacionQR"
-        android:layout_width="66dp"
-        android:layout_height="53dp"
+        android:layout_width="300dp"
+        android:layout_height="37dp"
         android:layout_marginEnd="37dp"
         android:fontFamily="sans-serif-medium"
-        android:text="QR"
+        android:text="Modificación realizada"
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.662" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -38,37 +37,13 @@
         android:id="@+id/solicitudAdm"
         android:layout_width="205dp"
         android:layout_height="55dp"
-        android:text="¡Su solicitud fue admitida!"
+        android:text="¡Se notificara a los estudiantes!"
         android:textAlignment="center"
         android:textColor="@color/design_default_color_secondary"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="138dp" />
-
-    <TextView
-        android:id="@+id/solicitudAdm2"
-        android:layout_width="205dp"
-        android:layout_height="55dp"
-        android:text="Con este QR podrá ingresar al evento."
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="222dp" />
-
-    <TextView
-        android:id="@+id/solicitudAdm3"
-        android:layout_width="205dp"
-        android:layout_height="55dp"
-        android:text="Consulte su correo para más información"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="277dp" />
+        tools:layout_editor_absoluteY="191dp" />
 
     <TextView
         android:id="@+id/nombreEvento"

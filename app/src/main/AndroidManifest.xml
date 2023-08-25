@@ -13,12 +13,6 @@
         android:theme="@style/Theme.HeyAso"
         tools:targetApi="31">
         <activity
-            android:name=".Pantalla_QR"
-            android:exported="false" />
-        <activity
-            android:name=".Pantalla_Foro"
-            android:exported="false" />
-        <activity
             android:name=".Formulario_Base"
             android:exported="false" />
         <activity
