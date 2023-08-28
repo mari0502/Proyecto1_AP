@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Nombre"
+            android:id="@+id/NombreUsuario"
             android:layout_width="334dp"
             android:layout_height="52dp"
             android:layout_marginStart="38dp"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/eliminacionQR"
+            android:id="@+id/titulo_IniciarSesion"
             android:layout_width="336dp"
             android:layout_height="51dp"
             android:layout_marginStart="38dp"
@@ -67,7 +67,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Carrera"
+            android:id="@+id/Contrasenna"
             android:layout_width="334dp"
             android:layout_height="52dp"
             android:layout_marginStart="38dp"
@@ -83,7 +83,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Carnet"
+            android:id="@+id/Puesto"
             android:layout_width="334dp"
             android:layout_height="52dp"
             android:layout_marginStart="38dp"
@@ -98,7 +98,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Correo"
+            android:id="@+id/Contrasenna"
             android:layout_width="334dp"
             android:layout_height="52dp"
             android:layout_marginStart="38dp"
@@ -144,7 +144,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/volver"
+            android:id="@+id/btn_volver"
             android:layout_width="158dp"
             android:layout_height="48dp"
             android:layout_marginTop="652dp"
@@ -158,11 +158,11 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Registro"
+            app:layout_constraintStart_toEndOf="@+id/btn_continuar"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/Registro"
+            android:id="@+id/btn_continuar"
             android:layout_width="158dp"
             android:layout_height="48dp"
             android:layout_marginStart="45dp"
@@ -176,7 +176,7 @@
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/volver"
+            app:layout_constraintEnd_toStartOf="@+id/btn_volver"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
