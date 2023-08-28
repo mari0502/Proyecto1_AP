@@ -22,7 +22,7 @@
 
 
     <TextView
-        android:id="@+id/titulo_IniciarSesion"
+        android:id="@+id/DescripcionPagina"
         android:layout_width="326dp"
         android:layout_height="87dp"
         android:layout_marginStart="38dp"
