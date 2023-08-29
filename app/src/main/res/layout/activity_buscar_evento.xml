@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    tools:context=".Buscar_Evento">
+
+    <ImageView
+        android:id="@+id/imagen4"
+        android:layout_width="417dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#DBF1FB"
+        android:backgroundTint="#D9F0FA"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descripcionPagina2"
+        android:layout_width="336dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="37dp"
+        android:text="Buscar Evento"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_buscar2"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="652dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="31dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Buscar"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_volver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_volver3"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="652dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="31dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="volver"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toEndOf="@+id/btn_continuar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="335dp"
+        android:layout_height="52dp"
+        android:backgroundTint="#DC68E4"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <ScrollView
+        android:id="@+id/info"
+        android:layout_width="333dp"
+        android:layout_height="412dp"
+        android:background="#8BD8EFF9"
+        android:foregroundGravity="right"
+        android:foregroundTint="#737070"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="230dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
