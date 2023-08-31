@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(this, Compartir_en_redes.class); //Si quieren probar una pantalla cambian el nombre aqui
+        Intent intent = new Intent(this, AdministrarAgenda.class); //Si quieren probar una pantalla cambian el nombre aqui
         startActivity(intent);
         finish();
     }
