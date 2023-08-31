@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context=".menuPrincipalEstudiante">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_adminCuenta"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:background="@drawable/round_button_white_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Administrar Cuenta"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_inscripción"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:background="@drawable/round_button_white_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Inscripción a Evento"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_foro"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:background="@drawable/round_button_white_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Foro de discusión"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.679" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_calendario"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:background="@drawable/round_button_white_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Calendario de Eventos"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.792" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_salir"
+        android:layout_width="182dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="632dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Salir"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textomenuEst"
+        android:layout_width="336dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="37dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Menu Estudiante"
+        android:textAlignment="center"
+        android:textColor="#94DFFF"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <TextView
+        android:id="@+id/textoadminevento"
+        android:layout_width="336dp"
+        android:layout_height="51dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Seleccione la opción a realizar"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.336" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
