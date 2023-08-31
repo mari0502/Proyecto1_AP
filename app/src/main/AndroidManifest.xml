@@ -15,6 +15,9 @@
         android:theme="@style/Theme.HeyAso"
         tools:targetApi="31">
         <activity
+            android:name=".Gestionar_colabores"
+            android:exported="false" />
+        <activity
             android:name=".Eliminar_Actividad"
             android:exported="false" />
         <activity
