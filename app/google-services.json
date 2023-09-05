@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "785839676902",
+    "project_id": "heyaso",
+    "storage_bucket": "heyaso.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785839676902:android:efe00b0d255eff354eca27",
+        "android_client_info": {
+          "package_name": "com.app.heyaso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785839676902-amdmou0tculbbddt0t3g0r4i8o0b33lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQZ4Luleyxd_0v0AMcXVTWX9qbo1Igbps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785839676902-amdmou0tculbbddt0t3g0r4i8o0b33lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
