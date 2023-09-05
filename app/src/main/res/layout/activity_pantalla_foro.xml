@@ -8,6 +8,25 @@
     android:clickable="true"
     tools:context=".Pantalla_Foro">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_volver7"
+            android:layout_width="158dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginEnd="136dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/round_button_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="volver"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/evaluarEvento" />
+
         <TextView
             android:id="@+id/DescripcionPagina"
             android:layout_width="352dp"
@@ -41,21 +60,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.264" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_registrarAso"
-            android:layout_width="113dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="580dp"
-            android:background="@drawable/round_button_background"
-            android:fontFamily="sans-serif-medium"
-            android:text="Salir"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/propuesta"

@@ -1,4 +1,4 @@
 package com.app.heyaso;
 
-public @interface NonNull {
+public @interface onNull {
 }

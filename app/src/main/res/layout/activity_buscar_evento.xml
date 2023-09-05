@@ -66,7 +66,7 @@
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_volver"
+        app:layout_constraintEnd_toStartOf="@+id/btn_volver3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -75,9 +75,10 @@
         android:id="@+id/btn_volver3"
         android:layout_width="158dp"
         android:layout_height="48dp"
-        android:layout_marginTop="652dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/round_button_background"
         android:fontFamily="sans-serif-medium"
         android:text="volver"
@@ -86,10 +87,8 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/btn_continuar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/btn_buscar2"
+        app:layout_constraintTop_toBottomOf="@+id/info" />
 
     <Spinner
         android:id="@+id/spinner2"
