@@ -1,24 +1,26 @@
 package com.example.proyecto1_ap_heyaso;
 
 public class Evento {
-    private String titulo;
     private String IdEvento;
-    private String descripcion;
-    private String lugar;
-    private String duración;
-    private String fecha;
     private String categoria;
+    private String descripcion;
+    private String duracion;
+    private String fecha;
+    private String lugar;
+
     private String requisitos;
+    private String titulo;
 
 
 
 
-    public Evento(String idEvento, String titulo, String descripcion, String lugar, String duración, String fecha, String categoria, String requisitos) {
+
+    public Evento(String idEvento, String categoria, String descripcion, String duracion, String fecha, String lugar, String requisitos, String titulo) {
         this.IdEvento= idEvento;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.lugar = lugar;
-        this.duración = duración;
+        this.duracion = duracion;
         this.fecha = fecha;
         this.categoria = categoria;
         this.requisitos = requisitos;
@@ -49,11 +51,11 @@ public class Evento {
     }
 
     public void setDuración(String duración) {
-        this.duración = duración;
+        this.duracion = duración;
     }
 
     public String getDuración() {
-        return duración;
+        return duracion;
     }
 
     public String getFecha() {

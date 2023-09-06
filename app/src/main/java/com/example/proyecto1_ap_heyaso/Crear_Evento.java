@@ -129,7 +129,7 @@ public class Crear_Evento extends AppCompatActivity {
                                                                 Toast.makeText(Crear_Evento.this, "Ya existe un evento con el mismo numero", Toast.LENGTH_SHORT).show();
                                                             } else {
                                                                 agregarEventoFirestore(Identificador, Titulo, Descripcion, Lugar, Duracion, Fecha, Categoria, Requisitos);
-                                                                    }
+                                                            }
 
                                                         }
                                                     }
