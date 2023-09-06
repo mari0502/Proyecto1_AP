@@ -14,10 +14,18 @@ public class Pantalla_Foro extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_foro);
 
-        Button button = (Button) findViewById(R.id.evaluarEvento);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button btnEvaluar = (Button) findViewById(R.id.evaluarEvento);
+        btnEvaluar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 OpenEvaluar();
+            }
+        });
+
+
+        Button btnPropuesta = (Button) findViewById(R.id.propuesta);
+        btnPropuesta.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                OpenPropuesta();
             }
         });
     }
@@ -27,4 +35,8 @@ public class Pantalla_Foro extends AppCompatActivity{
         startActivity(intent);
     }
 
+    public void OpenPropuesta() {
+        Intent intent = new Intent(this, Propuesta_Evento.class);
+        startActivity(intent);
+    }
 }
