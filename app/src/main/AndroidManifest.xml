@@ -15,6 +15,23 @@
         android:theme="@style/Theme.HeyAso"
         tools:targetApi="31">
         <activity
+            android:name=".Pagina_Principal"
+            android:exported="false" />
+        <activity
+            android:name=".Colaboradores_Asociacion"
+            android:exported="false" />
+        <activity
+            android:name=".Registrar_Asociacion"
+            android:exported="false" />
+        <activity
+            android:name=".Iniciar_Sesion"
+            android:exported="false" />
+        <activity
+            android:name=".Registrar_Estudiante"
+            android:exported="false"
+            android:label="@string/title_activity_registrar_estudiante"
+            android:theme="@style/Theme.HeyAso" />
+        <activity
             android:name=".Evaluar_Evento"
             android:exported="false" />
         <activity
