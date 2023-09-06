@@ -2,6 +2,7 @@ package com.example.proyecto1_ap_heyaso;
 
 public class Evento {
     private String titulo;
+    private String IdEvento;
     private String descripcion;
     private String lugar;
     private String duración;
@@ -12,7 +13,8 @@ public class Evento {
 
 
 
-    public Evento(String titulo, String descripcion, String lugar, String duración, String fecha, String categoria, String requisitos) {
+    public Evento(String idEvento, String titulo, String descripcion, String lugar, String duración, String fecha, String categoria, String requisitos) {
+        this.IdEvento= idEvento;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.lugar = lugar;
@@ -21,6 +23,14 @@ public class Evento {
         this.categoria = categoria;
         this.requisitos = requisitos;
 }
+
+    public String getIdEvento() {
+        return IdEvento;
+    }
+
+    public void setIdEvento(String idEvento) {
+        IdEvento = idEvento;
+    }
 
     public String getTitulo() {
         return titulo;

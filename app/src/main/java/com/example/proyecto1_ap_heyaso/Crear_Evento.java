@@ -53,6 +53,7 @@ public class Crear_Evento extends AppCompatActivity {
     }
         private void agregarEvento() {
 
+            TextInputEditText InputId= findViewById(R.id.id);
             TextInputEditText InputTitulo = findViewById(R.id.titulo);
             TextInputEditText InputDescripcion = findViewById(R.id.descripcion);
             TextInputEditText InputLugar = findViewById(R.id.lugar);
@@ -63,7 +64,7 @@ public class Crear_Evento extends AppCompatActivity {
             //Checkbox InputEncuesta = findViewById(R.id.encuesta);
 
 
-
+            String Identificador = InputId.getText().toString();
             String Titulo = InputTitulo.getText().toString();
             String Descripcion = InputDescripcion.getText().toString();
             String Lugar = InputLugar.getText().toString();
@@ -71,21 +72,85 @@ public class Crear_Evento extends AppCompatActivity {
             String Fecha = InputFecha.getText().toString();
             String Categoria = InputCategoria.getText().toString();
             String Requisitos= InputRequisitos.getText().toString();
+            String NewidEvento="Evento"+Identificador;
 
-
-            if (TextUtils.isEmpty(Titulo) || TextUtils.isEmpty(Descripcion) || TextUtils.isEmpty(Lugar) || TextUtils.isEmpty(Duracion) || TextUtils.isEmpty(Fecha)|| TextUtils.isEmpty(Categoria) || TextUtils.isEmpty(Requisitos) ) {
+            if ( TextUtils.isEmpty(Titulo) || TextUtils.isEmpty(Identificador) ||  TextUtils.isEmpty(Descripcion) || TextUtils.isEmpty(Lugar) || TextUtils.isEmpty(Duracion) || TextUtils.isEmpty(Fecha)|| TextUtils.isEmpty(Categoria) || TextUtils.isEmpty(Requisitos) )
+            {
                 Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
                 return;
             }
             else {
                 System.out.println("Holaa");
-                agregarCubiculoFirestore(Titulo, Descripcion, Lugar, Duracion, Fecha, Categoria, Requisitos);
+                CollectionReference eventoRef = mfirestore.collection("Evento");
+                // Verificar si ya existe un evento con el mismo nombre o número
+                eventoRef.whereEqualTo("titulo", Titulo)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                            @Override
+                            public void onComplete(Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    boolean nombreEventoExistente = false;
+                                    boolean numeroEventoExistente = false;
+
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        String idEventoExist = document.getString("idEvento");
+                                        String nombreExist = document.getString("titulo");
+                                        if (idEventoExist.equals(NewidEvento)) {
+                                            numeroEventoExistente = true;
+                                            break;
+                                        }
+                                        nombreEventoExistente = true;
+                                    }
+
+                                    if (nombreEventoExistente) {
+                                        Toast.makeText(Crear_Evento.this, "Ya existe un evento con el mismo nombre", Toast.LENGTH_SHORT).show();
+                                    } else if (numeroEventoExistente) {
+                                        Toast.makeText(Crear_Evento.this, "Ya existe un evento con el mismo número", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        eventoRef.whereEqualTo("idEvento", NewidEvento)
+                                                .get()
+                                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                                                    @Override
+                                                    public void onComplete(Task<QuerySnapshot> task) {
+
+                                                        if (task.isSuccessful()) {
+                                                            boolean idEventoExistente = false;
+                                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                                String idEventoExist = document.getString("idEvento");
+                                                                if (idEventoExist.equals(NewidEvento)) {
+                                                                    idEventoExistente = true;
+                                                                    break;
+                                                                }
+                                                            }
+
+                                                            if (idEventoExistente) {
+                                                                Toast.makeText(Crear_Evento.this, "Ya existe un evento con el mismo numero", Toast.LENGTH_SHORT).show();
+                                                            } else {
+                                                                agregarEventoFirestore(Identificador, Titulo, Descripcion, Lugar, Duracion, Fecha, Categoria, Requisitos);
+                                                                    }
+
+                                                        }
+                                                    }
+                                                });
+
+                                        // No existe un evento con el mismo nombre o número, agregar a Firestore
+                                    };
+                                } else {
+                                    Toast.makeText(Crear_Evento.this, "Error al verificar la existencia del evento", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
 
-        }
-        private void agregarCubiculoFirestore(String titulo, String descripcion,String lugar,String duracion,String fecha,String categoria, String requisitos){
+    }
+
+
+        private void agregarEventoFirestore(String identificador, String titulo, String descripcion,String lugar,String duracion,String fecha,String categoria, String requisitos){
             CollectionReference eventosCollection = mfirestore.collection("Evento");
-            Evento evento = new Evento(titulo, descripcion,lugar,duracion,fecha,categoria,requisitos);
+            String idEvento= "Evento"+identificador;
+            Evento evento = new Evento(identificador,titulo, descripcion,lugar,duracion,fecha,categoria,requisitos);
             eventosCollection.add(evento)
                     .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                         @Override
