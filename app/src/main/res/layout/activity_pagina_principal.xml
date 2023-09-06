@@ -134,8 +134,12 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="37dp"
-            tools:layout_editor_absoluteY="316dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.464" />
 
         <TextView
             android:id="@+id/texto5"
@@ -148,8 +152,12 @@
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="37dp"
-            tools:layout_editor_absoluteY="367dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.572" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

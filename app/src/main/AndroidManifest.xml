@@ -12,8 +12,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HeyAso"
+        android:theme="@style/Theme.Proyecto1_AP_HeyAso"
         tools:targetApi="31">
+
         <activity
             android:name=".Pagina_Principal"
             android:exported="false" />
@@ -29,8 +30,8 @@
         <activity
             android:name=".Registrar_Estudiante"
             android:exported="false"
-            android:label="@string/title_activity_registrar_estudiante"
-            android:theme="@style/Theme.HeyAso" />
+            android:label="Registrar_Estudiante"
+            android:theme="@style/Theme.Proyecto1_AP_HeyAso" />
         <activity
             android:name=".Evaluar_Evento"
             android:exported="false" />
