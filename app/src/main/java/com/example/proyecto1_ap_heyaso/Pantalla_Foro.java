@@ -21,11 +21,17 @@ public class Pantalla_Foro extends AppCompatActivity{
             }
         });
 
-
         Button btnPropuesta = (Button) findViewById(R.id.propuesta);
         btnPropuesta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 OpenPropuesta();
+            }
+        });
+
+        Button btnPreguntas = (Button) findViewById(R.id.preguntas);
+        btnPreguntas.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                OpenPreguntas();
             }
         });
     }
@@ -37,6 +43,11 @@ public class Pantalla_Foro extends AppCompatActivity{
 
     public void OpenPropuesta() {
         Intent intent = new Intent(this, Propuesta_Evento.class);
+        startActivity(intent);
+    }
+
+    public void OpenPreguntas() {
+        Intent intent = new Intent(this, Preguntas_Foro.class);
         startActivity(intent);
     }
 }

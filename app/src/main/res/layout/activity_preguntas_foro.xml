@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Preguntas_Foro">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/comentarioPreguntas"
+        android:layout_width="315dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="668dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#2FBCF8"
+        android:hint="Comentario"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagen10"
+        android:layout_width="434dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:background="#DBF1FB"
+        android:backgroundTint="#D9F0FA"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPreguntas"
+        android:layout_width="446dp"
+        android:layout_height="50dp"
+        android:text="¡Haz tus preguntas y comentarios acá!"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="105dp" />
+
+    <ScrollView
+        android:id="@+id/contenedorComentarios"
+        android:layout_width="439dp"
+        android:layout_height="478dp"
+        android:background="@drawable/rectangulo_fondo_mediano"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="184dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/imgEnviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/enviar"
+        app:srcCompat="@drawable/enviar"
+        tools:layout_editor_absoluteX="370dp"
+        tools:layout_editor_absoluteY="688dp" />
+
+    <Button
+        android:id="@+id/btn_Volver12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button_background"
+        android:text="VOLVER"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="387dp"
+        tools:layout_editor_absoluteY="751dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
