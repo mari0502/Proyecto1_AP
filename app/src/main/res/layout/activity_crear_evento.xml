@@ -7,7 +7,7 @@
     tools:context=".Crear_Evento">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/id"
+        android:id="@+id/IdEvento"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
@@ -112,7 +112,7 @@
         android:layout_marginBottom="12dp"
         android:text="Habilitar encuesta de retroalimentación"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn_volver2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_volver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
