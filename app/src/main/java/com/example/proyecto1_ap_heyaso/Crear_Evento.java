@@ -94,6 +94,7 @@ public class Crear_Evento extends AppCompatActivity {
                                 boolean numeroEventoExistente = false;
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
+                                    System.out.println("Holaa");
                                     String idEventoExist = document.getString("IdEvento");
                                     String nombreExist = document.getString("titulo");
                                     if (idEventoExist.equals(NewidEvento)) {

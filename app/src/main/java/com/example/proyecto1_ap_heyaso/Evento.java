@@ -17,8 +17,8 @@ public class Evento {
         // Default constructor required for Firebase
     }
 
-    public Evento(String idEvento, String categoria, String descripcion, String duracion, String fecha, String lugar, String requisitos, String titulo) {
-        this.IdEvento= idEvento;
+    public Evento(String IdEvento, String categoria, String descripcion, String duracion, String fecha, String lugar, String requisitos, String titulo) {
+        this.IdEvento= IdEvento;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.lugar = lugar;
@@ -32,8 +32,8 @@ public class Evento {
         return IdEvento;
     }
 
-    public void setIdEvento(String idEvento) {
-        IdEvento = idEvento;
+    public void setIdEvento(String IdEvento) {
+        this.IdEvento = IdEvento;
     }
 
     public String getTitulo() {
