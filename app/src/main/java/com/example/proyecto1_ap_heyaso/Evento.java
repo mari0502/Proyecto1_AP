@@ -13,7 +13,9 @@ public class Evento {
 
 
 
-
+    public Evento() {
+        // Default constructor required for Firebase
+    }
 
     public Evento(String idEvento, String categoria, String descripcion, String duracion, String fecha, String lugar, String requisitos, String titulo) {
         this.IdEvento= idEvento;
