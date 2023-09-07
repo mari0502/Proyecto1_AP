@@ -117,7 +117,7 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="598dp" />
+        tools:layout_editor_absoluteY="615dp" />
 
     <Button
         android:id="@+id/btn_VolverForo"
@@ -129,7 +129,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="261dp"
-        tools:layout_editor_absoluteY="598dp" />
+        tools:layout_editor_absoluteX="251dp"
+        tools:layout_editor_absoluteY="615dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
