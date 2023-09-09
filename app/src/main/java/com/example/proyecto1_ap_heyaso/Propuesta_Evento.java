@@ -69,6 +69,13 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
         startActivity(intent);
     }
 
+    private void  limpiarCampos(TextInputEditText InputTitulo,TextInputEditText InputDescripcion,
+                                TextInputEditText InputObjetivos, TextInputEditText InputActividades){
+        InputTitulo.setText("");
+        InputActividades.setText("");
+        InputObjetivos.setText("");
+        InputDescripcion.setText("");
+    }
     private void enviarPropuesta(){
         TextInputEditText InputTitulo = findViewById(R.id.tituloPropuesta);
         TextInputEditText InputDescripcion = findViewById(R.id.descripcionPropuesta);
@@ -82,9 +89,18 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
 
         if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(objetivos) || TextUtils.isEmpty(actividades)) {
             Toast.makeText(this, "Debe completar todos los campos", Toast.LENGTH_SHORT).show();
+            limpiarCampos(InputTitulo, InputDescripcion, InputObjetivos, InputActividades);
         }else{
-            base = FirebaseFirestore.getInstance();
-            enviarPropuestaFirestore();
+            if(titulo.length() < 4 || actividades.length() < 4 || descripcion.length() < 4 || objetivos.length() < 4) {
+                Toast.makeText(this, "Los textos deben ser mayores a 4 caracteres.", Toast.LENGTH_SHORT).show();
+                limpiarCampos(InputTitulo, InputDescripcion, InputObjetivos, InputActividades);
+            } else if (titulo.length() > 400 || actividades.length() > 400 || descripcion.length() > 400 || objetivos.length() > 400) {
+                Toast.makeText(this, "Ha superado el máximo de caracteres.", Toast.LENGTH_SHORT).show();
+                limpiarCampos(InputTitulo, InputDescripcion, InputObjetivos, InputActividades);
+            }else{
+                base = FirebaseFirestore.getInstance();
+                enviarPropuestaFirestore();
+            }
         }
     }
 
