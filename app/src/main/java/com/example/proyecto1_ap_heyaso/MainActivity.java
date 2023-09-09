@@ -3,6 +3,7 @@ package com.example.proyecto1_ap_heyaso;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,4 +15,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }
