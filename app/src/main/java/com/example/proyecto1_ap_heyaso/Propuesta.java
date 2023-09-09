@@ -1,14 +1,13 @@
 package com.example.proyecto1_ap_heyaso;
 
 public class Propuesta {
-    private String idPropuesta, titulo, descripcion, categoria,objetivos, actividades;
+    private String titulo, descripcion, categoria,objetivos, actividades;
 
     public Propuesta(){
         //Default constructor required for Firebase
     }
 
-    public Propuesta(String idPropuesta, String titulo, String descripcion, String objetivos, String categoria,String actividades) {
-        this.idPropuesta = idPropuesta;
+    public Propuesta(String titulo, String descripcion, String objetivos, String categoria,String actividades) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.objetivos = objetivos;
@@ -17,14 +16,6 @@ public class Propuesta {
     }
 
     //Getters and setters
-
-    public String getIdPropuesta() {
-        return idPropuesta;
-    }
-
-    public void setIdPropuesta(String idPropuesta) {
-        this.idPropuesta = idPropuesta;
-    }
 
     public String getTitulo() {
         return titulo;

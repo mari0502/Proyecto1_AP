@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,9 +19,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Propuesta_Evento extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -82,30 +80,29 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
         objetivos = InputObjetivos.getText().toString();
         actividades = InputActividades.getText().toString();
 
-        base = FirebaseFirestore.getInstance();
-        enviarPropuestaFirestore();
+        if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(objetivos) || TextUtils.isEmpty(actividades)) {
+            Toast.makeText(this, "Debe completar todos los campos", Toast.LENGTH_SHORT).show();
+        }else{
+            base = FirebaseFirestore.getInstance();
+            enviarPropuestaFirestore();
+        }
     }
 
     private void enviarPropuestaFirestore(){
-        Map<String, Object> data = new HashMap<>();
-        data.put("Título", titulo);
-        data.put("Descripción", descripcion);
-        data.put("Objetivos", objetivos);
-        data.put("Categoría", categoria);
-        data.put("Activdades", actividades);
+        Propuesta data = new Propuesta(titulo, descripcion, objetivos, categoria, actividades);
 
         base.collection("Propuestas")
                 .add(data)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        System.out.println("DocumentSnapshot successfully written!");
+                        Toast.makeText(Propuesta_Evento.this, "Su propuesta ha sido enviada.", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        System.out.println("Error writing document");
+                        Toast.makeText(Propuesta_Evento.this, "Error de envío. Intente más tarde.", Toast.LENGTH_SHORT).show();
                     }
                 });
         reOpenForo();
