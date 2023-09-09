@@ -24,76 +24,51 @@
         android:id="@+id/tituloPropuesta"
         android:layout_width="334dp"
         android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Título"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPropuesta"
+        app:layout_constraintVertical_bias="0.037"
+        tools:layout_editor_absoluteX="38dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/descripcionPropuesta"
         android:layout_width="334dp"
         android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Descripción"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloPropuesta"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="38dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/objetivosPropuesta"
         android:layout_width="334dp"
         android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="316dp"
-        android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Objetivos"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/categoriaPropuesta"
-        android:layout_width="334dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="384dp"
-        android:layout_marginEnd="39dp"
-        android:backgroundTint="#2FBCF8"
-        android:hint="Categoría"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripcionPropuesta"
+        app:layout_constraintVertical_bias="0.076"
+        tools:layout_editor_absoluteX="38dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/actividadesPropuesta"
         android:layout_width="334dp"
         android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="460dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="184dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Actividades"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoriaPropuesta"
+        app:layout_constraintVertical_bias="0.421"
+        tools:layout_editor_absoluteX="38dp" />
 
     <TextView
         android:id="@+id/txtPropuesta"
@@ -102,34 +77,52 @@
         android:text="Propuesta de Evento"
         android:textAlignment="center"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="96dp" />
-
-    <Button
-        android:id="@+id/btnEnviarPropuesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button_background"
-        android:fontFamily="sans-serif"
-        android:lineSpacingExtra="14sp"
-        android:text="ENVIAR PROPUESTA"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="615dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imagen12"
+        app:layout_constraintVertical_bias="0.152" />
 
     <Button
         android:id="@+id/btn_VolverForo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="52dp"
         android:background="@drawable/round_button_background"
         android:fontFamily="sans-serif"
         android:text="VOLVER"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="251dp"
-        tools:layout_editor_absoluteY="615dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toEndOf="@+id/btn_EnviarPropuesta" />
+
+    <Button
+        android:id="@+id/btn_EnviarPropuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="52dp"
+        android:fontFamily="sans-serif"
+        android:text="ENVIAR PROPUESTA"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerCategoriaPropuesta"
+        android:layout_width="335dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/objetivosPropuesta"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="37dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

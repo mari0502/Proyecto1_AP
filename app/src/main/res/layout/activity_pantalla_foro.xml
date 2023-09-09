@@ -29,26 +29,23 @@
 
         <TextView
             android:id="@+id/DescripcionPagina"
-            android:layout_width="352dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="37dp"
+            android:layout_width="339dp"
+            android:layout_height="58dp"
             android:fontFamily="sans-serif-medium"
             android:text="Foro de discusión"
-            android:textAlignment="viewEnd"
+            android:textAlignment="center"
             android:textColor="#94DFFF"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.16" />
+            app:layout_constraintVertical_bias="0.161"
+            tools:layout_editor_absoluteX="38dp" />
 
         <TextView
             android:id="@+id/texto2"
-            android:layout_width="336dp"
-            android:layout_height="51dp"
+            android:layout_width="325dp"
+            android:layout_height="35dp"
             android:fontFamily="sans-serif-medium"
             android:text="¡Déjanos tus propuestas y opiniones!"
             android:textAlignment="center"

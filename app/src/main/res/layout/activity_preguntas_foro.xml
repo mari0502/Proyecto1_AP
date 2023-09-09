@@ -11,15 +11,13 @@
         android:layout_width="315dp"
         android:layout_height="83dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="580dp"
-        android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Comentario"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85" />
 
     <ImageView
         android:id="@+id/imagen10"
@@ -36,21 +34,28 @@
 
     <TextView
         android:id="@+id/txtPreguntas"
-        android:layout_width="446dp"
-        android:layout_height="50dp"
+        android:layout_width="414dp"
+        android:layout_height="41dp"
         android:text="¡Haz tus preguntas y comentarios acá!"
         android:textAlignment="center"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="-18dp"
-        tools:layout_editor_absoluteY="100dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.148" />
 
     <ScrollView
         android:id="@+id/contenedorComentarios"
-        android:layout_width="392dp"
-        android:layout_height="415dp"
+        android:layout_width="344dp"
+        android:layout_height="366dp"
         android:background="@drawable/rectangulo_fondo_mediano"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="158dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imagen10"
+        app:layout_constraintVertical_bias="0.432">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,21 +67,24 @@
         android:id="@+id/imgEnviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:background="@drawable/enviar"
+        app:layout_constraintStart_toEndOf="@+id/comentarioPreguntas"
         app:srcCompat="@drawable/enviar"
-        tools:layout_editor_absoluteX="353dp"
-        tools:layout_editor_absoluteY="605dp" />
+        tools:layout_editor_absoluteY="569dp" />
 
     <Button
         android:id="@+id/btn_Volver12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/round_button_background"
         android:text="VOLVER"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="308dp"
-        tools:layout_editor_absoluteY="667dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

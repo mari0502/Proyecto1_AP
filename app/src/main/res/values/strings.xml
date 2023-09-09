@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Proyecto1_AP_HeyAso</string>
+    <string-array name="Categoría">
+        <item>Charla</item>
+        <item>Convivio</item>
+        <item>Taller</item>
+        <item>Competencia</item>
+        <item>Otro</item>
+    </string-array>
 </resources>
