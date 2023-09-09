@@ -21,20 +21,17 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class NotificacionAutomatica {
-    private String asunto, contenido, usuario, contrasenna;
+    private String asunto, contenido;
+    private String usuario = "heyasoOfficial",  contrasenna= "aso1234";
     private Address[] destinarios;
 
     public NotificacionAutomatica() {
         //Default
     }
 
-    public NotificacionAutomatica(String asunto, String contenido, String usuario, String contrasenna) {
+    public NotificacionAutomatica(String asunto, String contenido) {
         this.asunto = asunto;
         this.contenido = contenido;
-        this.usuario = usuario;
-        this.contrasenna = contrasenna;
-
-
     }
 
     private void contruirCorreo(){
@@ -42,7 +39,7 @@ public class NotificacionAutomatica {
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.estudiantec.cr");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
 
         //Inicializar sesión
@@ -61,7 +58,7 @@ public class NotificacionAutomatica {
             mensaje.setFrom(new InternetAddress(usuario));
 
             //Destinario del correo
-            mensaje.addRecipients(Message.RecipientType.TO, destinarios); //Revisar el tipo Address
+            mensaje.addRecipients(Message.RecipientType.TO, destinarios); //Revisar el tipo Address y serían todos los correos de estudiantes
 
             //Asunto del correo
             mensaje.setSubject(asunto);
@@ -70,7 +67,7 @@ public class NotificacionAutomatica {
             mensaje.setText(contenido);
 
             //Enviar correo
-
+            //Falta código
         }catch (MessagingException e){
             e.printStackTrace();
         }

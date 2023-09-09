@@ -34,6 +34,13 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
                 OpenForo();
             }
         });
+
+        Button button4 = (Button) findViewById(R.id.btn_calendario);
+        button4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                OpenCalendario();
+            }
+        });
     }
 
 
@@ -50,6 +57,11 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
 
     public void OpenForo() {
         Intent intent = new Intent(this, Pantalla_Foro.class);
+        startActivity(intent);
+    }
+
+    public void OpenCalendario() {
+        Intent intent = new Intent(this, Calendario.class);
         startActivity(intent);
     }
 

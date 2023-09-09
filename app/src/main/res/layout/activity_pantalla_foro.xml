@@ -76,6 +76,23 @@
             app:layout_constraintVertical_bias="0.4" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/aprobarPropuesta"
+            android:layout_width="118dp"
+            android:layout_height="42dp"
+            android:background="@drawable/round_button_white_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="Gestionar Propuesta"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.477"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.766" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/preguntas"
             android:layout_width="122dp"
             android:layout_height="39dp"

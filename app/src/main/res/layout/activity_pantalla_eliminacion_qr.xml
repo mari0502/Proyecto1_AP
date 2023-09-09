@@ -91,10 +91,9 @@
         tools:layout_editor_absoluteY="588dp" />
 
     <ImageView
-        android:id="@+id/imagenQR"
+        android:id="@+id/imagenEliminacion_QR"
         android:layout_width="181dp"
         android:layout_height="181dp"
-        app:srcCompat="@drawable/qr_code"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="497dp" />
 

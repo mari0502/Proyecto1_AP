@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class Pantalla_Foro extends AppCompatActivity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -34,6 +35,11 @@ public class Pantalla_Foro extends AppCompatActivity{
                 OpenPreguntas();
             }
         });
+
+        Button btnVolver = (Button) findViewById(R.id.btn_volver7);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) { reOpenMenu(); }
+        });
     }
 
     public void OpenEvaluar() {
@@ -50,4 +56,10 @@ public class Pantalla_Foro extends AppCompatActivity{
         Intent intent = new Intent(this, Preguntas_Foro.class);
         startActivity(intent);
     }
+
+    public void reOpenMenu() {
+        //Falta código
+    }
+
+
 }

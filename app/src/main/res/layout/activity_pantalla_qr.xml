@@ -30,45 +30,60 @@
         android:id="@+id/imageView"
         android:layout_width="253dp"
         android:layout_height="368dp"
-        app:srcCompat="@drawable/rectangulo_fondo_mediano"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="39dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104"
+        app:srcCompat="@drawable/rectangulo_fondo_mediano" />
 
     <TextView
         android:id="@+id/solicitudAdm"
         android:layout_width="205dp"
         android:layout_height="55dp"
+        android:layout_marginTop="140dp"
         android:text="¡Su solicitud fue admitida!"
         android:textAlignment="center"
         android:textColor="@color/design_default_color_secondary"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="138dp" />
+        app:layout_constraintBottom_toTopOf="@+id/solicitudAdm2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.111" />
 
     <TextView
         android:id="@+id/solicitudAdm2"
         android:layout_width="205dp"
         android:layout_height="55dp"
+        android:layout_marginTop="176dp"
         android:text="Con este QR podrá ingresar al evento."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="222dp" />
+        app:layout_constraintBottom_toTopOf="@+id/solicitudAdm3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.517" />
 
     <TextView
         android:id="@+id/solicitudAdm3"
         android:layout_width="205dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="376dp"
         android:text="Consulte su correo para más información"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="277dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.992" />
 
     <TextView
         android:id="@+id/nombreEvento"
@@ -76,51 +91,75 @@
         android:layout_height="35dp"
         android:text="Nombre del evento: XXX"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="515dp" />
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="506dp" />
 
     <ImageView
         android:id="@+id/imagenHeyASO"
         android:layout_width="77dp"
         android:layout_height="45dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="67dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.094"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/fechaEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="Fecha:"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="550dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toEndOf="@+id/imagenQR"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79" />
 
     <TextView
         android:id="@+id/lugarEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="136dp"
         android:text="Lugar:"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="569dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagenQR"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.841" />
 
     <TextView
         android:id="@+id/nombreEstudianteEvento"
         android:layout_width="123dp"
         android:layout_height="39dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="52dp"
         android:text="Nombre del estudiante:"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="588dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imagenQR"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.913" />
 
     <ImageView
         android:id="@+id/imagenQR"
         android:layout_width="181dp"
         android:layout_height="181dp"
-        app:srcCompat="@drawable/qr_code"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="497dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.89" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
