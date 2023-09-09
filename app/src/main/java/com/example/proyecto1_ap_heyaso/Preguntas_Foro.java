@@ -7,12 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class Preguntas_Foro extends AppCompatActivity {
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas_foro);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Button button = (Button) findViewById(R.id.btn_Volver12);
         button.setOnClickListener(new View.OnClickListener() {

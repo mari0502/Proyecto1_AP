@@ -50,17 +50,30 @@
         android:id="@+id/contenedorComentarios"
         android:layout_width="344dp"
         android:layout_height="366dp"
-        android:background="@drawable/rectangulo_fondo_mediano"
+        android:background="@color/design_default_color_secondary_variant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imagen10"
-        app:layout_constraintVertical_bias="0.432">
+        app:layout_constraintVertical_bias="0.421">
 
         <LinearLayout
+            android:id="@+id/comentarios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/comentarioPrueba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="?android:attr/scrollbarSize"
+                android:text="Hola"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
     </ScrollView>
 
     <ImageButton
