@@ -59,6 +59,8 @@ public class Pantalla_Foro extends AppCompatActivity{
 
     public void reOpenMenu() {
         //Falta código
+        NotificacionAutomatica notificacion = new NotificacionAutomatica(this, "Prueba", "Esto es una prueba");
+        notificacion.execute();
     }
 
 

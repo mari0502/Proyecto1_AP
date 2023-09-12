@@ -1,94 +1,66 @@
 package com.example.proyecto1_ap_heyaso;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 
-import androidx.annotation.Nullable;
-
-import org.jetbrains.annotations.Contract;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Properties;
-
-import javax.mail.Address;
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class NotificacionAutomatica {
-    private String asunto, contenido;
-    private String usuario = "heyasoOfficial",  contrasenna= "aso1234";
-    private Address[] destinarios;
+public class NotificacionAutomatica extends AsyncTask<Void, Void, Void>{
+    private Context contenido;
+    private Session sesion;
+    private String asunto, mensaje;
+
+    private final String emisor = "oficialheyaso@gmail.com",  contrasenna= "knwwogxjwktttent";
+
+    //private Address[] destinarios;
 
     public NotificacionAutomatica() {
         //Default
     }
 
-    public NotificacionAutomatica(String asunto, String contenido) {
-        this.asunto = asunto;
+    public NotificacionAutomatica(Context contenido, String asunto, String mensaje) {
         this.contenido = contenido;
+        this.asunto = asunto;
+        this.mensaje = mensaje;
     }
 
-    private void contruirCorreo(){
-        //Inicializar propiedades
+    @Override
+    protected Void doInBackground(Void... voids) {
         Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.port", "465");
 
-        //Inicializar sesión
-        Session sesion = Session.getInstance(properties, new Authenticator() {
-            @Override
+        sesion = Session.getDefaultInstance(properties, new javax.mail.Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(usuario, contrasenna);
+                return new PasswordAuthentication(emisor, contrasenna);
             }
         });
 
-        try{
-            //Inicializar contenido del correo
-            Message mensaje = new MimeMessage(sesion);
-
+        MimeMessage mimeMessage = new MimeMessage(sesion);
+        try {
             //Emisor del correo
-            mensaje.setFrom(new InternetAddress(usuario));
-
-            //Destinario del correo
-            mensaje.addRecipients(Message.RecipientType.TO, destinarios); //Revisar el tipo Address y serían todos los correos de estudiantes
-
-            //Asunto del correo
-            mensaje.setSubject(asunto);
-
-            //Contenido del correo
-            mensaje.setText(contenido);
-
-            //Enviar correo
-            //Falta código
-        }catch (MessagingException e){
+            mimeMessage.setFrom(new InternetAddress(emisor));
+            //Destinatario
+            mimeMessage.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress("marianafdzm@estudiantec.cr")));
+            //Asunto
+            mimeMessage.setSubject(asunto);
+            //Contenido
+            mimeMessage.setText(mensaje);
+            //Enviar
+            Transport.send(mimeMessage);
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
-
+        return null;
     }
-
-    /*
-    private class SendMail extends AsyncTask<Message, String, String>{
-        //Inicializar progress dialog
-        private ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute(){
-            super.onPreExecute();
-            //Crear y mostrar el progress dialog
-            progressDialog = ProgressDialog.show(Propuesta_Evento,
-                    "Por favor espere", "Enviando correo...");
-        }
-        @Override
-        protected String doInBackground(Message... messages) {
-            return null;
-        }
-    }*/
 }
