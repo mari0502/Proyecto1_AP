@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import java.util.Properties;
+
+import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -15,20 +17,31 @@ import javax.mail.internet.MimeMessage;
 public class NotificacionAutomatica extends AsyncTask<Void, Void, Void>{
     private Context contenido;
     private Session sesion;
-    private String asunto, mensaje;
+    private String asunto, mensaje, destinario;
 
     private final String emisor = "oficialheyaso@gmail.com",  contrasenna= "knwwogxjwktttent";
 
-    //private Address[] destinarios;
+    private Address[] destinarios;
 
     public NotificacionAutomatica() {
         //Default
     }
 
+    //Constructor para enviar correo a todos los estudiantes
     public NotificacionAutomatica(Context contenido, String asunto, String mensaje) {
         this.contenido = contenido;
         this.asunto = asunto;
         this.mensaje = mensaje;
+        this.destinario = "null";
+    }
+
+    //Constructor para enviar correo a un solo estudiante
+    public NotificacionAutomatica(Context contenido, Session sesion, String asunto, String mensaje, String destinario) {
+        this.contenido = contenido;
+        this.sesion = sesion;
+        this.asunto = asunto;
+        this.mensaje = mensaje;
+        this.destinario = destinario;
     }
 
     @Override
@@ -50,14 +63,23 @@ public class NotificacionAutomatica extends AsyncTask<Void, Void, Void>{
         try {
             //Emisor del correo
             mimeMessage.setFrom(new InternetAddress(emisor));
-            //Destinatario
-            mimeMessage.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress("marianafdzm@estudiantec.cr")));
+
+            //Destinatarios
+            if( destinario == "null"){
+                mimeMessage.addRecipients(Message.RecipientType.TO,destinarios);
+            }else{
+                mimeMessage.addRecipients(Message.RecipientType.TO,destinario);
+            }
+
             //Asunto
             mimeMessage.setSubject(asunto);
+
             //Contenido
             mimeMessage.setText(mensaje);
+
             //Enviar
             Transport.send(mimeMessage);
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
