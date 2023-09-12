@@ -72,6 +72,9 @@
             android:name=".AdministrarAgenda"
             android:exported="false" />
         <activity
+            android:name=".Administrar_Evento"
+            android:exported="false" />
+        <activity
             android:name=".Compartir_en_redes"
             android:exported="false" />
         <activity
