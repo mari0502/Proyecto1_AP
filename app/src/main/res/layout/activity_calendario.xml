@@ -17,14 +17,15 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="42dp" />
 
-    <CalendarView
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/vistaCalendario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="166dp"
-        android:showWeekNumber="true" />
-
+        android:layout_width="347dp"
+        android:layout_height="326dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMarcar"
