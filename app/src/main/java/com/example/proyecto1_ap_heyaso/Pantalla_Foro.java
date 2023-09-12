@@ -36,10 +36,22 @@ public class Pantalla_Foro extends AppCompatActivity{
             }
         });
 
+        Button btnAprobarPropuesta = (Button) findViewById(R.id.aprobarPropuesta);
+        btnAprobarPropuesta.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                OpenAprobar();
+            }
+        });
+
         Button btnVolver = (Button) findViewById(R.id.btn_volver7);
         btnVolver.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) { reOpenMenu(); }
         });
+    }
+
+    public void OpenAprobar() {
+        Intent intent = new Intent(this, Procesar_propuestas.class);
+        startActivity(intent);
     }
 
     public void OpenEvaluar() {
@@ -59,7 +71,7 @@ public class Pantalla_Foro extends AppCompatActivity{
 
     public void reOpenMenu() {
         //Falta código
-        NotificacionAutomatica notificacion = new NotificacionAutomatica(this, "Prueba", "Esto es una prueba");
+        NotificacionAutomatica notificacion = new NotificacionAutomatica(this, "Otro prueba", "Un nuevo comienzo");
         notificacion.execute();
     }
 
