@@ -2,6 +2,7 @@ package com.example.proyecto1_ap_heyaso;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -89,11 +90,14 @@ public class Buscar_Evento extends AppCompatActivity{
                 public void onComplete(Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
                         for(QueryDocumentSnapshot documento : task.getResult()) {
+                            String resultado = "";
+                            if(Boolean.TRUE.equals(documento.getBoolean("encuesta"))){ resultado = "habilitada"; } else {resultado = "deshabilitada";};
                             String info = "Id: " + id + "\nTítulo: " + documento.getString("titulo") + "\nCategoría: " + documento.getString("categoria") +
+                                    "\nAsociacion: " + documento.getString("asociacion")/*.substring(10)*/ +
                                     "\nDescripción: " + documento.getString("descripcion") + "\nFecha: " + documento.getString("fecha") + "\nDuración: " +
-                                    documento.getString("duracion") + "\nLugar: " + documento.getString("lugar") + "\nRequisitos: " + documento.getString("requisitos");
-                            //falta imprimir a que asociacion pertenece y habilitacion de encuesta
-                            viewInfoEvento.setTextAlignment(viewInfoEvento.TEXT_ALIGNMENT_TEXT_START);
+                                    documento.getString("duracion") + "\nLugar: " + documento.getString("lugar") + "\nRequisitos: " + documento.getString("requisitos") +
+                                    "\nEncuesta: " + resultado;
+                            viewInfoEvento.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
                             viewInfoEvento.setText(info);
                         }
                     }
@@ -101,7 +105,7 @@ public class Buscar_Evento extends AppCompatActivity{
             });
         }
         else{
-            viewInfoEvento.setTextAlignment(viewInfoEvento.TEXT_ALIGNMENT_CENTER);
+            viewInfoEvento.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             viewInfoEvento.setText("*Acá se muestra la información del evento buscado*");
             Toast.makeText(Buscar_Evento.this, "No se encontró ningún evento para buscar", Toast.LENGTH_SHORT).show();
         }
