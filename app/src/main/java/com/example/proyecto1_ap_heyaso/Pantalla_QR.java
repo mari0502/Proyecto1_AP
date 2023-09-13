@@ -57,7 +57,7 @@ public class Pantalla_QR extends AppCompatActivity{
 
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
 
-        // Ruta al directorio 'data/data/<tu-app>/app_data/imageDir'
+        // Ruta al directorio
         File directorio = cw.getDir("imagenesQR", Context.MODE_PRIVATE);
 
         // Crea el archivo
