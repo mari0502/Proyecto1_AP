@@ -111,7 +111,7 @@ public class Crear_Evento extends AppCompatActivity {
 
         String NewidEvento = "Evento" + idEvento;
 
-        if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(idEvento) ||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria == "Seleccione una categoría" || asociacion == "Seleccione una asociación"){
+        if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(idEvento) ||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria.equals("Seleccione una categoría") || asociacion.equals("Seleccione una asociación")){
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -168,8 +168,8 @@ public class Crear_Evento extends AppCompatActivity {
                                             // No existe un evento con el mismo nombre o número, agregar a Firestore
 
                                             // revisa checkbox encuesta
-                                            String encuesta = "false";
-                                            if (inputEncuesta.isChecked()) { encuesta = "true"; }
+                                            Boolean encuesta = false;
+                                            if (inputEncuesta.isChecked()) { encuesta = true; }
 
                                             crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion.substring(0, 12), lugar, duracion, fecha, requisitos, encuesta);
                                         }
@@ -187,7 +187,7 @@ public class Crear_Evento extends AppCompatActivity {
 
     }
 
-    private void crearEvento(String idEvento, String titulo, String descripcion, String categoria, String asociacion, String lugar, String duracion, String fecha, String requisitos, String encuesta){
+    private void crearEvento(String idEvento, String titulo, String descripcion, String categoria, String asociacion, String lugar, String duracion, String fecha, String requisitos, Boolean encuesta){
         CollectionReference eventosCollection = db.collection("Evento");
         String IdEvento = "Evento" + idEvento;
         Evento evento = new Evento(idEvento, titulo, descripcion, categoria, asociacion, lugar, duracion, fecha, requisitos, encuesta);
@@ -196,6 +196,7 @@ public class Crear_Evento extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
+                            limpiarCampos();
                             Toast.makeText(Crear_Evento.this, "Evento agregado correctamente", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(Crear_Evento.this, "Error al agregar el evento", Toast.LENGTH_SHORT).show();
@@ -203,11 +204,18 @@ public class Crear_Evento extends AppCompatActivity {
                         return;
                     }
                 });
-        pantallaPrincipalColaborador();
     }
 
-    public void pantallaPrincipalColaborador() {
-        Intent intent = new Intent(this, menuPrincipalColaborador.class);
-        startActivity(intent);
+    public void limpiarCampos() {
+        inputId.setText("");
+        inputTitulo.setText("");
+        inputDescripcion.setText("");
+        inputLugar.setText("");
+        inputFecha.setText("");
+        inputDuracion.setText("");
+        inputRequisitos.setText("");
+        inputEncuesta.setChecked(false);
+        inputCategoria.setSelection(0);
+        inputAsociacion.setSelection(0);
     }
 }

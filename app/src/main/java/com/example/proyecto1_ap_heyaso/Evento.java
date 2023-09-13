@@ -10,13 +10,13 @@ public class Evento {
     private String lugar;
     private String requisitos;
     private String titulo;
-    private String encuesta;
+    private Boolean encuesta;
 
     public Evento() {
         // Default constructor required for Firebase
     }
 
-    public Evento(String idEvento, String titulo, String descripcion, String categoria, String idAsociacion, String lugar, String duracion, String fecha, String requisitos, String encuesta) {
+    public Evento(String idEvento, String titulo, String descripcion, String categoria, String idAsociacion, String lugar, String duracion, String fecha, String requisitos, Boolean encuesta) {
         this.idEvento = idEvento;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -99,11 +99,11 @@ public class Evento {
         this.requisitos = requisitos;
     }
 
-    public String getEncuesta() {
+    public Boolean getEncuesta() {
         return encuesta;
     }
 
-    public void setEncuesta(String encuesta) {
+    public void setEncuesta(Boolean encuesta) {
         this.encuesta = encuesta;
     }
 }
