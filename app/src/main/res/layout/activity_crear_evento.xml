@@ -11,7 +11,7 @@
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Identificador"
@@ -21,15 +21,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <Spinner
         android:id="@+id/categoria"
+        android:layout_width="335dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#DC68E4"
+        android:entries="@array/Categoría"
+        app:layout_constraintBottom_toTopOf="@+id/lugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/asociacion"
+        android:layout_width="335dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="#DC68E4"
+        app:layout_constraintBottom_toTopOf="@+id/categoria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/descripcion"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="240dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
-        android:hint="Categoría"
+        android:hint="Descripción"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,15 +66,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/fecha"
+        android:id="@+id/titulo"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="424dp"
+        android:layout_marginTop="180dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
-        android:hint="Fecha"
-        android:inputType="date"
+        android:hint="Título"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,33 +103,43 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/duracion"
-        android:layout_width="334dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="360dp"
+        android:layout_width="164dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Duración (minutos)"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lugar" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/titulo"
+        android:id="@+id/lugar"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
-        android:hint="Título"
+        android:hint="Lugar"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/categoria" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/fecha"
+        android:layout_width="163dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:backgroundTint="#2FBCF8"
+        android:hint="Fecha"
+        android:inputType="date"
+        app:layout_constraintEnd_toStartOf="@+id/duracion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lugar" />
 
     <CheckBox
         android:id="@+id/encuesta"
@@ -117,21 +156,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requisitos" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/descripcion"
-        android:layout_width="334dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="39dp"
-        android:backgroundTint="#2FBCF8"
-        android:hint="Descripción"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_volver"
@@ -152,21 +176,6 @@
         app:layout_constraintStart_toEndOf="@+id/btn_crear"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/lugar"
-        android:layout_width="334dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="292dp"
-        android:layout_marginEnd="39dp"
-        android:backgroundTint="#2FBCF8"
-        android:hint="Lugar"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/requisitos"

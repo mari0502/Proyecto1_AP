@@ -1,24 +1,23 @@
 package com.example.proyecto1_ap_heyaso;
 
 public class Evento {
-    private String IdEvento;
+    private String idEvento;
     private String categoria;
+    private String idAsociacion;
     private String descripcion;
     private String duracion;
     private String fecha;
     private String lugar;
-
     private String requisitos;
     private String titulo;
-
-
+    private String encuesta;
 
     public Evento() {
         // Default constructor required for Firebase
     }
 
-    public Evento(String IdEvento, String categoria, String descripcion, String duracion, String fecha, String lugar, String requisitos, String titulo) {
-        this.IdEvento= IdEvento;
+    public Evento(String idEvento, String titulo, String descripcion, String categoria, String idAsociacion, String lugar, String duracion, String fecha, String requisitos, String encuesta) {
+        this.idEvento = idEvento;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.lugar = lugar;
@@ -26,14 +25,16 @@ public class Evento {
         this.fecha = fecha;
         this.categoria = categoria;
         this.requisitos = requisitos;
+        this.idAsociacion = idAsociacion;
+        this.encuesta = encuesta;
 }
 
     public String getIdEvento() {
-        return IdEvento;
+        return idEvento;
     }
 
     public void setIdEvento(String IdEvento) {
-        this.IdEvento = IdEvento;
+        this.idEvento = IdEvento;
     }
 
     public String getTitulo() {
@@ -52,11 +53,11 @@ public class Evento {
         this.descripcion = descripcion;
     }
 
-    public void setDuración(String duración) {
+    public void setDuracion(String duración) {
         this.duracion = duración;
     }
 
-    public String getDuración() {
+    public String getDuracion() {
         return duracion;
     }
 
@@ -84,11 +85,25 @@ public class Evento {
         this.categoria = categoria;
     }
 
+    public String getIdAsociacion() { return idAsociacion; }
+
+    public void setIdAsociacion(String idAsociacion) {
+        this.idAsociacion = idAsociacion;
+    }
+
     public String getRequisitos() {
         return requisitos;
     }
 
     public void setRequisitos(String requisitos) {
         this.requisitos = requisitos;
+    }
+
+    public String getEncuesta() {
+        return encuesta;
+    }
+
+    public void setEncuesta(String encuesta) {
+        this.encuesta = encuesta;
     }
 }

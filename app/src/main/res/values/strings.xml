@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Proyecto1_AP_HeyAso</string>
     <string-array name="Categoría">
+        <item>Seleccione una categoría</item>
         <item>Charla</item>
         <item>Convivio</item>
         <item>Taller</item>
