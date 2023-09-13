@@ -1,8 +1,8 @@
 package com.example.proyecto1_ap_heyaso;
 
 public class Actividad {
-    private String IdActividad;
-    private String IdEvento;
+    private String idActividad;
+    private String idEvento;
     private String capacidad;
     private String descripcion;
     private String duracion;
@@ -17,9 +17,9 @@ public class Actividad {
         // Default constructor required for Firebase
     }
 
-    public Actividad(String IdActividad, String IdEvento, String capacidad, String descripcion, String duracion, String encargado,  String titulo) {
-        this.IdActividad= IdActividad;
-        this.IdEvento = IdEvento;
+    public Actividad(String idActividad, String idEvento, String capacidad, String descripcion, String duracion, String encargado,  String titulo) {
+        this.idActividad= idActividad;
+        this.idEvento = idEvento;
         this.capacidad = capacidad;
         this.descripcion = descripcion;
         this.duracion = duracion;
@@ -28,19 +28,19 @@ public class Actividad {
     }
 
     public String getIdActividad() {
-        return IdActividad;
+        return idActividad;
     }
 
     public void setIdActividad(String IdActividad) {
-        this.IdActividad = IdActividad;
+        this.idActividad = idActividad;
     }
 
     public String getIdEvento() {
-        return IdEvento;
+        return idEvento;
     }
 
     public void setIdEvento(String IdEvento) {
-        this.IdEvento = IdEvento;
+        this.idEvento = idEvento;
     }
 
     public String getCapacidad() {

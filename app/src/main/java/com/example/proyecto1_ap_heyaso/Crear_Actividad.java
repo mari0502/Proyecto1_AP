@@ -74,24 +74,24 @@ public class Crear_Actividad extends AppCompatActivity {
         Spinner Encargado=findViewById(R.id.spinnerEncargados);
         TextInputEditText InputTitulo = findViewById(R.id.titulo);
 
-        String IdActividad = InputIdActividad.getText().toString();
-        String IdEvento = Eventos.getSelectedItem().toString();
+        String idActividad = InputIdActividad.getText().toString();
+        String idEvento = Eventos.getSelectedItem().toString();
         String capacidad = InputCapacidad.getText().toString();
         String descripcion = InputDescripcion.getText().toString();
         String duracion = InputDuracion.getText().toString();
         String encargado = Encargado.getSelectedItem().toString();
         String titulo = InputTitulo.getText().toString();
-        String NewidActividad="Act"+IdActividad;
+        String NewidActividad="Act"+idActividad;
 
 
-        if (TextUtils.isEmpty(IdActividad) || TextUtils.isEmpty(capacidad) || TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(titulo)) {
+        if (TextUtils.isEmpty(idActividad) || TextUtils.isEmpty(capacidad) || TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(titulo)) {
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
         else {
             CollectionReference ActividadRef = mfirestore.collection("Actividad");
             // Verificar si ya existe una actividad con el mismo id en el mismo evento
-            ActividadRef.whereEqualTo("IdEvento", IdEvento)
+            ActividadRef.whereEqualTo("idEvento", idEvento)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -102,9 +102,9 @@ public class Crear_Actividad extends AppCompatActivity {
                                 boolean numeroActExistente = false;
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    String IdActividadExist = document.getString("IdActividad");
-                                    String IdEventoExist = document.getString("IdEvento");
-                                    if (IdActividadExist.equals(NewidActividad)&&IdEventoExist.equals(IdEvento)) {
+                                    String IdActividadExist = document.getString("idActividad");
+                                    String IdEventoExist = document.getString("idEvento");
+                                    if (IdActividadExist.equals(NewidActividad)&&IdEventoExist.equals(idEvento)) {
                                         numeroActExistente = true;
                                         break;
                                     }
@@ -114,7 +114,8 @@ public class Crear_Actividad extends AppCompatActivity {
                                 if (numeroActExistente) {
                                     Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con este id en el evento", Toast.LENGTH_SHORT).show(); //si es evento1 act 1
                                 } else {
-                                    ActividadRef.whereEqualTo("IdActividad", NewidActividad)
+                                    ActividadRef.whereEqualTo("idActividad", NewidActividad)
+                                                .whereEqualTo("idEvento",idEvento)
                                             .get()
                                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -127,7 +128,7 @@ public class Crear_Actividad extends AppCompatActivity {
                                                         if (numeroActExistente) {
                                                             Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con este id en el evento", Toast.LENGTH_SHORT).show();
                                                         } else {
-                                                            agregarActividadFirestore(IdActividad, IdEvento, capacidad, descripcion, duracion, encargado, titulo);
+                                                            agregarActividadFirestore(idActividad, idEvento, capacidad, descripcion, duracion, encargado, titulo);
                                                         }
                                                     } else {
                                                         Toast.makeText(Crear_Actividad.this, "Error al verificar la existencia de la actividad", Toast.LENGTH_SHORT).show();
@@ -146,10 +147,10 @@ public class Crear_Actividad extends AppCompatActivity {
         }
 
     }
-    private void agregarActividadFirestore(String IdActividad, String IdEvento, String capacidad, String descripcion, String duracion, String encargado,  String titulo){
+    private void agregarActividadFirestore(String idActividad, String idEvento, String capacidad, String descripcion, String duracion, String encargado,  String titulo){
         CollectionReference ActividadCollection = mfirestore.collection("Actividad");
-        String idActividad= "Act"+IdActividad;
-        Actividad actividad = new Actividad( idActividad,  IdEvento,  capacidad,  descripcion,  duracion,  encargado, titulo);
+        String IdActividad= "Act"+idActividad;
+        Actividad actividad = new Actividad( IdActividad,  idEvento,  capacidad,  descripcion,  duracion,  encargado, titulo);
         ActividadCollection.add(actividad)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
