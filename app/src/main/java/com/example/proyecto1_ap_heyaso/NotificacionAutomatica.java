@@ -82,6 +82,7 @@ public class NotificacionAutomatica extends AsyncTask<Void, Void, Void>{
 
     @Override
     protected Void doInBackground(Void... voids) {
+        db = FirebaseFirestore.getInstance();
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.socketFactory.port", "465");
