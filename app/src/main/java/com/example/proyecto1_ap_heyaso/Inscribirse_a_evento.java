@@ -12,7 +12,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Inscribirse_a_evento extends AppCompatActivity {
 
-    private TextInputEditText  nombre;
+    private TextInputEditText  nombre, correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class Inscribirse_a_evento extends AppCompatActivity {
         });
 
         nombre = findViewById(R.id.nombre);
+        correo = findViewById(R.id.contacto);
     }
     public void reOpenMenuPrincipalEstudiante() {
         Intent intent = new Intent(this, menuPrincipalEstudiante.class);
@@ -43,6 +44,8 @@ public class Inscribirse_a_evento extends AppCompatActivity {
     public void OpenQR(){
         Intent intent = new Intent(this, Pantalla_QR.class);
         intent.putExtra("estudiante", nombre.getText().toString());
+        intent.putExtra("correo", correo.getText().toString());
+        //falta pasar datos
         startActivity(intent);
     }
 
