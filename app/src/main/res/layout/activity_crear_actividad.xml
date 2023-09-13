@@ -150,7 +150,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/identificador"
+        android:id="@+id/IdActividad"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
@@ -187,7 +187,7 @@
         android:layout_marginTop="412dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
-        android:hint="Capacidad"
+        android:hint="Capacidad(personas)"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -195,7 +195,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/duracion3"
+        android:id="@+id/duracion"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
