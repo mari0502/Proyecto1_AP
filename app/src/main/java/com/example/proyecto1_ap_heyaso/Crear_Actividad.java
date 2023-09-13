@@ -98,22 +98,20 @@ public class Crear_Actividad extends AppCompatActivity {
                         @Override
                         public void onComplete(Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                //boolean EventoActExistente = false;
+
                                 boolean numeroActExistente = false;
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     String IdActividadExist = document.getString("IdActividad");
                                     String IdEventoExist = document.getString("IdEvento");
-                                    if (IdActividadExist.equals(NewidActividad)&&IdEventoExist.equals((IdEvento))) {
+                                    if (IdActividadExist.equals(NewidActividad)&&IdEventoExist.equals(IdEvento)) {
                                         numeroActExistente = true;
                                         break;
                                     }
-                                    //EventoActExistente = true;
+
                                 }
 
-                                /*if (EventoActExistente) {
-                                    Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con este id en el evento", Toast.LENGTH_SHORT).show(); //si es evento 2 act 1
-                                }*/ if (numeroActExistente) {
+                                if (numeroActExistente) {
                                     Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con este id en el evento", Toast.LENGTH_SHORT).show(); //si es evento1 act 1
                                 } else {
                                     ActividadRef.whereEqualTo("IdActividad", NewidActividad)
@@ -124,24 +122,19 @@ public class Crear_Actividad extends AppCompatActivity {
                                                 public void onComplete(Task<QuerySnapshot> task) {
 
                                                     if (task.isSuccessful()) {
-                                                        //boolean IdActExistente = false;
-                                                        for (QueryDocumentSnapshot document : task.getResult()) {
-                                                            String IdActividadExist = document.getString("IdActividad");
-                                                            if (IdActividadExist.equals(NewidActividad)) {
-                                                                //IdActExistente = true;
-                                                                break;
-                                                            }
+                                                        boolean numeroActExistente = !task.getResult().isEmpty();
+
+                                                        if (numeroActExistente) {
+                                                            Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con este id en el evento", Toast.LENGTH_SHORT).show();
+                                                        } else {
+                                                            agregarActividadFirestore(IdActividad, IdEvento, capacidad, descripcion, duracion, encargado, titulo);
                                                         }
-
-                                                        /*if (IdActExistente) {
-                                                            Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con el mismo numero", Toast.LENGTH_SHORT).show();
-                                                        } else {*/
-                                                            agregarActividadFirestore( IdActividad,  IdEvento,  capacidad,  descripcion,  duracion,  encargado, titulo);
-                                                        //}
-
+                                                    } else {
+                                                        Toast.makeText(Crear_Actividad.this, "Error al verificar la existencia de la actividad", Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
                                             });
+
                                     // No existe una actividad con el mismo número, agregar a Firestore
 
                                 };
