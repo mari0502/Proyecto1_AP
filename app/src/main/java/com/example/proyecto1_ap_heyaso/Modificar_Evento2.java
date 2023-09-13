@@ -18,16 +18,6 @@ public class Modificar_Evento2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_evento2);
 
-        Button btnModificar = (Button) findViewById(R.id.btn_modificar);
-        btnModificar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                OpenQR();
-            }
-        });
     }
 
-    private void OpenQR(){
-        Intent intent = new Intent(this, Pantalla_Modificacion_QR.class);
-        startActivity(intent);
-    }
 }
