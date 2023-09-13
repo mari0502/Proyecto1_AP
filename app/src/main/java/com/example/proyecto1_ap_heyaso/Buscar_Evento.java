@@ -11,11 +11,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firestore.v1.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +28,6 @@ import java.util.List;
 public class Buscar_Evento extends AppCompatActivity{
     private FirebaseFirestore db;
     private TextView viewInfoEvento;
-    private List<String> eventoInfo;
     private List<String> eventos;
     private Spinner spinner;
     private Button btnVolver;
@@ -37,7 +41,6 @@ public class Buscar_Evento extends AppCompatActivity{
 
         db = FirebaseFirestore.getInstance();
         viewInfoEvento = findViewById(R.id.viewInfoEvento);
-        eventoInfo = new ArrayList<>();
         eventos = new ArrayList<>();
         spinner = findViewById(R.id.spinner2);
         btnVolver = findViewById(R.id.btn_volver3);
@@ -56,43 +59,50 @@ public class Buscar_Evento extends AppCompatActivity{
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(spinner.getSelectedItem().toString());
                 getInfoEvento(spinner.getSelectedItem().toString());
             }
         });
     }
 
     private void getEventos(){
-        eventos.add("Seleccione una opción");
-        db.collection("Evento").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        eventos.add("Seleccione un evento");
+        db.collection("Evento").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for(QueryDocumentSnapshot documento : queryDocumentSnapshots){
-                    eventos.add(documento.getString("idEvento"));
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot documento : task.getResult()){
+                        eventos.add(documento.getString("idEvento"));
+                    }
+                    spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
                 }
-                spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
+                else {
+                    Toast.makeText(Buscar_Evento.this, "Error al cargar pagina", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void getInfoEvento(String id){
-        if(id != "Seleccione una opción"){
-            Query query = db.collection("Evento");
-            query = query.whereEqualTo("idEvento", "id");
-            query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        if(id != "Seleccione un evento"){
+            db.collection("Evento").whereEqualTo("idEvento", id).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    for (QueryDocumentSnapshot documento : queryDocumentSnapshots) {
-                        /*String info = "Id: " + id + "Título: " + documentSnapshot.getString("titulo") + "Categoría: " + documentSnapshot.getString("categoria") +
-                                "Descripción: " + documentSnapshot.getString("descripcion") + "Fecha: " + documentSnapshot.getString("fecha") + "Duración: " +
-                                documentSnapshot.getString("duracion") +  "Lugar: " + documentSnapshot.getString("lugar") + "Requisitos: "  + documentSnapshot.getString("requisitos");*/
-                        System.out.print(documento.getString("idEvento"));
-                        //viewInfoEvento.setText(info);
+                public void onComplete(Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for(QueryDocumentSnapshot documento : task.getResult()) {
+                            String info = "Id: " + id + "\nTítulo: " + documento.getString("titulo") + "\nCategoría: " + documento.getString("categoria") +
+                                    "\nDescripción: " + documento.getString("descripcion") + "\nFecha: " + documento.getString("fecha") + "\nDuración: " +
+                                    documento.getString("duracion") + "\nLugar: " + documento.getString("lugar") + "\nRequisitos: " + documento.getString("requisitos");
+                            //falta imprimir a que asociacion pertenece y habilitacion de encuesta
+                            viewInfoEvento.setTextAlignment(viewInfoEvento.TEXT_ALIGNMENT_TEXT_START);
+                            viewInfoEvento.setText(info);
+                        }
                     }
                 }
             });
         }
         else{
+            viewInfoEvento.setTextAlignment(viewInfoEvento.TEXT_ALIGNMENT_CENTER);
+            viewInfoEvento.setText("*Acá se muestra la información del evento buscado*");
             Toast.makeText(Buscar_Evento.this, "No se encontró ningún evento para buscar", Toast.LENGTH_SHORT).show();
         }
     }
