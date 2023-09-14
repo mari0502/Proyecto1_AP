@@ -45,7 +45,7 @@
         android:layout_width="331dp"
         android:layout_height="308dp"
         android:fontFamily="sans-serif"
-        android:text="*Acá se muestra la información del evento buscado*"
+        android:text="*Acá se muestra la información del colaborador buscado*"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
