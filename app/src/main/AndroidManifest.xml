@@ -17,6 +17,15 @@
         android:theme="@style/Theme.Proyecto1_AP_HeyAso"
         tools:targetApi="31">
         <activity
+            android:name=".Eliminar_Colaborador"
+            android:exported="false" />
+        <activity
+            android:name=".Modificar_Colaborador"
+            android:exported="false" />
+        <activity
+            android:name=".Buscar_Colaborador"
+            android:exported="false" />
+        <activity
             android:name=".Eliminar_Evento"
             android:exported="false" />
         <activity
