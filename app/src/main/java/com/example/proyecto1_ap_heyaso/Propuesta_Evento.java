@@ -105,7 +105,7 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
     }
 
     private void enviarPropuestaFirestore(){
-        Propuesta data = new Propuesta(titulo, descripcion, objetivos, categoria, actividades);
+        Propuesta data = new Propuesta(titulo, descripcion, objetivos, categoria, actividades, "SC");
 
         base.collection("Propuestas")
                 .add(data)
