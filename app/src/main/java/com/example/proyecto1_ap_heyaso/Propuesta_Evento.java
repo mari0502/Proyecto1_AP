@@ -13,18 +13,26 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class Propuesta_Evento extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private String titulo, descripcion, categoria,objetivos, actividades;
+    private  TextInputEditText InputTitulo,InputDescripcion, InputObjetivos, InputActividades;
     private Spinner spinnerCategoria;
     private FirebaseFirestore base;
+    public Usuario_Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,22 +73,28 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
     }
 
     public void reOpenForo() {
-        Intent intent = new Intent(this, Pantalla_Foro.class);
-        startActivity(intent);
+        if(global.getIdTipo() == "Estudiante"){
+            Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, Pantalla_Foro.class);
+            startActivity(intent);
+        }
     }
 
-    private void  limpiarCampos(TextInputEditText InputTitulo,TextInputEditText InputDescripcion,
-                                TextInputEditText InputObjetivos, TextInputEditText InputActividades){
+
+
+    private void  limpiarCampos(){
         InputTitulo.setText("");
         InputActividades.setText("");
         InputObjetivos.setText("");
         InputDescripcion.setText("");
     }
     private void enviarPropuesta(){
-        TextInputEditText InputTitulo = findViewById(R.id.tituloPropuesta);
-        TextInputEditText InputDescripcion = findViewById(R.id.descripcionPropuesta);
-        TextInputEditText InputObjetivos = findViewById(R.id.objetivosPropuesta);
-        TextInputEditText InputActividades = findViewById(R.id.actividadesPropuesta);
+        InputTitulo = findViewById(R.id.tituloPropuesta);
+        InputDescripcion = findViewById(R.id.descripcionPropuesta);
+        InputObjetivos = findViewById(R.id.objetivosPropuesta);
+        InputActividades = findViewById(R.id.actividadesPropuesta);
 
         titulo = InputTitulo.getText().toString();
         descripcion = InputDescripcion.getText().toString();
@@ -89,14 +103,14 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
 
         if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(objetivos) || TextUtils.isEmpty(actividades)) {
             Toast.makeText(this, "Debe completar todos los campos", Toast.LENGTH_SHORT).show();
-            limpiarCampos(InputTitulo, InputDescripcion, InputObjetivos, InputActividades);
+            limpiarCampos();
         }else{
             if(titulo.length() < 4 || actividades.length() < 4 || descripcion.length() < 4 || objetivos.length() < 4) {
                 Toast.makeText(this, "Los textos deben ser mayores a 4 caracteres.", Toast.LENGTH_SHORT).show();
-                limpiarCampos(InputTitulo, InputDescripcion, InputObjetivos, InputActividades);
+                limpiarCampos();
             } else if (titulo.length() > 400 || actividades.length() > 400 || descripcion.length() > 400 || objetivos.length() > 400) {
                 Toast.makeText(this, "Ha superado el máximo de caracteres.", Toast.LENGTH_SHORT).show();
-                limpiarCampos(InputTitulo, InputDescripcion, InputObjetivos, InputActividades);
+                limpiarCampos();
             }else{
                 base = FirebaseFirestore.getInstance();
                 enviarPropuestaFirestore();

@@ -189,7 +189,6 @@ public class Crear_Evento extends AppCompatActivity {
 
     private void crearEvento(String idEvento, String titulo, String descripcion, String categoria, String asociacion, String lugar, String duracion, String fecha, String requisitos, Boolean encuesta){
         CollectionReference eventosCollection = db.collection("Evento");
-        String IdEvento = "Evento" + idEvento;
         Evento evento = new Evento(idEvento, titulo, descripcion, categoria, asociacion, lugar, duracion, fecha, requisitos, encuesta);
         eventosCollection.add(evento)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {

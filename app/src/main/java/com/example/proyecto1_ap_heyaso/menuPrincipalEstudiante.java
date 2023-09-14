@@ -14,6 +14,7 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal_estudiante);
 
+
         Button button = (Button) findViewById(R.id.btn_salir);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -63,7 +64,7 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
     }
 
     public void OpenForo() {
-        Intent intent = new Intent(this, Pantalla_Foro.class);
+        Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
         startActivity(intent);
     }
 
