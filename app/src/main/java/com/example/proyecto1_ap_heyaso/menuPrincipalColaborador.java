@@ -33,6 +33,13 @@ public class menuPrincipalColaborador extends AppCompatActivity {
                 openCuentaEst();
             }
         });
+
+        Button btn_gestionCuentaAso = (Button) findViewById(R.id.btn_adminAso);
+        btn_gestionCuentaAso.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openCuentaAso();
+            }
+        });
     }
 
     public void rePantallaInicio() {
@@ -48,6 +55,11 @@ public class menuPrincipalColaborador extends AppCompatActivity {
 
     public void openCuentaEst() {
         Intent intent = new Intent(this, Gestion_CuentaEstudiante.class);
+        startActivity(intent);
+    }
+
+    public void openCuentaAso() {
+        Intent intent = new Intent(this, Gestion_CuentaAsociacion.class);
         startActivity(intent);
     }
 
