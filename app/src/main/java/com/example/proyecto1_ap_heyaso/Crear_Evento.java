@@ -41,8 +41,8 @@ public class Crear_Evento extends AppCompatActivity {
     private TextInputEditText inputFecha;
     private TextInputEditText inputRequisitos;
     private CheckBox inputEncuesta;
-    private Button btn_crear;
-    private Button btn_volver;
+    private Button btnCrear;
+    private Button btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +61,19 @@ public class Crear_Evento extends AppCompatActivity {
         inputFecha = findViewById(R.id.fecha);
         inputRequisitos = findViewById(R.id.requisitos);
         inputEncuesta = findViewById(R.id.encuesta);
-        btn_volver = findViewById(R.id.btn_volver);
-        btn_crear = findViewById(R.id.btn_crear);
+        btnVolver = findViewById(R.id.btn_volver);
+        btnCrear = findViewById(R.id.btn_crear);
 
         getAsociaciones();
 
-        btn_volver.setOnClickListener(new View.OnClickListener() {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Administrar_Evento.class);
                 startActivity(intent);
             }
         });
 
-        btn_crear.setOnClickListener(new View.OnClickListener() {
+        btnCrear.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 validarEvento();
             }

@@ -27,8 +27,8 @@ import java.util.List;
 
 public class Modificar_Evento2 extends AppCompatActivity {
     private FirebaseFirestore db;
-    private Button btn_modificar;
-    private Button btn_volver;
+    private Button btnModificar;
+    private Button btnVolver;
     private List<String> asociaciones;
     private List<String> infoEvento;
     private Spinner inputCategoria;
@@ -58,8 +58,8 @@ public class Modificar_Evento2 extends AppCompatActivity {
         inputFecha = findViewById(R.id.fecha2);
         inputRequisitos = findViewById(R.id.requisitos2);
         inputEncuesta = findViewById(R.id.encuesta2);
-        btn_volver = findViewById(R.id.btn_volver4);
-        btn_modificar = findViewById(R.id.btn_modificar);
+        btnVolver = findViewById(R.id.btn_volver4);
+        btnModificar = findViewById(R.id.btn_modificar);
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
@@ -68,14 +68,14 @@ public class Modificar_Evento2 extends AppCompatActivity {
         getAsociaciones();
         getInfoEvento(id);
 
-        btn_volver.setOnClickListener(new View.OnClickListener() {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Administrar_Evento.class);
                 startActivity(intent);
             }
         });
 
-        btn_modificar.setOnClickListener(new View.OnClickListener() {
+        btnModificar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 modificarEvento(id);
                 Intent intent = new Intent(getApplicationContext(), Modificar_Evento.class);

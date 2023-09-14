@@ -22,8 +22,8 @@ import java.util.List;
 public class Modificar_Evento extends AppCompatActivity {
     private FirebaseFirestore db;
     private List<String> eventos;
-    private Button btn_buscar;
-    private Button btn_volver;
+    private Button btnBuscar;
+    private Button btnVolver;
     private Spinner inputId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +33,12 @@ public class Modificar_Evento extends AppCompatActivity {
 
         eventos = new ArrayList<>();
         inputId = findViewById(R.id.evento3);
-        btn_buscar = findViewById(R.id.btn_buscar);
-        btn_volver = findViewById(R.id.btn_volver6);
+        btnBuscar = findViewById(R.id.btn_buscar);
+        btnVolver = findViewById(R.id.btn_volver6);
 
         getEventos();
 
-        btn_buscar.setOnClickListener(new View.OnClickListener() {
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //que pase a modificar 2 y lleve el id del evento
@@ -48,7 +48,7 @@ public class Modificar_Evento extends AppCompatActivity {
             }
         });
 
-        btn_volver.setOnClickListener(new View.OnClickListener() {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Administrar_Evento.class);

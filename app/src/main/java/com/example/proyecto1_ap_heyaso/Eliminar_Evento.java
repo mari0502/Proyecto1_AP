@@ -21,9 +21,9 @@ import java.util.List;
 
 public class Eliminar_Evento extends AppCompatActivity {
     private FirebaseFirestore db;
-    private Button btn_eliminar;
-    private Button btn_volver;
-    private Spinner spinner_eventos;
+    private Button btnEliminar;
+    private Button btnVolver;
+    private Spinner spinnerEventos;
     private List<String> eventos;
 
     @Override
@@ -32,21 +32,21 @@ public class Eliminar_Evento extends AppCompatActivity {
         setContentView(R.layout.activity_eliminar_evento);
 
         db = FirebaseFirestore.getInstance();
-        btn_eliminar = findViewById(R.id.btn_eliminar2);
-        btn_volver = findViewById(R.id.btn_volver12);
-        spinner_eventos = findViewById(R.id.evento10);
+        btnEliminar = findViewById(R.id.btn_eliminar2);
+        btnVolver = findViewById(R.id.btn_volver12);
+        spinnerEventos = findViewById(R.id.evento10);
         eventos = new ArrayList<String>();
 
         getEventos();
 
-        btn_eliminar.setOnClickListener(new View.OnClickListener() {
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 eliminarEvento();
             }
         });
 
-        btn_volver.setOnClickListener(new View.OnClickListener() {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Administrar_Evento.class);
@@ -64,7 +64,7 @@ public class Eliminar_Evento extends AppCompatActivity {
                     for(QueryDocumentSnapshot documento : task.getResult()){
                         eventos.add(documento.getString("idEvento"));
                     }
-                    spinner_eventos.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
+                    spinnerEventos.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
                 }
                 else {
                     Toast.makeText(Eliminar_Evento.this, "Error al cargar pagina", Toast.LENGTH_SHORT).show();
