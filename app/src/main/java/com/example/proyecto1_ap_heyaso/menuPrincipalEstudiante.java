@@ -41,6 +41,13 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
                 OpenCalendario();
             }
         });
+
+        Button btn_gestionEstudiante = (Button) findViewById(R.id.btn_adminCuenta);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openGestionEstudiante();
+            }
+        });
     }
 
 
@@ -62,6 +69,11 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
 
     public void OpenCalendario() {
         Intent intent = new Intent(this, Calendario.class);
+        startActivity(intent);
+    }
+
+    public void openGestionEstudiante() {
+        Intent intent = new Intent(this, Gestion_CuentaEstudiante.class);
         startActivity(intent);
     }
 

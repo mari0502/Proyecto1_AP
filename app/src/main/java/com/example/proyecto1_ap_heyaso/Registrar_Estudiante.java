@@ -89,47 +89,53 @@ public class Registrar_Estudiante extends AppCompatActivity {
             Toast.makeText(Registrar_Estudiante.this, "Complete los datos solicitados para el registro.", Toast.LENGTH_SHORT).show();
             return;
         } else {
-            System.out.println("Seleccionar collection");
-            CollectionReference usuarioRef = db.collection("usuario");
+            //Verificar si es correo institucional
+            if(correoEst.contains("@estudiantec.cr")){
+                System.out.println("Seleccionar collection");
+                CollectionReference usuarioRef = db.collection("usuario");
 
-            //Verificar si existe un usuario con mismo correo o carnet
-            Query query = usuarioRef.whereEqualTo("carnet", carnetEst);
-            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if(task.isSuccessful()){
-                        System.out.println("Entry task is successfull");
-                        boolean carnetExiste = false;
-                        boolean correoExiste = false;
+                //Verificar si existe un usuario con mismo correo o carnet
+                Query query = usuarioRef.whereEqualTo("carnet", carnetEst);
+                query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            System.out.println("Entry task is successfull");
+                            boolean carnetExiste = false;
+                            boolean correoExiste = false;
 
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            System.out.println("Entre a document query");
-                            String carnetUsuario = document.getString("carnet");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                System.out.println("Entre a document query");
+                                String carnetUsuario = document.getString("carnet");
 
-                            if (carnetUsuario.equals(carnetEst)) {
-                                carnetExiste = true;
-                                break;
+                                if (carnetUsuario.equals(carnetEst)) {
+                                    carnetExiste = true;
+                                    break;
+                                }
+                                String correoDB = document.getString("correo");
+                                if (correoDB.equals(correoEst)) {
+                                    correoExiste = true;
+                                    break;
+                                }
                             }
-                            String correoDB = document.getString("correo");
-                            if (correoDB.equals(correoEst)) {
-                                correoExiste = true;
-                                break;
+                            if (carnetExiste || correoExiste) {
+                                Toast.makeText(Registrar_Estudiante.this, "Ya existe un usuario con ese correo o carnet.", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Registrar_Estudiante.this, Registrar_Estudiante.class));
                             }
-                        }
-                        if (carnetExiste || correoExiste) {
-                            Toast.makeText(Registrar_Estudiante.this, "Ya existe un usuario con ese correo o carnet.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Registrar_Estudiante.this, Registrar_Estudiante.class));
+                            else {
+                                //No existe un usuario agregado con ese correo o carnet
+                                registrarEstudiante(nombreEst, carreraEst, carnetEst, correoEst, claveEst, contactoEst, descripcionEst);
+                            }
                         }
                         else {
-                            //No existe un usuario agregado con ese correo o carnet
-                            registrarEstudiante(nombreEst, carreraEst, carnetEst, correoEst, claveEst, contactoEst, descripcionEst);
+                            Toast.makeText(Registrar_Estudiante.this, "Error al verificar la existencia del usuario", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    else {
-                        Toast.makeText(Registrar_Estudiante.this, "Error al verificar la existencia del usuario", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                });
+            } else {
+                Toast.makeText(Registrar_Estudiante.this, "Correo debe ser institucional", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

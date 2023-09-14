@@ -94,6 +94,8 @@ public class Iniciar_Sesion extends AppCompatActivity {
                         }
                         if (correoExiste && claveExiste) {
                             //hacer login
+
+                            //Validar que sea estudiante o colaborador
                             Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalEstudiante.class);
                             startActivity(intent);
                             Toast.makeText(Iniciar_Sesion.this, "Bienvenido.", Toast.LENGTH_SHORT).show();
