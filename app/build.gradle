@@ -51,6 +51,7 @@ dependencies {
     implementation files('lib/activation.jar')
     implementation files('lib/additionnal.jar')
     implementation files('lib/mail.jar')
+    implementation 'com.google.firebase:firebase-auth:22.1.1'
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
