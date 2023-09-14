@@ -26,6 +26,13 @@ public class menuPrincipalColaborador extends AppCompatActivity {
                 OpenForo();
             }
         });
+
+        Button btn_gestionCuentaEst = (Button) findViewById(R.id.btn_adminCuenta);
+        btn_gestionCuentaEst.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openCuentaEst();
+            }
+        });
     }
 
     public void rePantallaInicio() {
@@ -36,6 +43,11 @@ public class menuPrincipalColaborador extends AppCompatActivity {
 
     public void OpenForo() {
         Intent intent = new Intent(this, Pantalla_Foro.class);
+        startActivity(intent);
+    }
+
+    public void openCuentaEst() {
+        Intent intent = new Intent(this, Gestion_CuentaEstudiante.class);
         startActivity(intent);
     }
 

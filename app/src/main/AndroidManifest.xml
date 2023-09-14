@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,7 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto1_AP_HeyAso"
         tools:targetApi="31">
+        <activity
+            android:name=".Modificar_CuentaEstudiante"
+            android:exported="false" />
+        <activity
+            android:name=".Gestion_CuentaAsociacion"
+            android:exported="false" />
+        <activity
+            android:name=".Gestion_CuentaEstudiante"
+            android:exported="false" />
+
         <receiver android:name=".recordatorioEvento" />
+
         <activity
             android:name=".Eliminar_Colaborador"
             android:exported="false" />

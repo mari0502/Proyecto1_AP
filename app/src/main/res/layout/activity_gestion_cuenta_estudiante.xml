@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Gestion_CuentaEstudiante"
+    tools:layout_editor_absoluteX="-8dp"
+    tools:layout_editor_absoluteY="-10dp">
+
+    <TextView
+        android:id="@+id/textoadminevento4"
+        android:layout_width="339dp"
+        android:layout_height="61dp"
+        android:fontFamily="serif"
+        android:text="Favor ingrese la siguiente información para válidar la gestión de su cuenta:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_editarCuenta"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Modificar cuenta"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_volver15"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="volver"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_eliminarUsuario"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Eliminar Cuenta"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.744" />
+
+    <ImageView
+        android:id="@+id/imagen16"
+        android:layout_width="417dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#DBF1FB"
+        android:backgroundTint="#D9F0FA"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descripcionPagina15"
+        android:layout_width="336dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="37dp"
+        android:text="Gestion Estudiante"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/carnet3"
+        android:layout_width="334dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#2FBCF8"
+        android:hint="Carnet"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/contrasenna4"
+        android:layout_width="334dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#2FBCF8"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private TextInputEditText asociacion, carnet, correo, nombre, puesto;
+    private TextInputEditText asociacion, carnet, correo, puesto;
     private Button btn_back, btn_agregarColab;
 
     @Override
@@ -45,7 +45,6 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         asociacion = findViewById(R.id.asoPertenece);
         carnet = findViewById(R.id.carnet2);
         correo = findViewById(R.id.correo2);
-        nombre = findViewById(R.id.nombre4);
         puesto = findViewById(R.id.puesto);
 
         btn_agregarColab = (Button) findViewById(R.id.btn_annadirColab);
@@ -64,13 +63,12 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
     }
 
     private void validarColaborador(){
-        String nombreEst = nombre.getText().toString().trim();
         String carnetEst = carnet.getText().toString().trim();
         String correoEst = correo.getText().toString().trim();
         String aso = asociacion.getText().toString().trim();
         String posicion = puesto.getText().toString().trim();
 
-        if(nombreEst.isEmpty() && carnetEst.isEmpty() && correoEst.isEmpty() && aso.isEmpty() && posicion.isEmpty()){
+        if(carnetEst.isEmpty() && correoEst.isEmpty() && aso.isEmpty() && posicion.isEmpty()){
             Toast.makeText(Colaboradores_Asociacion.this, "Complete los datos solicitados para el añadir el colaborador.", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -121,7 +119,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
                                         }
                                         if (asoExiste) {
                                             //Existe  aso y usuario insertar colab
-                                            agregarColaborador(nombreEst, carnetEst, correoEst, posicion, aso);
+                                            agregarColaborador(carnetEst, correoEst, posicion, aso);
                                         }
                                         else {
                                             Toast.makeText(Colaboradores_Asociacion.this, "La asociación no esta registrada.", Toast.LENGTH_SHORT).show();
@@ -147,40 +145,19 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         }
     }
 
-    private void agregarColaborador(String nombre, String carnet, String correo, String puesto, String asociacion){
+    private void agregarColaborador(String carnet, String correo, String puesto, String asociacion){
 
         Map<String, Object> datos = new HashMap<>();
-        datos.put("nombre", nombre);
-        datos.put("carnet", carnet);
-        datos.put("correo", correo);
-        datos.put("puesto", puesto);
-        datos.put("asociacion", asociacion);
-
-        db.collection("Colaboradores")
-                .add(datos)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(Colaboradores_Asociacion.this, "Colaborador agregado con éxito", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Colaboradores_Asociacion.this, "Error al agregar colaborador.", Toast.LENGTH_SHORT).show();
-                    }
-                });
 
         DocumentReference updateUsuario = db.collection("usuario").document(carnet);
-        updateUsuario
-                .update("idTipo", "Admin")
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+        updateUsuario.update("idTipo", "Admin");
+        updateUsuario.update("puesto", puesto);
+        updateUsuario.update("Asociacion", asociacion).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(Colaboradores_Asociacion.this, "Tipo usuario actualizado con éxito", Toast.LENGTH_SHORT).show();
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(Colaboradores_Asociacion.this, "Fallo actualizar tipo usuario", Toast.LENGTH_SHORT).show();
