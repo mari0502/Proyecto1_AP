@@ -87,7 +87,7 @@ public class Buscar_Evento extends AppCompatActivity{
                             String resultado = "";
                             if(Boolean.TRUE.equals(documento.getBoolean("encuesta"))){ resultado = "habilitada"; } else {resultado = "deshabilitada";};
                             String info = "Id: " + id + "\nTítulo: " + documento.getString("titulo") + "\nCategoría: " + documento.getString("categoria") +
-                                    "\nAsociacion: " + documento.getString("asociacion")/*.substring(10)*/ +
+                                    "\nAsociacion: " + documento.getString("asociacion")/*.substring(10)*/ + "\nCapacidad: " + documento.getString("capacidad") +
                                     "\nDescripción: " + documento.getString("descripcion") + "\nFecha: " + documento.getString("fecha") + "\nDuración: " +
                                     documento.getString("duracion") + "\nLugar: " + documento.getString("lugar") + "\nRequisitos: " + documento.getString("requisitos") +
                                     "\nEncuesta: " + resultado;
