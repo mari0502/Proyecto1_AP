@@ -183,7 +183,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
                         docRef.update("lugar", inputLugar.getText().toString());
                         docRef.update("requisitos", inputRequisitos.getText().toString());
                         docRef.update("fecha", inputFecha.getText().toString());
-                        docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString().substring(0, 12));
+                        docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString().substring(0, 5));
                         docRef.update("categoria", inputCategoria.getSelectedItem().toString());
                         docRef.update("encuesta", (inputEncuesta.isChecked()) ? true : false);
                     }

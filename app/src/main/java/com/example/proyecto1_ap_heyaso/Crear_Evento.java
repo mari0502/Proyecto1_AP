@@ -61,7 +61,7 @@ public class Crear_Evento extends AppCompatActivity {
         inputFecha = findViewById(R.id.fecha);
         inputRequisitos = findViewById(R.id.requisitos);
         inputEncuesta = findViewById(R.id.encuesta);
-        btnVolver = findViewById(R.id.btn_volver);
+        btnVolver = findViewById(R.id.btn_volver20);
         btnCrear = findViewById(R.id.btn_crear);
 
         getAsociaciones();
@@ -171,7 +171,7 @@ public class Crear_Evento extends AppCompatActivity {
                                             Boolean encuesta = false;
                                             if (inputEncuesta.isChecked()) { encuesta = true; }
 
-                                            crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion.substring(0, 12), lugar, duracion, fecha, requisitos, encuesta);
+                                            crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion.substring(0, 5), lugar, duracion, fecha, requisitos, encuesta);
                                         }
                                     }
                                 }
