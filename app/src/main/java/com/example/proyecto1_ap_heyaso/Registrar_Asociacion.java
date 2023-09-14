@@ -63,11 +63,6 @@ public class Registrar_Asociacion extends AppCompatActivity {
 
     //Funciones ir pantallas
     private void validarAso(){
-        idAsocia = findViewById(R.id.idAso);
-        nombreAsocia = findViewById(R.id.nombre3);
-        codCarrera = findViewById(R.id.codigoCarrera);
-        contacto = findViewById(R.id.contacto3);
-        descripcion = findViewById(R.id.descripcion4);
 
         String idAsociacion = idAsocia.getText().toString().trim();
         String nombreAso = nombreAsocia.getText().toString().trim();
