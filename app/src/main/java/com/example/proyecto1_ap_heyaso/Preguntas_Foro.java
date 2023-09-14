@@ -32,6 +32,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.Timestamp;
 import com.google.firebase.database.annotations.Nullable;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -59,6 +60,7 @@ public class Preguntas_Foro extends AppCompatActivity {
     private LinearLayout primerContenedor;
     private LinearLayout comentarioLayout;
     private String usuario, formattedDate, msg, nombreUsuario;
+    public Usuario_Global global;
 
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault());
 
@@ -83,6 +85,7 @@ public class Preguntas_Foro extends AppCompatActivity {
         btnEnviar =  findViewById(R.id.btnEnviarComentario);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                buscarUsuario();
                 agregarComentario();
             }
         });
@@ -90,8 +93,13 @@ public class Preguntas_Foro extends AppCompatActivity {
     }
 
     public void reOpenForo() {
-        Intent intent = new Intent(this, Pantalla_Foro.class);
-        startActivity(intent);
+        if(global.getIdTipo() == "Estudiante"){
+            Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, Pantalla_Foro.class);
+            startActivity(intent);
+        }
     }
 
 
@@ -165,6 +173,22 @@ public class Preguntas_Foro extends AppCompatActivity {
                 });
     }
 
+
+    private void buscarUsuario(){
+        CollectionReference collectionRef = db.collection("usuario");
+        DocumentReference docRef = collectionRef.document(global.getIdUsuario());
+
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    usuario = documentSnapshot.getString("nombre");
+                } else {
+                    // El documento no existe
+                }
+            }
+        });
+    }
     private void agregarComentario(){
         if(!comentario.getText().toString().isEmpty()){
             //Crea el objeto a agregar

@@ -8,10 +8,15 @@ import android.widget.Button;
 
 public class menuPrincipalColaborador extends AppCompatActivity {
 
+    private String idUsuarioActual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal_colaborador);
+
+
+        Bundle extras = getIntent().getExtras();
+        idUsuarioActual = extras.getString("idUsuario");
 
         Button button = (Button) findViewById(R.id.btn_salir);
         button.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +55,7 @@ public class menuPrincipalColaborador extends AppCompatActivity {
 
     public void OpenForo() {
         Intent intent = new Intent(this, Pantalla_Foro.class);
+        intent.putExtra("idUsuario", idUsuarioActual);
         startActivity(intent);
     }
 
