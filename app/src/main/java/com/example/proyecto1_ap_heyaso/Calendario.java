@@ -75,9 +75,21 @@ public class Calendario extends AppCompatActivity{
             }
         });
 
+        Button btnVolver = (Button) findViewById(R.id.btnVolverMenuEstCalendario);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                reOpenMenuEstudiante();
+            }
+        });
+
+
         recuperarEventos();
     }
 
+    private void reOpenMenuEstudiante(){
+        Intent intent = new Intent(this, menuPrincipalEstudiante.class);
+        startActivity(intent);
+    }
     private void crearCanalNotificaciones(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "canalEventos";
