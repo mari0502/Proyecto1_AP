@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class Evaluar_Evento extends AppCompatActivity {
     private Button btnVolver;
     private Button btnEnviar;
     private List<String> eventosPasados;
+    private Spinner spinner;
     private TextView titulo;
     private TextInputEditText comentario;
     private TextInputEditText calificacion;
@@ -56,15 +58,15 @@ public class Evaluar_Evento extends AppCompatActivity {
     }
 
     private void getEventos(){
-        eventos.add("Seleccione un evento");
+        eventosPasados.add("Seleccione un evento");
         db.collection("Evento").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot documento : task.getResult()){
-                        eventos.add(documento.getString("idEvento"));
+                        eventosPasados.add(documento.getString("idEvento"));
                     }
-                    spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
+                    spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventosPasados));
                 }
                 else {
                     Toast.makeText(Evaluar_Evento.this, "Error al cargar pagina", Toast.LENGTH_SHORT).show();
