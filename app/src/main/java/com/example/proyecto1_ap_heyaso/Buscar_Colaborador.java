@@ -9,8 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +41,8 @@ public class Buscar_Colaborador extends AppCompatActivity {
         btnVolver = findViewById(R.id.btn_volver13);
         btnBuscar = findViewById(R.id.btn_buscar4);
 
+        getColaboradores();
+
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,10 +60,46 @@ public class Buscar_Colaborador extends AppCompatActivity {
     }
 
     private void getColaboradores(){
-
+        colaboradores.add("Seleccione un evento");
+        db.collection("usuario").whereEqualTo("idTipo", "Admin").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot documento : task.getResult()){
+                        colaboradores.add(documento.getString("nombre"));
+                    }
+                    spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, colaboradores));
+                }
+                else {
+                    Toast.makeText(Buscar_Colaborador.this, "Error al cargar pagina", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
-    private void getInfoColaborador(String id){
-
+    private void getInfoColaborador(String nombre){
+        if(nombre != "Seleccione un colaborador"){
+            db.collection("Colaborador").whereEqualTo("nombre", nombre).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for(QueryDocumentSnapshot documento : task.getResult()) {
+                            String resultado = "";
+                            if(Boolean.TRUE.equals(documento.getBoolean("encuesta"))){ resultado = "habilitada"; } else {resultado = "deshabilitada";};
+                            String info = "Nombre: " + nombre + "\nPuesto: " + documento.getString("puesto") + "\nDescripción: " + documento.getString("descripcion") +
+                                    "\nCorreo: " + documento.getString("correo")/*.substring(10)*/ + "\nContacto: " + documento.getString("contacto") + "\nCarrera: " +
+                                    documento.getString("carrera") + "\nCarnet: " + documento.getString("duracion") + "\nAsociación: " + documento.getString("asociacion");
+                            viewInfoColaborador.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+                            viewInfoColaborador.setText(info);
+                        }
+                    }
+                }
+            });
+        }
+        else{
+            viewInfoColaborador.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            viewInfoColaborador.setText("*Acá se muestra la información del colaborador buscado*");
+            Toast.makeText(Buscar_Colaborador.this, "No se encontró ningún colaborador para buscar", Toast.LENGTH_SHORT).show();
+        }
     }
 }
