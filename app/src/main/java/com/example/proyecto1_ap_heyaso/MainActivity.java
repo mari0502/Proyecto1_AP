@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(this, Calendario.class); //Si quieren probar una pantalla cambian el nombre aqui
+        Intent intent = new Intent(this, Pagina_Principal.class); //Si quieren probar una pantalla cambian el nombre aqui
         startActivity(intent);
         finish();
     }
