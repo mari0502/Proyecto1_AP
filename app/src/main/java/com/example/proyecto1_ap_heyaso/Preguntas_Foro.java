@@ -2,11 +2,13 @@ package com.example.proyecto1_ap_heyaso;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -30,6 +32,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.Timestamp;
 import com.google.firebase.database.annotations.Nullable;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -51,15 +54,14 @@ import java.util.Map;
 public class Preguntas_Foro extends AppCompatActivity {
 
     private FirebaseFirestore db;
-    private ImageButton btnEnviar;
+    private Button btnEnviar;
     private TextInputEditText comentario;
     private TextView mostrarUsuario, mostrarTexto, mostrarFecha;
     private LinearLayout primerContenedor;
     private LinearLayout comentarioLayout;
+    private String usuario, formattedDate, msg, nombreUsuario;
+    public Usuario_Global global;
 
-    private String usuario = "patitas", formattedDate, msg, nombreUsuario;
-    private LocalDateTime now;
-    private DateTimeFormatter formato;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault());
 
     @Override
@@ -83,6 +85,7 @@ public class Preguntas_Foro extends AppCompatActivity {
         btnEnviar =  findViewById(R.id.btnEnviarComentario);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                buscarUsuario();
                 agregarComentario();
             }
         });
@@ -90,8 +93,13 @@ public class Preguntas_Foro extends AppCompatActivity {
     }
 
     public void reOpenForo() {
-        Intent intent = new Intent(this, Pantalla_Foro.class);
-        startActivity(intent);
+        if(global.getIdTipo() == "Estudiante"){
+            Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, Pantalla_Foro.class);
+            startActivity(intent);
+        }
     }
 
 
@@ -99,6 +107,7 @@ public class Preguntas_Foro extends AppCompatActivity {
         db.collection("Comentarios")
                 .orderBy("timestamp", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onEvent(@Nullable QuerySnapshot snapshots,
                                         @Nullable FirebaseFirestoreException e) {
@@ -113,8 +122,18 @@ public class Preguntas_Foro extends AppCompatActivity {
                                 Map<String, Object> datos = dc.getDocument().getData();
                                 //Fecha y hora
                                 Timestamp timestamp = (Timestamp) datos.get("timestamp");
-                                Date date = timestamp.toDate(); //Convierte el Timestamp a Date
-                                formattedDate = sdf.format(date);  //Formatea la Date a una cadena legible
+                                if (timestamp != null) {
+                                    Date date = timestamp.toDate(); //Convierte el Timestamp a Date
+                                    formattedDate = sdf.format(date);  //Formatea la Date a una cadena legible
+                                } else {
+                                    LocalDateTime now = LocalDateTime.now();
+                                    System.out.println("Fecha y hora actual sin formato: " + now);
+
+                                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
+                                    String formattedNow = now.format(formatter);
+                                    System.out.println("Fecha y hora actual con formato: " + formattedNow);
+                                    formattedDate = formattedNow;
+                                }
                                 nombreUsuario = datos.get("usuario")+": "; //Usuario
                                 msg = datos.get("mensaje").toString()+ " ";
 
@@ -129,11 +148,11 @@ public class Preguntas_Foro extends AppCompatActivity {
 
                                 //Personalizar TextViews
                                 mostrarUsuario.setTextColor(Color.BLACK);
-                                mostrarUsuario.setTextSize(14);
+                                mostrarUsuario.setTextSize(12);
                                 mostrarUsuario.setTypeface(null, Typeface.BOLD);
-                                mostrarTexto.setTextSize(14);
+                                mostrarTexto.setTextSize(12);
                                 mostrarTexto.setTextColor(Color.BLACK);
-                                mostrarFecha.setTextSize(8);
+                                mostrarFecha.setTextSize(5);
                                 mostrarFecha.setTextColor(Color.LTGRAY);
 
                                 //Agregar el texto
@@ -152,6 +171,23 @@ public class Preguntas_Foro extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+
+    private void buscarUsuario(){
+        CollectionReference collectionRef = db.collection("usuario");
+        DocumentReference docRef = collectionRef.document(global.getIdUsuario());
+
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    usuario = documentSnapshot.getString("nombre");
+                } else {
+                    // El documento no existe
+                }
+            }
+        });
     }
     private void agregarComentario(){
         if(!comentario.getText().toString().isEmpty()){
@@ -175,45 +211,7 @@ public class Preguntas_Foro extends AppCompatActivity {
                             Log.w(TAG, "Error enviando mensaje", e);
                         }
                     });
-
-
-            Date date = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm");
-            String strDate = formatter.format(date);
-
-            //Crea un nuevo LinearLayout para este comentario
-            comentarioLayout = new LinearLayout(Preguntas_Foro.this);
-            comentarioLayout.setOrientation(LinearLayout.HORIZONTAL);
-
-            //Crea los TextViews para este comentario
-            mostrarUsuario = new TextView(Preguntas_Foro.this);
-            mostrarTexto = new TextView(Preguntas_Foro.this);
-            mostrarFecha = new TextView(Preguntas_Foro.this);
-
-            //Personalizar TextViews
-            mostrarUsuario.setTextColor(Color.BLACK);
-            mostrarUsuario.setTextSize(14);
-            mostrarUsuario.setTypeface(null, Typeface.BOLD);
-            mostrarTexto.setTextSize(14);
-            mostrarTexto.setTextColor(Color.BLACK);
-            mostrarFecha.setTextSize(8);
-            mostrarFecha.setTextColor(Color.LTGRAY);
-
-            //Agregar el texto
-            mostrarUsuario.setText(usuario+": ");
-            mostrarTexto.setText(comentario.getText()+" ");
-            mostrarFecha.setText(strDate);
-
-            //Añadir los TextViews al LinearLayout
-            comentarioLayout.addView(mostrarUsuario);
-            comentarioLayout.addView(mostrarTexto);
-            comentarioLayout.addView(mostrarFecha);
-
-            //Setea la alineación del texto
-            comentarioLayout.setGravity(Gravity.RIGHT);
-
-            //Añade el LinearLayout al contenedor de los comentarios
-            primerContenedor.addView(comentarioLayout);
+            comentario.setText("");
         }else {
             Toast.makeText(Preguntas_Foro.this, "Debe ingresar algún comentario.", Toast.LENGTH_SHORT).show();
         }

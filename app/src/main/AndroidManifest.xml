@@ -17,6 +17,15 @@
         android:theme="@style/Theme.Proyecto1_AP_HeyAso"
         tools:targetApi="31">
         <activity
+            android:name=".Pantalla_Foro_Estudiante"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Modificar_CuentaEstudiante"
             android:exported="false" />
         <activity
@@ -125,9 +134,6 @@
             android:exported="false" />
         <activity
             android:name=".Pantalla_Foro"
-            android:exported="false" />
-        <activity
-            android:name=".Pantalla_Foro_Estudiante"
             android:exported="false" />
         <activity
             android:name=".Pantalla_Modificacion_QR"

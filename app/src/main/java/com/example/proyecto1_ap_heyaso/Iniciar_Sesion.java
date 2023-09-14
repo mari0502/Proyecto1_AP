@@ -28,6 +28,8 @@ public class Iniciar_Sesion extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private TextInputEditText correoEst, claveEst;
     private Button btn_login, btn_back;
+    private String idUsuarioActual, idTipo;
+    public Usuario_Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,19 +87,29 @@ public class Iniciar_Sesion extends AppCompatActivity {
                             String correoCuenta = document.getString("correo");
                             String claveCuenta = document.getString("contraseña");
 
+
                             if (correoCuenta.equals(correoUsuario)) {
                                 correoExiste = true;
                                 if(claveCuenta.equals(claveUsuario)) {
                                     claveExiste = true;
+                                    idTipo = document.getString("idTipo");
+                                    global.setIdTipo(idTipo);
+                                    idUsuarioActual = document.getId().toString();
+                                    global.setIdUsuario(idUsuarioActual);
                                 }
                             }
                         }
                         if (correoExiste && claveExiste) {
                             //hacer login
-
                             //Validar que sea estudiante o colaborador
-                            Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalEstudiante.class);
-                            startActivity(intent);
+                            if(idTipo == "Estudiante"){
+                                Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalEstudiante.class);
+                                startActivity(intent);
+                            }else{
+                                Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalColaborador.class);
+                                startActivity(intent);
+                            }
+
                             Toast.makeText(Iniciar_Sesion.this, "Bienvenido.", Toast.LENGTH_SHORT).show();
                     } else {
                             Toast.makeText(Iniciar_Sesion.this, "Error inicio sesión.", Toast.LENGTH_SHORT).show();
