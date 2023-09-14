@@ -1,62 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".Gestion_CuentaAsociacion">
-
-  <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/btn_editarCuenta4"
-      android:layout_width="330dp"
-      android:layout_height="48dp"
-      android:background="@drawable/round_button_background"
-      android:fontFamily="sans-serif-medium"
-      android:text="Modificar Asociación"
-      android:textAlignment="center"
-      android:textColor="#FFFFFF"
-      android:textSize="12sp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.53"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.59" />
-
-  <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/btn_gestionColaborador"
-      android:layout_width="330dp"
-      android:layout_height="48dp"
-      android:background="@drawable/round_button_background"
-      android:fontFamily="sans-serif-medium"
-      android:text="Administrar Colaborador"
-      android:textAlignment="center"
-      android:textColor="#FFFFFF"
-      android:textSize="12sp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.53"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.674" />
-
-  <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/btn_eliminarAsociacion"
-      android:layout_width="330dp"
-      android:layout_height="48dp"
-      android:background="@drawable/round_button_background"
-      android:fontFamily="sans-serif-medium"
-      android:text="Eliminar Asociación"
-      android:textAlignment="center"
-      android:textColor="#FFFFFF"
-      android:textSize="12sp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.543"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.761" />
 
   <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/btn_volver21"
@@ -73,80 +22,91 @@
       app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.869" />
+      app:layout_constraintVertical_bias="0.857" />
 
   <TextView
       android:id="@+id/descripcionPagina19"
       android:layout_width="336dp"
-      android:layout_height="51dp"
+      android:layout_height="108dp"
       android:layout_marginStart="38dp"
-      android:layout_marginTop="84dp"
+      android:layout_marginTop="100dp"
       android:layout_marginEnd="37dp"
-      android:text="Gestion Asociacion"
+      android:fontFamily="sans-serif-medium"
+      android:text="Gestión Asociación"
       android:textAlignment="center"
-      android:textColor="#000000"
-      android:textSize="34sp"
+      android:textColor="#94DFFF"
+      android:textSize="48sp"
+      android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
       android:id="@+id/textoadminevento6"
-      android:layout_width="339dp"
-      android:layout_height="61dp"
-      android:fontFamily="serif"
-      android:text="Favor ingrese la siguiente información para válidar permisos"
+      android:layout_width="335dp"
+      android:layout_height="60dp"
+      android:fontFamily="sans-serif-black"
+      android:text="Seleccione la acción a realizar"
       android:textAlignment="center"
-      android:textColor="#000000"
-      android:textSize="18sp"
+      android:textColor="#FFFFFF"
+      android:textSize="20sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.454"
+      app:layout_constraintHorizontal_bias="0.513"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.245" />
+      app:layout_constraintVertical_bias="0.36" />
 
-  <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/carnet7"
-      android:layout_width="334dp"
-      android:layout_height="52dp"
-      android:layout_marginStart="38dp"
-      android:layout_marginTop="256dp"
-      android:layout_marginEnd="39dp"
-      android:backgroundTint="#2FBCF8"
-      android:hint="Carnet"
-      android:inputType="text"
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_eliminarAsociacion"
+      android:layout_width="330dp"
+      android:layout_height="48dp"
+      android:background="@drawable/round_button_white_background"
+      android:fontFamily="sans-serif-medium"
+      android:text="Eliminar Asociación"
+      android:textAlignment="center"
+      android:textColor="#000000"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="0.543"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.707" />
 
-  <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/contrasenna8"
-      android:layout_width="334dp"
-      android:layout_height="52dp"
-      android:layout_marginStart="38dp"
-      android:layout_marginTop="320dp"
-      android:layout_marginEnd="39dp"
-      android:backgroundTint="#2FBCF8"
-      android:hint="Contraseña"
-      android:inputType="textPassword"
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_gestionColaborador"
+      android:layout_width="330dp"
+      android:layout_height="48dp"
+      android:background="@drawable/round_button_white_background"
+      android:fontFamily="sans-serif-medium"
+      android:text="Administrar Colaborador"
+      android:textAlignment="center"
+      android:textColor="#000000"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="0.543"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.576" />
 
-  <ImageView
-      android:id="@+id/imagen20"
-      android:layout_width="417dp"
-      android:layout_height="59dp"
-      android:layout_gravity="center_horizontal"
-      android:background="#DBF1FB"
-      android:backgroundTint="#D9F0FA"
-      android:src="@drawable/logo"
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_editarCuenta4"
+      android:layout_width="330dp"
+      android:layout_height="48dp"
+      android:background="@drawable/round_button_white_background"
+      android:fontFamily="sans-serif-medium"
+      android:text="Modificar Asociación"
+      android:textAlignment="center"
+      android:textColor="#000000"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintHorizontal_bias="0.543"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.442" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

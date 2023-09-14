@@ -7,12 +7,12 @@
     tools:context=".Modificar_CuentaEstudiante">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_volver16"
+        android:id="@+id/btn_salir7"
         android:layout_width="158dp"
         android:layout_height="48dp"
         android:background="@drawable/round_button_background"
         android:fontFamily="sans-serif-medium"
-        android:text="volver"
+        android:text="Salir"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="12sp"

@@ -173,11 +173,6 @@ public class Registrar_Estudiante extends AppCompatActivity {
                 });
 
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Registrar_Estudiante.this, "Error al registrar", Toast.LENGTH_SHORT).show();
-            }
         });
     }
 }
