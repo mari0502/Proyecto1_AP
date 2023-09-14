@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,8 +44,7 @@ public class Procesar_propuestas extends AppCompatActivity {
     private Button btnVolver;
     private Button btnAceptar;
     private Button btnRechazar;
-    private String itemSelec, idActual ,idPropuesta, titulo, descripcion, categoria,objetivos, actividades;
-    private boolean estadoPropuesta;
+    private String itemSelec, idActual ,idPropuesta, titulo, descripcion, categoria,objetivos, actividades, estadoPropuesta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class Procesar_propuestas extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                estadoPropuesta = true;
+                estadoPropuesta = "Aceptada";
                 agregarEstado();
             }
         });
@@ -78,7 +78,7 @@ public class Procesar_propuestas extends AppCompatActivity {
         btnRechazar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                estadoPropuesta = false;
+                estadoPropuesta = "Rechazada";
                 agregarEstado();
 
             }
@@ -114,6 +114,8 @@ public class Procesar_propuestas extends AppCompatActivity {
                             propuestasTitulo.remove(itemSelec);
                             ArrayAdapter<String> adapter = (ArrayAdapter<String>) spinnerPropuesta.getAdapter();
                             adapter.notifyDataSetChanged();
+                            spinnerPropuesta.setSelection(0);
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -190,15 +192,17 @@ public class Procesar_propuestas extends AppCompatActivity {
                     categoria = documentSnapshot.getString("categoria");
                     objetivos = documentSnapshot.getString("objetivos");
                     actividades = documentSnapshot.getString("actividades");
-                    //estadoPropuesta = documentSnapshot.getBoolean("estado");
+                    estadoPropuesta = documentSnapshot.getString("estado");
 
-                    idPropuestaLista.add(idPropuesta); //Inserta en una lista los id
-                    propuestasTitulo.add(titulo); //Inserta en una lista los titulos para llenar el spinner
+                    if(estadoPropuesta.equals("SC")){
+                        System.out.println("ENTROO");
+                        idPropuestaLista.add(idPropuesta); //Inserta en una lista los id
+                        propuestasTitulo.add(titulo); //Inserta en una lista los titulos para llenar el spinner
 
-                    propuesta = new Propuesta(titulo, descripcion, objetivos, categoria, actividades);
-                    propuesta.setIdPropuesta(idPropuesta);
-                    propuestasRecibidas.add(propuesta); //Inserte el objeto Propuesta
-
+                        propuesta = new Propuesta(titulo, descripcion, objetivos, categoria, actividades, estadoPropuesta);
+                        propuesta.setIdPropuesta(idPropuesta);
+                        propuestasRecibidas.add(propuesta); //Inserte el objeto Propuesta
+                    }
                 }
             }
         });
