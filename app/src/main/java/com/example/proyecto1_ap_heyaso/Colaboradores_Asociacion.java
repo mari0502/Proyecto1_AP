@@ -87,17 +87,21 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
                     if(task.isSuccessful()){
                         System.out.println("Entry task is successfull");
                         boolean carnetExiste = false;
+                        boolean correoExiste = false;
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             System.out.println("Entre a document query");
                             String carnetUsuario = document.getString("carnet");
+                            String correoUsuario = document.getString("correo");
 
                             if (carnetUsuario.equals(carnetEst)) {
                                 carnetExiste = true;
-                                break;
+                                if(correoUsuario.equals(correoEst)) {
+                                    correoExiste = true;
+                                }
                             }
                         }
-                        if (carnetExiste) {
+                        if (carnetExiste && correoExiste) {
                             //Existe el usuario validar asociacion
                             queryAso.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
