@@ -147,8 +147,6 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
     private void agregarColaborador(String carnet, String correo, String puesto, String asociacion){
 
-        Map<String, Object> datos = new HashMap<>();
-
         DocumentReference updateUsuario = db.collection("usuario").document(carnet);
         updateUsuario.update("idTipo", "Admin");
         updateUsuario.update("puesto", puesto);

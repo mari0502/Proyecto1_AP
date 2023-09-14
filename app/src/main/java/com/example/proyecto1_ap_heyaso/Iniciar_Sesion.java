@@ -18,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -84,23 +85,25 @@ public class Iniciar_Sesion extends AppCompatActivity {
                             System.out.println("Entre a document query");
                             String correoCuenta = document.getString("correo");
                             String claveCuenta = document.getString("contraseña");
+                            String tipoCuenta = document.getString("idTipo");
 
                             if (correoCuenta.equals(correoUsuario)) {
-                                correoExiste = true;
+                                //correoExiste = true;
                                 if(claveCuenta.equals(claveUsuario)) {
-                                    claveExiste = true;
-                                }
+                                    //claveExiste = true;
+                                    if (tipoCuenta.equals("Estudiante")) {
+                                        Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalEstudiante.class);
+                                        startActivity(intent);
+                                        Toast.makeText(Iniciar_Sesion.this, "Bienvenido Menu Estudiante.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalColaborador.class);
+                                        startActivity(intent);
+                                        Toast.makeText(Iniciar_Sesion.this, "Bienvenido Menu Colaborador.", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                        Toast.makeText(Iniciar_Sesion.this, "Error inicio sesión.", Toast.LENGTH_SHORT).show();
+                                    }
                             }
-                        }
-                        if (correoExiste && claveExiste) {
-                            //hacer login
-
-                            //Validar que sea estudiante o colaborador
-                            Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalEstudiante.class);
-                            startActivity(intent);
-                            Toast.makeText(Iniciar_Sesion.this, "Bienvenido.", Toast.LENGTH_SHORT).show();
-                    } else {
-                            Toast.makeText(Iniciar_Sesion.this, "Error inicio sesión.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
