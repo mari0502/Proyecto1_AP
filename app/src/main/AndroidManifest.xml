@@ -117,6 +117,9 @@
             android:name=".Pantalla_Foro"
             android:exported="false" />
         <activity
+            android:name=".Pantalla_Foro_Estudiante"
+            android:exported="false" />
+        <activity
             android:name=".Pantalla_Modificacion_QR"
             android:exported="false" />
         <activity

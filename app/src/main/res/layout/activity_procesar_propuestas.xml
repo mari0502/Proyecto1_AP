@@ -41,4 +41,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.138" />
+
+    <TextView
+        android:id="@+id/txtMostrarInfoPropuesta"
+        android:layout_width="351dp"
+        android:layout_height="360dp"
+        android:background="@android:color/system_accent2_50"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="112dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="112dp"
+        android:fontFamily="sans-serif"
+        android:text="Aceptar"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnRechazar"
+        android:layout_width="131dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="112dp"
+        android:fontFamily="sans-serif"
+        android:text="Rechazar"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnVolverForoProcesar"
+        android:layout_width="131dp"
+        android:layout_height="59dp"
+        android:fontFamily="sans-serif"
+        android:text="Volver"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
 </androidx.constraintlayout.widget.ConstraintLayout>

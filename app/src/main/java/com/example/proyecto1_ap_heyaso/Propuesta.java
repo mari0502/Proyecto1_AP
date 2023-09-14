@@ -1,7 +1,7 @@
 package com.example.proyecto1_ap_heyaso;
 
 public class Propuesta {
-    private String titulo, descripcion, categoria,objetivos, actividades;
+    private String idPropuesta, titulo, descripcion, categoria,objetivos, actividades;
 
     public Propuesta(){
         //Default constructor required for Firebase
@@ -55,5 +55,14 @@ public class Propuesta {
 
     public void setActividades(String actividades) {
         this.actividades = actividades;
+    }
+
+
+    public String getIdPropuesta() {
+        return idPropuesta;
+    }
+
+    public void setIdPropuesta(String idPropuesta) {
+        this.idPropuesta = idPropuesta;
     }
 }

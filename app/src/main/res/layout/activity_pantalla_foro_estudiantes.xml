@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:clickable="true"
+    tools:context=".Pantalla_Foro_Estudiante">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_volverEstudiantesForo"
+            android:layout_width="158dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginEnd="136dp"
+            android:layout_marginBottom="112dp"
+            android:background="@drawable/round_button_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="volver"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/DescripcionPagina"
+            android:layout_width="339dp"
+            android:layout_height="58dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Foro de discusión"
+            android:textAlignment="center"
+            android:textColor="#94DFFF"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.161"
+            tools:layout_editor_absoluteX="38dp" />
+
+        <TextView
+            android:id="@+id/texto2"
+            android:layout_width="325dp"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="¡Déjanos tus propuestas y opiniones!"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.264" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/propuestaEstudiante"
+            android:layout_width="118dp"
+            android:layout_height="42dp"
+            android:background="@drawable/round_button_white_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="Propuesta de Evento"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/preguntasEstudiantes"
+            android:layout_width="122dp"
+            android:layout_height="39dp"
+            android:background="@drawable/round_button_white_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="Preguntas"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.523" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/evaluarEventoEstudiantes"
+            android:layout_width="122dp"
+            android:layout_height="39dp"
+            android:background="@drawable/round_button_white_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="Evaluar Evento"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.641" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

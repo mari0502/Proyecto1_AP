@@ -7,51 +7,37 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-public class Pantalla_Foro extends AppCompatActivity{
-
+public class Pantalla_Foro_Estudiante extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_foro);
 
-        Button btnEvaluar = (Button) findViewById(R.id.evaluarEvento);
+        Button btnEvaluar = (Button) findViewById(R.id.evaluarEventoEstudiantes);
         btnEvaluar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 OpenEvaluar();
             }
         });
 
-        Button btnPropuesta = (Button) findViewById(R.id.propuesta);
+        Button btnPropuesta = (Button) findViewById(R.id.propuestaEstudiante);
         btnPropuesta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 OpenPropuesta();
             }
         });
 
-        Button btnPreguntas = (Button) findViewById(R.id.preguntas);
+        Button btnPreguntas = (Button) findViewById(R.id.preguntasEstudiantes);
         btnPreguntas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 OpenPreguntas();
             }
         });
 
-        Button btnAprobarPropuesta = (Button) findViewById(R.id.aprobarPropuesta);
-        btnAprobarPropuesta.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                OpenAprobar();
-            }
-        });
-
-        Button btnVolver = (Button) findViewById(R.id.btn_volver7);
+        Button btnVolver = (Button) findViewById(R.id.btn_volverEstudiantesForo);
         btnVolver.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) { reOpenMenu(); }
         });
-    }
-
-    public void OpenAprobar() {
-        Intent intent = new Intent(this, Procesar_propuestas.class);
-        startActivity(intent);
     }
 
     public void OpenEvaluar() {
@@ -70,9 +56,8 @@ public class Pantalla_Foro extends AppCompatActivity{
     }
 
     public void reOpenMenu() {
-        Intent intent = new Intent(this, menuPrincipalColaborador.class);
+        Intent intent = new Intent(this, menuPrincipalEstudiante.class);
         startActivity(intent);
     }
-
 
 }
