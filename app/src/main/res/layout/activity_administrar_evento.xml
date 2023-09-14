@@ -27,10 +27,10 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.442" />
+            app:layout_constraintVertical_bias="0.443" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_buscarevento"
@@ -85,8 +85,10 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_opcionesEvento"
-            android:layout_width="216dp"
-            android:layout_height="57dp"
+            android:layout_width="212dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="99dp"
             android:background="@drawable/round_button_white_background"
             android:fontFamily="sans-serif-medium"
             android:text="Opciones Evento"
@@ -95,16 +97,15 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.848" />
+            app:layout_constraintVertical_bias="0.85" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_salir2"
             android:layout_width="210dp"
             android:layout_height="45dp"
-            android:layout_marginTop="648dp"
+            android:layout_marginTop="652dp"
             android:background="@drawable/round_button_background"
             android:fontFamily="sans-serif-medium"
             android:text="Salir"
@@ -112,7 +113,7 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -12,15 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firestore.v1.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +37,7 @@ public class Buscar_Evento extends AppCompatActivity{
         db = FirebaseFirestore.getInstance();
         viewInfoEvento = findViewById(R.id.viewInfoEvento);
         eventos = new ArrayList<>();
-        spinner = findViewById(R.id.spinner2);
+        spinner = findViewById(R.id.spinner4);
         btnVolver = findViewById(R.id.btn_volver3);
         btnBuscar = findViewById(R.id.btn_buscar2);
 
@@ -89,11 +84,14 @@ public class Buscar_Evento extends AppCompatActivity{
                 public void onComplete(Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
                         for(QueryDocumentSnapshot documento : task.getResult()) {
+                            String resultado = "";
+                            if(Boolean.TRUE.equals(documento.getBoolean("encuesta"))){ resultado = "habilitada"; } else {resultado = "deshabilitada";};
                             String info = "Id: " + id + "\nTítulo: " + documento.getString("titulo") + "\nCategoría: " + documento.getString("categoria") +
+                                    "\nAsociacion: " + documento.getString("asociacion")/*.substring(10)*/ +
                                     "\nDescripción: " + documento.getString("descripcion") + "\nFecha: " + documento.getString("fecha") + "\nDuración: " +
-                                    documento.getString("duracion") + "\nLugar: " + documento.getString("lugar") + "\nRequisitos: " + documento.getString("requisitos");
-                            //falta imprimir a que asociacion pertenece y habilitacion de encuesta
-                            viewInfoEvento.setTextAlignment(viewInfoEvento.TEXT_ALIGNMENT_TEXT_START);
+                                    documento.getString("duracion") + "\nLugar: " + documento.getString("lugar") + "\nRequisitos: " + documento.getString("requisitos") +
+                                    "\nEncuesta: " + resultado;
+                            viewInfoEvento.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
                             viewInfoEvento.setText(info);
                         }
                     }
@@ -101,7 +99,7 @@ public class Buscar_Evento extends AppCompatActivity{
             });
         }
         else{
-            viewInfoEvento.setTextAlignment(viewInfoEvento.TEXT_ALIGNMENT_CENTER);
+            viewInfoEvento.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             viewInfoEvento.setText("*Acá se muestra la información del evento buscado*");
             Toast.makeText(Buscar_Evento.this, "No se encontró ningún evento para buscar", Toast.LENGTH_SHORT).show();
         }

@@ -31,23 +31,6 @@
             app:layout_constraintVertical_bias="0.718" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_buscarevento"
-            android:layout_width="216dp"
-            android:layout_height="57dp"
-            android:background="@drawable/round_button_white_background"
-            android:fontFamily="sans-serif-medium"
-            android:text="Buscar Colaborador"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.497" />
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_modificarcolaborador"
             android:layout_width="216dp"
             android:layout_height="57dp"
@@ -63,6 +46,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.605" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_buscarcolaborador"
+            android:layout_width="216dp"
+            android:layout_height="57dp"
+            android:background="@drawable/round_button_white_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="Buscar Colaborador"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_Salir2"

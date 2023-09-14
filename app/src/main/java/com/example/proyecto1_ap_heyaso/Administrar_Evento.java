@@ -60,12 +60,12 @@ public class Administrar_Evento extends AppCompatActivity {
         });
 
 
-        btn_OpcionesEvento.setOnClickListener(new View.OnClickListener() {
+        /*btn_OpcionesEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Opciones_Evento.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }

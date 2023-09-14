@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Registrar_Asociacion">
 
+
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_volver10"
+        android:id="@+id/btn_volver12"
         android:layout_width="158dp"
         android:layout_height="48dp"
         android:background="@drawable/round_button_background"
@@ -58,7 +59,7 @@
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="388dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Código carrera"
@@ -73,7 +74,7 @@
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="496dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Contacto"
@@ -109,7 +110,6 @@
         android:backgroundTint="#D9F0FA"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

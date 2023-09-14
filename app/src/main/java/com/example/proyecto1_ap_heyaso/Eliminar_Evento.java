@@ -19,32 +19,30 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Modificar_Evento extends AppCompatActivity {
+public class Eliminar_Evento extends AppCompatActivity {
     private FirebaseFirestore db;
-    private List<String> eventos;
-    private Button btnBuscar;
+    private Button btnEliminar;
     private Button btnVolver;
-    private Spinner inputId;
+    private Spinner spinnerEventos;
+    private List<String> eventos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modificar_evento);
-        db = FirebaseFirestore.getInstance();
+        setContentView(R.layout.activity_eliminar_evento);
 
-        eventos = new ArrayList<>();
-        inputId = findViewById(R.id.evento3);
-        btnBuscar = findViewById(R.id.btn_buscar);
-        btnVolver = findViewById(R.id.btn_volver6);
+        db = FirebaseFirestore.getInstance();
+        btnEliminar = findViewById(R.id.btn_eliminar2);
+        btnVolver = findViewById(R.id.btn_volver12);
+        spinnerEventos = findViewById(R.id.evento10);
+        eventos = new ArrayList<String>();
 
         getEventos();
 
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //que pase a modificar 2 y lleve el id del evento
-                Intent intent = new Intent(Modificar_Evento.this, Modificar_Evento2.class);
-                intent.putExtra("id",inputId.getSelectedItem().toString());
-                startActivity(intent);
+                eliminarEvento();
             }
         });
 
@@ -61,17 +59,22 @@ public class Modificar_Evento extends AppCompatActivity {
         eventos.add("Seleccione un evento");
         db.collection("Evento").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
             @Override
-            public void onComplete(@com.example.proyecto1_ap_heyaso.NonNull Task<QuerySnapshot> task) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot documento : task.getResult()){
                         eventos.add(documento.getString("idEvento"));
                     }
-                    inputId.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
+                    spinnerEventos.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
                 }
                 else {
-                    Toast.makeText(Modificar_Evento.this, "Error al cargar pagina", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Eliminar_Evento.this, "Error al cargar pagina", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void eliminarEvento(){
+        //eliminar en cascada
+        Toast.makeText(Eliminar_Evento.this, "Evento eliminado correctamente", Toast.LENGTH_SHORT).show();
     }
 }

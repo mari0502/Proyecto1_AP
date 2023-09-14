@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Eliminar_Evento">
+
+    <TextView
+        android:id="@+id/descripcionPagina11"
+        android:layout_width="336dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="37dp"
+        android:text="Eliminar Evento"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoadmincolaborador3"
+        android:layout_width="333dp"
+        android:layout_height="29dp"
+        android:fontFamily="sans-serif"
+        android:text="Seleccione el evento a eliminar"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="254dp" />
+
+    <Spinner
+        android:id="@+id/evento10"
+        android:layout_width="265dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginEnd="73dp"
+        android:backgroundTint="#DC68E4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="375dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_eliminar2"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="31dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="Buscar"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_volver12"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/round_button_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="volver"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_buscar" />
+
+    <ImageView
+        android:id="@+id/imagen11"
+        android:layout_width="417dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="21dp"
+        android:background="#DBF1FB"
+        android:backgroundTint="#D9F0FA"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/descripcionPagina11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
