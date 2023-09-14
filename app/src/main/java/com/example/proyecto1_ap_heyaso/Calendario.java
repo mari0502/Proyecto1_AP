@@ -2,11 +2,20 @@ package com.example.proyecto1_ap_heyaso;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,47 +39,117 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 
 
 public class Calendario extends AppCompatActivity{
 
     private FirebaseFirestore db;
+    //Variables para mostrar en calendario
     private MaterialCalendarView calendarView;
-
-    private String idAsociacion, idEvento, titulo, categoria,descripcion, duracion, fecha, lugar, requisitos;
-    private Boolean encuesta;
-    private ArrayList<Evento> listaEventos = new ArrayList<>();
-    private SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
-    private Date fechaCalendario;
-    private CalendarDay fechaEvento;
+    private SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy", Locale.US);
     private List<CalendarDay> fechas = new ArrayList<>();
-    private List<DayViewDecorator> decorators = new ArrayList<>();
+    private List<CalendarDay> fechasDeInteres = new ArrayList<>();
+    private puntosCalendario marcarFechasEventos;
+    private Date fechaCalendario;
+    private CalendarDay fechaObtenida;
+    private desactivarFecha desactivarFecha;
+    //Evento y sus variables
     private Evento evento;
+    private String idAsociacion, idEvento, titulo, categoria,descripcion, duracion, fecha, lugar, requisitos;
+    private ArrayList<Evento> listaEventos = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
         db = FirebaseFirestore.getInstance();
+        calendarView = findViewById(R.id.vistaCalendario);
+        crearCanalNotificaciones();
 
-       calendarView = findViewById(R.id.vistaCalendario);
-       recuperarEventos();
-
-       for (int i = 0; i < listaEventos.size(); i++) {
-            if(listaEventos.isEmpty()){
-                System.out.println("No hay eventos");
-            }else{
-                System.out.println(listaEventos.get(i).getFecha());
+        Button btnMarcar = (Button) findViewById(R.id.btnMarcar);
+        btnMarcar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                marcarEventoInteres();
             }
+        });
+
+        recuperarEventos();
+    }
+
+    private void crearCanalNotificaciones(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "canalEventos";
+            String description = "Canal para mis notificaciones de eventos";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("miCanal", name, importance);
+            channel.setDescription(description);
+            // Registrar el canal con el sistema
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+    private void marcarEventoInteres(){
+        fechaObtenida = calendarView.getSelectedDate();
+        if (fechaObtenida != null) {
+            if(fechaConEvento() == true){
+                //Deshabilitar fecha
+                desactivarFecha = new desactivarFecha(fechaObtenida);
+                //Añadir decorador al MaterialCalendarView
+                calendarView.addDecorator(desactivarFecha);
+
+                Toast.makeText(getApplicationContext(), "Se ha marcado el evento de su interés.", Toast.LENGTH_LONG).show();
+                establecerRecordatorio();
+            }else{
+                Toast.makeText(getApplicationContext(), "La fecha indicada no tiene ningún evento por el momento.", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "No ha seleccionado ninguna fecha.", Toast.LENGTH_LONG).show();
         }
     }
 
+
+    private boolean fechaConEvento(){
+        for (Evento e: listaEventos) {
+            if(e.getFecha().equals(formatoFecha.format(fechaObtenida.getDate()))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void establecerRecordatorio(){
+        //Crear un intent para el BroadcastReceiver
+        Intent intent = new Intent(this, recordatorioEvento.class);
+
+        //Crear un PendingIntent que se activará cuando se dispare la alarma
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+        //Obtener una instancia de AlarmManager
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        // Establecer la alarma
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.YEAR, fechaObtenida.getYear());
+        calendar.set(Calendar.MONTH, fechaObtenida.getMonth());
+        calendar.set(Calendar.DAY_OF_MONTH, fechaObtenida.getDay());
+        calendar.set(Calendar.HOUR_OF_DAY, 10); // Establece la hora del día (formato de 24 horas)
+        calendar.set(Calendar.MINUTE, 20); // Establece los minutos
+
+        //Crear un AlarmClockInfo
+        AlarmManager.AlarmClockInfo alarmClockInfo = new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(), pendingIntent);
+
+        //Establecer la alarma
+        alarmManager.setAlarmClock(alarmClockInfo, pendingIntent);
+    }
     private void recuperarEventos(){
         db.collection("Evento").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        Log.d(TAG, document.getId() + " => " + document.getData());
                         cargarDatos(document.getId().toString());
                     }
                 } else {
@@ -78,33 +157,68 @@ public class Calendario extends AppCompatActivity{
                 }
             }
         });
+
+        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                // Comprobar si la fecha seleccionada está en la lista de fechas
+                if (fechas.contains(date)) {
+                    for (Evento e: listaEventos) {
+                        if(e.getFecha().equals(formatoFecha.format(date.getDate()))){
+                            // Crear un AlertDialog para mostrar la información
+                            new AlertDialog.Builder(Calendario.this)
+                                    .setTitle("Evento: "+ e.getTitulo())
+                                    .setMessage("Descripción: "+ e.getDescripcion()
+                                            +"\nFecha: "+e.getFecha()+"\nLugar: "+e.getLugar()
+                                            +"\nCategoría: "+e.getCategoria()
+                                            +"\nDuración: "+e.getDuracion()
+                                            +"\nRequisitos: "+e.getRequisitos())
+                                    .setPositiveButton(android.R.string.ok, null)
+                                    .show();
+                        }
+                    }
+                }
+
+            }
+        });
     }
 
     private void cargarDatos(String id){
-        System.out.println("ENTRO CARGAR DATOS");
         db.collection("Evento").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
-                    System.out.println("EXISTE DOCUMENTO");
                     //Recupera cada dato de cada evento
                     idAsociacion = documentSnapshot.getString("idAsodiacion");
                     idEvento = documentSnapshot.getString("idEvento");
                     titulo = documentSnapshot.getString("titulo");
-                    System.out.println(titulo);
                     descripcion  = documentSnapshot.getString("descripcion");
                     fecha = documentSnapshot.getString("fecha");
                     lugar = documentSnapshot.getString("lugar");
                     categoria = documentSnapshot.getString("categoria");
                     duracion = documentSnapshot.getString("duracion");
                     requisitos = documentSnapshot.getString("requisitos");
-                    //encuesta = documentSnapshot.getBoolean("encuesta");
-                    //String encuestaStr = Boolean.toString(encuesta);
-
 
                     if(requisitos == ""){
                         requisitos = "No tiene";
                     }
+
+                    //-------- Crea puntos en el calendario ---------------------------
+                    try {
+                        // Parsear la fecha a un objeto Date
+                        fechaCalendario = formatoFecha.parse(fecha);
+                        // Convertir el objeto Date a CalendarDay y añadirlo a la lista
+                        fechas.add(CalendarDay.from(fechaCalendario));
+
+                        // Crear un nuevo decorador
+                        marcarFechasEventos = new puntosCalendario(Color.MAGENTA, fechas);
+
+                        //Añadir el decorador al MaterialCalendarView
+                        calendarView.addDecorator(marcarFechasEventos);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+
 
                     //Crea el evento
                     evento = new Evento();
@@ -118,92 +232,11 @@ public class Calendario extends AppCompatActivity{
                     evento.setCategoria(categoria);
                     evento.setDuracion(duracion);
                     evento.setRequisitos(requisitos);
-                    //evento.setEncuesta(encuestaStr);
 
-                    System.out.println("Agrega el Evento");
                     listaEventos.add(evento);
                 }
             }
         });
-
-        System.out.println("SALE DE CARGAR DATOS");
-
     }
 
-    private void mostrarInfo(){
-        System.out.println("ENTRO A MOSTRAR INFO");
-
-        for (int i = 0; i < listaEventos.size(); i++) {
-            System.out.println("FECHA RECUPERADA: " + listaEventos.get(i).getFecha().toString());
-        }
-        //fechaCalendario = formatoFecha.parse();
-                       /*
-        for (int i = 0; i < listaEventos.size(); i++) {
-            System.out.println("ENTROO FOR");
-            try {
-                System.out.println("ENTRO AL TRY");
-
-                System.out.println(fechaCalendario);
-                fechaEvento = CalendarDay.from(fechaCalendario);
-                System.out.println(fechaEvento);
-                decorators.add(new DayViewDecorator() {
-                    @Override
-                    public boolean shouldDecorate(CalendarDay day) {
-                        System.out.println("ENTRA A COMPARAR");
-                        return fechaEvento.equals(day);
-                    }
-
-                    @Override
-                    public void decorate(DayViewFacade view) {
-                        System.out.println("PINTA EN EL CALENDARIO");
-                        view.addSpan(new DotSpan(5, Color.RED));
-                    }
-                });
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        calendarView.addDecorators(decorators);
-
-
-
-
-        //Marcar varias fechas
-        calendarView.addDecorator(new DayViewDecorator() {
-            @Override
-            public boolean shouldDecorate(CalendarDay day) {
-                for (int i = 0; i < listaEventos.size(); i++) {
-                    //Convierte String a CalendarDay
-                    try {
-
-                        //Compara fechas
-                        if (day.equals(CalendarDay.from(fechaCalendario))) {
-                            return true;
-                        }
-                    } catch (ParseException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                return false;
-            }
-
-            @Override
-            public void decorate(DayViewFacade view) {
-                view.addSpan(new DotSpan(5, Color.RED));
-            }
-        });
-
-        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
-            @Override
-            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-
-
-                // Aquí puedes filtrar tus datos por la fecha seleccionada.
-                // Por ejemplo, puedes mostrar un Toast con la fecha.
-                String selectedDate = String.valueOf(DateFormat.format("dd/MM/yyyy", date.getDate()));
-                Toast.makeText(getApplicationContext(), "Fecha seleccionada: " + selectedDate, Toast.LENGTH_SHORT).show();
-            }
-        });*/
-    }
 }

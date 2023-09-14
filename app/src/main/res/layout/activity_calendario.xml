@@ -25,13 +25,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintVertical_bias="0.397" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMarcar"
         android:layout_width="120dp"
         android:layout_height="41dp"
-        android:layout_marginTop="580dp"
         android:background="@drawable/round_button_background"
         android:fontFamily="sans-serif-medium"
         android:text="Marcar"
@@ -39,16 +38,17 @@
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintHorizontal_bias="0.257"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnVolver"
         android:layout_width="120dp"
         android:layout_height="41dp"
-        android:layout_marginTop="580dp"
         android:background="@drawable/round_button_background"
         android:fontFamily="sans-serif-medium"
         android:text="Volver"
@@ -56,9 +56,11 @@
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.762"
+        app:layout_constraintHorizontal_bias="0.776"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
