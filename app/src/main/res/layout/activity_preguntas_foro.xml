@@ -8,8 +8,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/comentarioPreguntas"
-        android:layout_width="315dp"
-        android:layout_height="83dp"
+        android:layout_width="213dp"
+        android:layout_height="62dp"
         android:layout_marginStart="38dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Comentario"
@@ -46,46 +46,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.148" />
 
-    <ScrollView
-        android:id="@+id/contenedorComentarios"
-        android:layout_width="344dp"
-        android:layout_height="366dp"
-        android:background="@color/design_default_color_secondary_variant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imagen10"
-        app:layout_constraintVertical_bias="0.421">
-
-        <LinearLayout
-            android:id="@+id/comentarios"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/comentarioPrueba"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="?android:attr/scrollbarSize"
-                android:text="Hola"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-    </ScrollView>
-
-    <ImageButton
-        android:id="@+id/imgEnviar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/enviar"
-        app:layout_constraintStart_toEndOf="@+id/comentarioPreguntas"
-        app:srcCompat="@drawable/enviar"
-        tools:layout_editor_absoluteY="569dp" />
-
     <Button
         android:id="@+id/btn_Volver12"
         android:layout_width="wrap_content"
@@ -97,6 +57,35 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:id="@+id/contenedorComentarios"
+        android:layout_width="362dp"
+        android:layout_height="365dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/contenedorComentarios2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnEnviarComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="112dp"
+        android:fontFamily="sans-serif"
+        android:text="Enviar"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

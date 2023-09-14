@@ -120,20 +120,20 @@ public class Buscar_Actividad extends AppCompatActivity {
         if (idActividad != null && !idActividad.isEmpty()&& idEvento != null && !idEvento.isEmpty()) {
                 query = query.whereEqualTo("idActividad", "Act" + idActividad)
                              .whereEqualTo("idEvento", "Evento" + idEvento);
-                    query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                                infoActividad.add(documentSnapshot.getString("idActividad"));
-                                infoActividad.add(documentSnapshot.getString("idEvento"));
-                                infoActividad.add(documentSnapshot.getString("descripcion"));
-                                infoActividad.add(documentSnapshot.getString("duracion"));
-                                infoActividad.add(documentSnapshot.getString("encargado"));
-                                infoActividad.add(documentSnapshot.getString("capacidad"));
-                                infoActividad.add(documentSnapshot.getString("titulo"));
-                            }
-                        }
-                    });
+                                query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                            infoActividad.add(documentSnapshot.getString("idActividad"));
+                                            infoActividad.add(documentSnapshot.getString("idEvento"));
+                                            infoActividad.add(documentSnapshot.getString("descripcion"));
+                                            infoActividad.add(documentSnapshot.getString("duracion"));
+                                            infoActividad.add(documentSnapshot.getString("encargado"));
+                                            infoActividad.add(documentSnapshot.getString("capacidad"));
+                                            infoActividad.add(documentSnapshot.getString("titulo"));
+                                        }
+                                    }
+                                });
         }
     }
     private void resetEmpty(boolean e){
