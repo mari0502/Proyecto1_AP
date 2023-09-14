@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.956" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_modificar"
+        android:id="@+id/btn_modificarA"
         android:layout_width="158dp"
         android:layout_height="48dp"
         android:layout_marginStart="44dp"
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_buscar"
+        android:id="@+id/btn_buscarA"
         android:layout_width="158dp"
         android:layout_height="48dp"
         android:background="@drawable/round_button_background"
@@ -59,7 +59,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.838" />
+        app:layout_constraintVertical_bias="0.874" />
 
     <TextView
         android:id="@+id/descripcionPagina"
@@ -91,59 +91,56 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/titulo"
-        android:layout_width="334dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="248dp"
-        android:layout_marginEnd="39dp"
-        android:backgroundTint="#2FBCF8"
-        android:hint="Título de actividad"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/capacidad"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="528dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Capacidad"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/encargado"
-        android:layout_width="334dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="39dp"
-        android:backgroundTint="#2FBCF8"
-        android:hint="Encargado"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerEncargados"
+        android:layout_width="335dp"
+        android:layout_height="52dp"
+        android:backgroundTint="#DC68E4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/duracion"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginTop="384dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Duración (minutos)"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/idEvento"
+        android:layout_width="334dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#2FBCF8"
+        android:hint="Evento"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -155,10 +152,40 @@
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Descripción"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/idActividad"
+        android:layout_width="334dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#2FBCF8"
+        android:hint="Actividad"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/titulo"
+        android:layout_width="334dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#2FBCF8"
+        android:hint="Título de actividad"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -170,28 +197,16 @@
         android:layout_width="333dp"
         android:layout_height="29dp"
         android:fontFamily="sans-serif"
-        android:text="Seleccionar Actividad"
+        android:text="Seleccionar Encargado"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="335dp"
-        android:layout_height="52dp"
-        android:backgroundTint="#DC68E4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.621" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
