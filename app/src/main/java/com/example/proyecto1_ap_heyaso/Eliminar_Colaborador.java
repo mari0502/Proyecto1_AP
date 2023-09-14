@@ -2,6 +2,7 @@ package com.example.proyecto1_ap_heyaso;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +41,8 @@ public class Eliminar_Colaborador extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Intent intent = new Intent(getApplicationContext(), Administrar_Colaboradores.class);
+                startActivity(intent);
             }
         });
     }
