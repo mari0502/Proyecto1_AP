@@ -43,7 +43,7 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
         });
 
         Button btn_gestionEstudiante = (Button) findViewById(R.id.btn_adminCuenta);
-        button.setOnClickListener(new View.OnClickListener() {
+        btn_gestionEstudiante.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openGestionEstudiante();
             }
