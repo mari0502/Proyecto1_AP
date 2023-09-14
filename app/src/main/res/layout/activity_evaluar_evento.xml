@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Evaluar_Evento">
 
-    <TextView
-        android:id="@+id/textotitulo"
-        android:layout_width="333dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:background="#00A84141"
-        android:backgroundTint="#00A64949"
-        android:fontFamily="sans-serif"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnereventos" />
-
     <Spinner
         android:id="@+id/spinnereventos"
         android:layout_width="335dp"
@@ -104,10 +87,10 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/comentario"
-        android:layout_width="331dp"
-        android:layout_height="190dp"
+        android:layout_width="334dp"
+        android:layout_height="277dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="@color/white"
         android:drawableTint="#00A54646"
@@ -116,16 +99,15 @@
         android:hint="Comentario"
         android:inputType="text|textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/calificacion" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/calificacion"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="260dp"
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Calificación (1 al 5)"
