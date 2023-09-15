@@ -34,8 +34,7 @@ public class Crear_Actividad extends AppCompatActivity {
     private List<String> encargados;
     private Spinner spinnerEventos;
     private Spinner spinnerEncargados;
-    private ArrayAdapter<String> spinnerEventosAdapter;
-    private ArrayAdapter<String> spinnerEncargadosAdapter;
+    private ArrayAdapter<String> spinnerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +44,10 @@ public class Crear_Actividad extends AppCompatActivity {
         mfirestore = FirebaseFirestore.getInstance();
         idEventos = new ArrayList<>();
         encargados = new ArrayList<>();
-        spinnerEventos=findViewById(R.id.spinnerEventos);
-        spinnerEncargados=findViewById(R.id.spinnerEncargados);
-        spinnerEventosAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, idEventos);
-        spinnerEncargadosAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, encargados);
+        spinnerEventos = findViewById(R.id.spinnerEventos);
         obteneridEventos();
+        spinnerEncargados = findViewById(R.id.spinnerEncargados);
+        obtenerEncargados();
         Button btnAñadirActividad = findViewById(R.id.btn_añadir);
 
         Button button = (Button) findViewById(R.id.btn_volver);
@@ -60,50 +58,40 @@ public class Crear_Actividad extends AppCompatActivity {
         });
         btnAñadirActividad.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //System.out.println(spinnerEventos.getSelectedItem().toString());
-                //System.out.println(spinnerEncargados.getSelectedItem().toString());
+                System.out.println(spinnerEventos.getSelectedItem().toString());
+                System.out.println(spinnerEncargados.getSelectedItem().toString());
                 agregarActividad();
 
             }
         });
-        spinnerEventos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String idEventoSeleccionado = idEventos.get(position);
-                obtenerEncargados(idEventoSeleccionado);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // No necesitas hacer nada aquí.
-            }
-        });
     }
+
     private void agregarActividad() {
 
-        TextInputEditText InputIdActividad= findViewById(R.id.IdActividad);;
-        Spinner Eventos=findViewById(R.id.spinnerEventos);
-        //TextInputEditText InputCapacidad = findViewById(R.id.capacidad);
+        TextInputEditText InputIdActividad = findViewById(R.id.IdActividad);
+        Spinner Eventos = findViewById(R.id.spinnerEventos);
         TextInputEditText InputDescripcion = findViewById(R.id.descripcion);
+        TextInputEditText InputLugar = findViewById(R.id.lugarA);
         TextInputEditText InputDuracion = findViewById(R.id.duracion);
-        Spinner Encargado=findViewById(R.id.spinnerEncargados);
+        Spinner Encargado = findViewById(R.id.spinnerEncargados);
         TextInputEditText InputTitulo = findViewById(R.id.titulo);
+        TextInputEditText InputReursos = findViewById(R.id.recursos);
 
         String idActividad = InputIdActividad.getText().toString();
         String idEvento = Eventos.getSelectedItem().toString();
-        //String capacidad = InputCapacidad.getText().toString();
+        String lugar = InputLugar.getText().toString();
+        String recursos = InputReursos.getText().toString();
         String descripcion = InputDescripcion.getText().toString();
         String duracion = InputDuracion.getText().toString();
         String encargado = Encargado.getSelectedItem().toString();
         String titulo = InputTitulo.getText().toString();
-        String NewidActividad="Act"+idActividad;
+        String NewidActividad = "Act" + idActividad;
 
 
-        if (TextUtils.isEmpty(idActividad) /*|| TextUtils.isEmpty(capacidad)*/ || TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(titulo)) {
+        if (TextUtils.isEmpty(idActividad) || TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(titulo)) {
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             return;
-        }
-        else {
+        } else {
             CollectionReference ActividadRef = mfirestore.collection("Actividad");
             // Verificar si ya existe una actividad con el mismo id en el mismo evento
             ActividadRef.whereEqualTo("idEvento", idEvento)
@@ -119,7 +107,7 @@ public class Crear_Actividad extends AppCompatActivity {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     String IdActividadExist = document.getString("idActividad");
                                     String IdEventoExist = document.getString("idEvento");
-                                    if (IdActividadExist.equals(NewidActividad)&&IdEventoExist.equals(idEvento)) {
+                                    if (IdActividadExist.equals(NewidActividad) && IdEventoExist.equals(idEvento)) {
                                         numeroActExistente = true;
                                         break;
                                     }
@@ -130,7 +118,7 @@ public class Crear_Actividad extends AppCompatActivity {
                                     Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con este id en el evento", Toast.LENGTH_SHORT).show(); //si es evento1 act 1
                                 } else {
                                     ActividadRef.whereEqualTo("idActividad", NewidActividad)
-                                                .whereEqualTo("idEvento",idEvento)
+                                            .whereEqualTo("idEvento", idEvento)
                                             .get()
                                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -143,7 +131,7 @@ public class Crear_Actividad extends AppCompatActivity {
                                                         if (numeroActExistente) {
                                                             Toast.makeText(Crear_Actividad.this, "Ya existe una actividad con este id en el evento", Toast.LENGTH_SHORT).show();
                                                         } else {
-                                                            agregarActividadFirestore(idActividad, idEvento, /*capacidad,*/ descripcion, duracion, encargado, titulo);
+                                                            agregarActividadFirestore(descripcion, duracion, encargado, idActividad, idEvento, lugar, recursos, titulo);
                                                         }
                                                     } else {
                                                         Toast.makeText(Crear_Actividad.this, "Error al verificar la existencia de la actividad", Toast.LENGTH_SHORT).show();
@@ -153,7 +141,8 @@ public class Crear_Actividad extends AppCompatActivity {
 
                                     // No existe una actividad con el mismo número, agregar a Firestore
 
-                                };
+                                }
+                                ;
                             } else {
                                 Toast.makeText(Crear_Actividad.this, "Error al verificar la existencia del cubículo", Toast.LENGTH_SHORT).show();
                             }
@@ -162,10 +151,11 @@ public class Crear_Actividad extends AppCompatActivity {
         }
 
     }
-    private void agregarActividadFirestore(String idActividad, String idEvento, /*String capacidad,*/ String descripcion, String duracion, String encargado,  String titulo){
+
+    private void agregarActividadFirestore(String descripcion, String duracion, String encargado, String idActividad, String idEvento, String lugar, String recursos, String titulo) {
         CollectionReference ActividadCollection = mfirestore.collection("Actividad");
-        String IdActividad= "Act"+idActividad;
-        Actividad actividad = new Actividad( IdActividad,  idEvento,  /*capacidad,*/  descripcion,  duracion,  encargado, titulo);
+        String IdActividad = "Act" + idActividad;
+        Actividad actividad = new Actividad(descripcion, duracion, encargado, IdActividad, idEvento, lugar, recursos, titulo);
         ActividadCollection.add(actividad)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
@@ -186,20 +176,20 @@ public class Crear_Actividad extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void obteneridEventos(){
+    private void obteneridEventos() {
         idEventos.add("Seleccione una opción");
         mfirestore.collection("Evento").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for(QueryDocumentSnapshot documento : queryDocumentSnapshots){
+                for (QueryDocumentSnapshot documento : queryDocumentSnapshots) {
                     idEventos.add(documento.getString("idEvento"));
                 }
                 spinnerEventos.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, idEventos));
             }
         });
     }
-    private void obtenerEncargados(String idAsociacionEventoSeleccionado) {
-        encargados.clear();
+
+    private void obtenerEncargados() {
         encargados.add("Seleccione una opción");
         mfirestore.collection("usuario")
                 .get()
@@ -210,18 +200,20 @@ public class Crear_Actividad extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String nombreEncargado = document.getString("nombre");
                                 String idTipo = document.getString("idTipo");
-
                                 if (idTipo.equals("Admin")) {
                                     encargados.add(nombreEncargado);
                                 }
                             }
-                            if (encargados.size() == 1) { // Si solo queda la opción predeterminada, muestra un mensaje.
-                                encargados.add("No hay encargados disponibles para esta asociación");
+                            if (encargados.isEmpty()) {
+                                return;
+                            } else {
+                                spinnerEncargados.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, encargados));
                             }
-                            spinnerEncargados.setAdapter(spinnerEncargadosAdapter);
+
                         } else {
                             Log.e("Firestore", "Error al obtener los datos", task.getException());
                         }
+                        return;
                     }
                 });
     }

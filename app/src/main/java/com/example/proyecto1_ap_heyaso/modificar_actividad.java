@@ -44,6 +44,9 @@ public class modificar_actividad extends AppCompatActivity {
     private TextInputEditText inputTitulo;
     private TextInputEditText inputDescripcion;
     private TextInputEditText inputDuracion;
+
+    private TextInputEditText inputLugar;
+    private TextInputEditText inputRecursos;
     private ArrayAdapter<String> spinnerEncargadosAdapter;
     private Button btnVolver;
     private Button btnModificar;
@@ -66,6 +69,8 @@ public class modificar_actividad extends AppCompatActivity {
         inputDescripcion = findViewById(R.id.descripcion);
         inputDuracion = findViewById(R.id.duracion);
         spinnerEncargadosAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, encargados);
+        inputLugar = findViewById(R.id.lugarMA);
+        inputRecursos = findViewById(R.id.recursosMA);
 
         Intent intent = getIntent();
         String idEvento = intent.getStringExtra("idEvento");
@@ -136,6 +141,8 @@ public class modificar_actividad extends AppCompatActivity {
                             infoActividades.add(documento.getString("descripcion"));
                             infoActividades.add(documento.getString("duracion"));
                             infoActividades.add(documento.getString("encargados"));
+                            infoActividades.add(documento.getString("lugar"));
+                            infoActividades.add(documento.getString("recursos"));
 
                             setCampos();
                         }
@@ -154,6 +161,9 @@ public class modificar_actividad extends AppCompatActivity {
         int position1 = adapter1.getPosition(infoActividades.get(1));
         inputEncargados.setSelection(position1);
 
+        inputLugar.setText(infoActividades.get(4));
+        inputRecursos.setText(infoActividades.get(5));
+
     }
 
     private boolean validarCampos(){
@@ -161,10 +171,12 @@ public class modificar_actividad extends AppCompatActivity {
         String descripcion = inputDescripcion.getText().toString();
         String duracion = inputDuracion.getText().toString();
         String encargado = inputEncargados.getSelectedItem().toString();
+        String lugar = inputLugar.getText().toString();
+        String recursos = inputRecursos.getText().toString();
 
         System.out.println(inputEncargados.getSelectedItem().toString());
 
-        if (TextUtils.isEmpty(titulo)||  TextUtils.isEmpty(descripcion)  || TextUtils.isEmpty(duracion)  || encargado.equals("Seleccione un encargado")){
+        if (TextUtils.isEmpty(titulo)||  TextUtils.isEmpty(descripcion)  || TextUtils.isEmpty(duracion)  || encargado.equals("Seleccione un encargado")|| TextUtils.isEmpty(lugar) || TextUtils.isEmpty(recursos)){
             Toast.makeText(modificar_actividad.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             limpiarCampos();
             return false;
@@ -187,6 +199,8 @@ public class modificar_actividad extends AppCompatActivity {
                         docRef.update("descripcion", inputDescripcion.getText().toString());
                         docRef.update("duracion", inputDuracion.getText().toString());
                         docRef.update("encargado", inputEncargados.getSelectedItem().toString().substring(0, 5));
+                        docRef.update("lugar", inputLugar.getText().toString());
+                        docRef.update("recursos", inputRecursos.getText().toString());
                     }
                     Toast.makeText(modificar_actividad.this, "Actividad modificada correctamente", Toast.LENGTH_SHORT).show();
                     limpiarCampos();
@@ -202,6 +216,8 @@ public class modificar_actividad extends AppCompatActivity {
         inputDescripcion.setText("");
         inputDuracion.setText("");
         inputEncargados.setSelection(0);
+        inputLugar.setText("");
+        inputRecursos.setText("");
         infoActividades.clear();
     }
 }

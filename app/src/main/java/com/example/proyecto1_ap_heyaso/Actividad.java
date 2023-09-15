@@ -3,7 +3,8 @@ package com.example.proyecto1_ap_heyaso;
 public class Actividad {
     private String idActividad;
     private String idEvento;
-    //private String capacidad;
+    private String lugar;
+    private String recursos;
     private String descripcion;
     private String duracion;
     private String encargado;
@@ -17,13 +18,14 @@ public class Actividad {
         // Default constructor required for Firebase
     }
 
-    public Actividad(String idActividad, String idEvento, /*String capacidad,*/ String descripcion, String duracion, String encargado,  String titulo) {
+    public Actividad(String descripcion, String duracion, String encargado, String idActividad, String idEvento, String lugar, String recursos, String titulo) {
         this.idActividad= idActividad;
         this.idEvento = idEvento;
-        //this.capacidad = capacidad;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.encargado = encargado;
+        this.lugar= lugar;
+        this.recursos=recursos;
         this.titulo = titulo;
     }
 
@@ -75,5 +77,21 @@ public class Actividad {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(String recursos) {
+        this.recursos = recursos;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 }

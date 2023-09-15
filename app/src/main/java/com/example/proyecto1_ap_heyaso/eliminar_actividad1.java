@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -34,6 +35,8 @@ public class eliminar_actividad1 extends AppCompatActivity {
 
     private Button btnVolver;
 
+    private CollectionReference ActividadRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class eliminar_actividad1 extends AppCompatActivity {
         idActividad = findViewById(R.id.spinnerActividadAE);
         btnEliminar = findViewById(R.id.btn_EliminarEA);
         btnVolver = findViewById(R.id.btn_volverEA);
+        ActividadRef = mfirestore.collection("Actividad");
 
         getEventos();
 
@@ -125,10 +129,39 @@ public class eliminar_actividad1 extends AppCompatActivity {
     }
 
     private void eliminarActividad(){
-        //eliminar en cascada
-        ;
+        String eventoSeleccionado = idEvento.getSelectedItem().toString();
 
-        Toast.makeText(eliminar_actividad1.this, "Evento eliminado correctamente", Toast.LENGTH_SHORT).show();
+        // Obtener la actividad seleccionada
+        String actividadSeleccionada = idActividad.getSelectedItem().toString();
+        if (actividadSeleccionada.equals("Seleccione una Actividad")) {
+            Toast.makeText(eliminar_actividad1.this, "Seleccione una actividad válida", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Query query = ActividadRef.whereEqualTo("idEvento", eventoSeleccionado)
+                                    .whereEqualTo("idActividad", actividadSeleccionada);
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                    // Match found, remove the data
+                    querySnapshot.getDocuments().get(0).getReference().delete()
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(eliminar_actividad1.this, "Actividad eliminada correctamente", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnFailureListener(e -> {
+                                // Failed to remove data
+                                // Handle the failure or show an error message
+                            });
+                } else {
+                    // No match found, handle accordingly
+                    Toast.makeText(eliminar_actividad1.this, "No se encontró la actividad seleccionada", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                // Failed to execute the query
+                // Handle the failure or show an error message
+            }
+        });
+        Toast.makeText(eliminar_actividad1.this, "Actividad eliminada correctamente", Toast.LENGTH_SHORT).show();
     }
 
 }

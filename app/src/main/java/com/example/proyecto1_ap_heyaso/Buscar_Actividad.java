@@ -26,8 +26,12 @@ public class Buscar_Actividad extends AppCompatActivity {
     private TextInputEditText idActividad;
     private TextInputEditText descripcion;
     private TextInputEditText duracion;
+
+    private TextInputEditText lugarA;
+
+    private TextInputEditText recursosA;
     private TextInputEditText encargado;
-    //private TextInputEditText capacidad;
+
     private TextInputEditText titulo;
 
 
@@ -42,9 +46,10 @@ public class Buscar_Actividad extends AppCompatActivity {
         descripcion = findViewById(R.id.descripcion);
         duracion = findViewById(R.id.duracion);
         encargado = findViewById(R.id.encargado);
-        //capacidad = findViewById(R.id.capacidad);
         idActividad = findViewById(R.id.IdActividad);
         titulo = findViewById(R.id.titulo);
+        lugarA= findViewById(R.id.lugarA);
+        recursosA= findViewById(R.id.recursosA);
         infoActividad = new ArrayList<>();
 
         Button buscar = findViewById(R.id.btn_buscar);
@@ -80,8 +85,9 @@ public class Buscar_Actividad extends AppCompatActivity {
                                 descripcion.setText(infoActividad.get(2));
                                 duracion.setText(infoActividad.get(3));
                                 encargado.setText(infoActividad.get(4));
-                                //capacidad.setText(infoActividad.get(5));
                                 titulo.setText(infoActividad.get(5));
+                                lugarA.setText(infoActividad.get(6));
+                                recursosA.setText(infoActividad.get(7));
 
 
                             }
@@ -131,6 +137,8 @@ public class Buscar_Actividad extends AppCompatActivity {
                                             infoActividad.add(documentSnapshot.getString("encargado"));
                                             //infoActividad.add(documentSnapshot.getString("capacidad"));
                                             infoActividad.add(documentSnapshot.getString("titulo"));
+                                            infoActividad.add(documentSnapshot.getString("lugar"));
+                                            infoActividad.add(documentSnapshot.getString("recursos"));
                                         }
                                     }
                                 });
