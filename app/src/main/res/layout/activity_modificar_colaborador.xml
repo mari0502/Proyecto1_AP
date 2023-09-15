@@ -42,21 +42,29 @@
         android:id="@+id/colaborador"
         android:layout_width="265dp"
         android:layout_height="53dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="73dp"
         android:backgroundTint="#DC68E4"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="374dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoadmincolaborador5" />
 
     <TextView
         android:id="@+id/textoadmincolaborador5"
         android:layout_width="333dp"
         android:layout_height="29dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="142dp"
+        android:layout_marginEnd="39dp"
         android:fontFamily="sans-serif"
         android:text="Seleccione el colaborador a modificar"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="269dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripcionPagina17" />
 
     <ImageView
         android:id="@+id/imagen18"

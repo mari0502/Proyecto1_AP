@@ -116,7 +116,7 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
                         docRef.update("puesto", puesto.getText().toString());
                         docRef.update("correo", correo.getText().toString());
                         docRef.update("contraseña", contrasenna.getText().toString());
-                        docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString().substring(0, 5));
+                        docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString());
                         docRef.update("contacto", contacto.getText().toString());
                     }
                     Toast.makeText(Modificar_Colaborador2.this, "Colaborador modificado correctamente", Toast.LENGTH_SHORT).show();
@@ -130,7 +130,7 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
 
     private void getInfoColaborador(String id){
         if(id != "Seleccione un colaborador"){
-            db.collection("usuario").whereEqualTo("nombre", id).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            db.collection("usuario").whereEqualTo("carnet", id).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {

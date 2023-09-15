@@ -31,6 +31,8 @@ public class Modificar_Colaborador extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_colaborador);
 
+
+        db = FirebaseFirestore.getInstance();
         colaboradores = new ArrayList<>();
         inputId = findViewById(R.id.colaborador);
         btnBuscar = findViewById(R.id.btn_buscar3);
