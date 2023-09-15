@@ -148,23 +148,51 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
     private void agregarColaborador(String carnet, String correo, String puesto, String asociacion){
 
         DocumentReference updateUsuario = db.collection("usuario").document(carnet);
-        updateUsuario.update("idTipo", "Admin");
-        updateUsuario.update("puesto", puesto);
-        updateUsuario.update("Asociacion", asociacion).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(Colaboradores_Asociacion.this, "Tipo usuario actualizado con éxito", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Colaboradores_Asociacion.this, "Fallo actualizar tipo usuario", Toast.LENGTH_SHORT).show();
-                    }
-                });
 
-        Intent intent = new Intent(this, Colaboradores_Asociacion.class);
-        startActivity(intent);
+        CollectionReference asociacionRef = db.collection("Asociacion");
+        Query query = asociacionRef.whereEqualTo("nombre", asociacion);
+
+        // Ejecuta la consulta
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    // Verifica si se encontraron resultados
+                    if (!task.getResult().isEmpty()) {
+                        // Obtén el primer documento que coincide (puede haber varios, pero aquí se toma el primero)
+                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
+
+                        // Obtiene el valor del campo "idAsociacion"
+                        String idAsociacion = document.getString("idAsociacion");
+
+                        // Haz algo con el idAsociacion
+                        if (idAsociacion != null) {
+                            // Aquí puedes usar idAsociacion
+                            updateUsuario.update("idTipo", "Admin");
+                            updateUsuario.update("puesto", puesto);
+                            updateUsuario.update("idAsociacion", idAsociacion).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(Colaboradores_Asociacion.this, "Tipo usuario actualizado con éxito", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Colaboradores_Asociacion.this, "Fallo actualizar tipo usuario", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            Intent intent = new Intent(Colaboradores_Asociacion.this, Colaboradores_Asociacion.class);
+                            startActivity(intent);
+                        }
+
+                    }
+                }
+            }
+        });
     }
+
+
 
     //Funciones ir pantallas
     public void OpenVolverPantallaPrincipal() {
