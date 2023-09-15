@@ -3,6 +3,7 @@ package com.example.proyecto1_ap_heyaso;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.DocumentReference;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -44,6 +47,7 @@ public class Crear_Evento extends AppCompatActivity {
     private TextInputEditText inputCapacidad;
     private Button btnCrear;
     private Button btnVolver;
+    private DatePickerDialog.OnDateSetListener dateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +84,51 @@ public class Crear_Evento extends AppCompatActivity {
                 validarEvento();
             }
         });
+
+        inputFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+
+        dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                // Handle the selected date here
+                String monthString = "";
+                String dayString = "";
+                if(month + 1 <= 9){
+                    monthString = "0" + Integer.toString(month + 1);
+                }
+                else{
+                    monthString = Integer.toString(month + 1);
+                }
+                if(dayOfMonth <= 9){
+                    dayString = "0" + Integer.toString(dayOfMonth);
+                }
+                else{
+                    dayString = Integer.toString(dayOfMonth);
+                }
+                String selectedDate = dayString + "/" + monthString + "/" + year;
+                inputFecha.setText(selectedDate);
+            }
+        };
+    }
+
+    private void showDatePickerDialog() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                dateSetListener,
+                year,
+                month,
+                dayOfMonth);
+        datePickerDialog.show();
     }
 
     private void getAsociaciones(){
@@ -173,7 +222,6 @@ public class Crear_Evento extends AppCompatActivity {
                                             // revisa checkbox encuesta
                                             Boolean encuesta = false;
                                             if (inputEncuesta.isChecked()) { encuesta = true; }
-
                                             crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion.substring(0, 5), lugar, duracion, fecha, requisitos, encuesta, capacidad);
                                         }
                                     }

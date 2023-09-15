@@ -33,7 +33,7 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
     private Spinner inputAsociacion;
     private TextInputEditText nombre;
     private TextInputEditText carrera;
-    private TextInputEditText puesto;
+    private Spinner puesto;
     private TextInputEditText correo;
     private TextInputEditText contrasenna;
     private TextInputEditText contacto;
@@ -50,7 +50,7 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
         inputAsociacion = findViewById(R.id.asociacion3);
         nombre = findViewById(R.id.nombre);
         carrera = findViewById(R.id.carrera2);
-        puesto = findViewById(R.id.puesto2);
+        puesto = findViewById(R.id.puesto4);
         correo = findViewById(R.id.correo4);
         nombre = findViewById(R.id.nombre);
         contrasenna = findViewById(R.id.contrasenna3);
@@ -113,7 +113,7 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
                         docRef.update("nombre", nombre.getText().toString());
                         docRef.update("descripcion", descripcion.getText().toString());
                         docRef.update("carrera", carrera.getText().toString());
-                        docRef.update("puesto", puesto.getText().toString());
+                        docRef.update("puesto", puesto.getSelectedItem().toString());
                         docRef.update("correo", correo.getText().toString());
                         docRef.update("contraseña", contrasenna.getText().toString());
                         docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString());
@@ -154,12 +154,14 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
     private void setCampos(){
         nombre.setText(infoColaborador.get(0));
         carrera.setText(infoColaborador.get(1));
-        puesto.setText(infoColaborador.get(3));
         correo.setText(infoColaborador.get(4));
         contrasenna.setText(infoColaborador.get(5));
         contacto.setText(infoColaborador.get(6));
         descripcion.setText(infoColaborador.get(7));
 
+        ArrayAdapter<String> adapter1 = (ArrayAdapter<String>) puesto.getAdapter();
+        int position1 = adapter1.getPosition(infoColaborador.get(3));
+        puesto.setSelection(position1);
 
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) inputAsociacion.getAdapter();
         int position2 = adapter2.getPosition(infoColaborador.get(2));
@@ -170,14 +172,14 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
         String vnombre = nombre.getText().toString();
         String vcarrera = carrera.getText().toString();
         String vasociacion = inputAsociacion.getSelectedItem().toString();
-        String vpuesto = puesto.getText().toString();
+        String vpuesto = puesto.getSelectedItem().toString();
         String vcorreo = correo.getText().toString();
         String vcontrasenna = contrasenna.getText().toString();
         String vcontacto = contacto.getText().toString();
         String vdescripcion = descripcion.getText().toString();
 
 
-        if (TextUtils.isEmpty(vnombre)||  TextUtils.isEmpty(vcarrera) || TextUtils.isEmpty(vpuesto) || TextUtils.isEmpty(vcorreo) || TextUtils.isEmpty(vcontrasenna) || TextUtils.isEmpty(vcontacto) || TextUtils.isEmpty(vdescripcion) || vasociacion.equals("Seleccione una asociación")){
+        if (TextUtils.isEmpty(vnombre)||  TextUtils.isEmpty(vcarrera) || TextUtils.isEmpty(vpuesto) || TextUtils.isEmpty(vcorreo) || TextUtils.isEmpty(vcontrasenna) || TextUtils.isEmpty(vcontacto) || TextUtils.isEmpty(vdescripcion) || vasociacion.equals("Seleccione una asociación") || vpuesto.equals("Puesto en asociación")){
             Toast.makeText(Modificar_Colaborador2.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             limpiarCampos();
             return false;
@@ -188,12 +190,12 @@ public class Modificar_Colaborador2 extends AppCompatActivity {
     public void limpiarCampos() {
         nombre.setText("");
         carrera.setText("");
-        puesto.setText("");
         correo.setText("");
         contrasenna.setText("");
         contacto.setText("");
         descripcion.setText("");
         inputAsociacion.setSelection(0);
+        puesto.setSelection(0);
         infoColaborador.clear();
     }
 
