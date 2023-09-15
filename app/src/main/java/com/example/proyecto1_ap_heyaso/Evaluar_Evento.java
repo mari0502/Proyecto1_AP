@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,10 +18,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,11 +38,13 @@ public class Evaluar_Evento extends AppCompatActivity {
     private FirebaseFirestore db;
     private Button btnVolver;
     private Button btnEnviar;
-    private List<String> eventosPasados;
+    private List<String> eventos;
     private Spinner idEvento;
     private TextInputEditText comentario;
     private Spinner spinCalificar;
     private String calificacion;
+    SimpleDateFormat fechaHoy;
+    private Usuarios usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +53,13 @@ public class Evaluar_Evento extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         idEvento = findViewById(R.id.spinnereventos);
-        eventosPasados = new ArrayList<String>();
+        eventos = new ArrayList<String>();
         btnVolver = findViewById(R.id.btn_volver17);
         btnEnviar = findViewById(R.id.btn_Enviar);
         comentario = findViewById(R.id.comentario);
-        //calificacion = findViewById(R.id.calificacion);
+
+        Intent intent = getIntent();
+        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         activarSpinner();
         getEventos();
@@ -66,7 +74,7 @@ public class Evaluar_Evento extends AppCompatActivity {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                guardarEvaluacion();
+                validarCampos();
             }
         });
     }
@@ -91,21 +99,20 @@ public class Evaluar_Evento extends AppCompatActivity {
     }
 
     private void getEventos(){
-        /*hacer que solo se muestren eventos del dia despues de que se hicieron*/
-        Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String formattedDate = df.format(c);
-        System.out.println(formattedDate);
+        Date fecha = new Date(Calendar.getInstance().getTimeInMillis());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
 
-        eventosPasados.add("Seleccione un evento");
-        db.collection("Evento").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
+        eventos.add("Seleccione un evento");
+        CollectionReference eventoRef = db.collection("Evento");
+        Query query = eventoRef.whereEqualTo("encuesta", true).whereEqualTo("fecha", formatter.format(fecha));
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot documento : task.getResult()){
-                        eventosPasados.add(documento.getString("idEvento"));
+                        eventos.add(documento.getString("idEvento"));
                     }
-                    idEvento.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventosPasados));
+                    idEvento.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, eventos));
                 }
                 else {
                     Toast.makeText(Evaluar_Evento.this, "Error al cargar pagina", Toast.LENGTH_SHORT).show();
@@ -114,7 +121,7 @@ public class Evaluar_Evento extends AppCompatActivity {
         });
     }
 
-    private void guardarEvaluacion(){
+    private void validarCampos(){
         String id = idEvento.getSelectedItem().toString();
         String textocomentario = comentario.getText().toString();
         String textocalificacion = calificacion;
@@ -125,32 +132,55 @@ public class Evaluar_Evento extends AppCompatActivity {
             return;
         }
         else{
-            CollectionReference evaluacionesCollection = db.collection("Evaluacion");
-            Random rand = new Random();
-            int idEval = rand.nextInt(100);
-            Evaluacion eval = new Evaluacion("Eval" + idEval, id, "", textocomentario, textocalificacion);
-            evaluacionesCollection.add(eval).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentReference> task) {
-                    if (task.isSuccessful()) {
-                        limpiarCampos();
-                        Toast.makeText(Evaluar_Evento.this, "Evaluación agregada correctamente", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(Evaluar_Evento.this, "Error al agregar el evento", Toast.LENGTH_SHORT).show();
-                    }
-                    return;
-                }
-            });
+            guardarEvaluacion(id, textocomentario, textocalificacion);
         }
     }
 
-    private boolean validarEncuestaUnica(){
-        //se valida con el carnet
-        return true;
+    private void guardarEvaluacion(String id, String textocomentario, String textocalificacion){
+        CollectionReference evaluacionesCollection = db.collection("Evaluacion");
+        Query query = evaluacionesCollection.whereEqualTo("idEvaluacion", id);
+
+        Random rand = new Random();
+        int idEval = rand.nextInt(100);
+
+        //validar que no haya otro igual antes de agregar
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    String idEvaluacionExiste = document.getString("idEvaluacion");
+
+                    if (idEvaluacionExiste.equals(idEval)){
+                        guardarEvaluacion(id, textocomentario, textocalificacion);
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+        });
+        guardar(idEval, id, textocomentario, textocalificacion);
+    }
+
+    private void guardar(int idEval, String id, String textocomentario, String textocalificacion){
+        CollectionReference evaluacionesCollection = db.collection("Evaluacion");
+        Evaluacion eval = new Evaluacion("Eval" + idEval, id, usuario.getCarnetUsuario(), textocomentario, textocalificacion);
+        evaluacionesCollection.add(eval).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                if (task.isSuccessful()) {
+                    limpiarCampos();
+                    Toast.makeText(Evaluar_Evento.this, "Evaluación agregada correctamente", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Evaluar_Evento.this, "Error al agregar el evento", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+        });
     }
 
     public void limpiarCampos() {
-        //calificacion.setText("");
+        spinCalificar.setSelection(0);
         comentario.setText("");
         idEvento.setSelection(0);
     }

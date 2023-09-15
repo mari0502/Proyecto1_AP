@@ -50,21 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/asoPertenece"
-        android:layout_width="334dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="424dp"
-        android:layout_marginEnd="39dp"
-        android:backgroundTint="#2FBCF8"
-        android:hint="Nombre Asociación"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_annadirColab"
         android:layout_width="292dp"
@@ -103,11 +88,23 @@
         android:id="@+id/spinner2"
         android:layout_width="333dp"
         android:layout_height="55dp"
+        android:layout_marginTop="44dp"
         android:contextClickable="false"
         android:entries="@array/Puesto"
-        app:layout_constraintBottom_toTopOf="@+id/asoPertenece"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carnet2" />
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="333dp"
+        android:layout_height="55dp"
+        android:contextClickable="false"
+        android:entries="@array/Puesto"
+        app:layout_constraintBottom_toTopOf="@+id/btn_annadirColab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintVertical_bias="0.393" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,6 +61,7 @@ public class Pantalla_Foro extends AppCompatActivity{
 
     public void OpenEvaluar() {
         Intent intent = new Intent(this, Evaluar_Evento.class);
+        intent.putExtra("usuarioActual", usuario);
         startActivity(intent);
     }
 
