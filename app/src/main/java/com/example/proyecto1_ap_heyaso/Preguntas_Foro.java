@@ -59,7 +59,7 @@ public class Preguntas_Foro extends AppCompatActivity {
     private TextView mostrarUsuario, mostrarTexto, mostrarFecha;
     private LinearLayout primerContenedor;
     private LinearLayout comentarioLayout;
-    private String usuario, formattedDate, msg, nombreUsuario, idTipo;
+    private String usuario="anonimo", formattedDate, msg, nombreUsuario, idTipo;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault());
 
     @Override
@@ -86,7 +86,7 @@ public class Preguntas_Foro extends AppCompatActivity {
         btnEnviar =  findViewById(R.id.btnEnviarComentario);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                buscarUsuario();
+                //buscarUsuario();
                 agregarComentario();
             }
         });
