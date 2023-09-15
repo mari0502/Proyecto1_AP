@@ -59,9 +59,7 @@ public class Preguntas_Foro extends AppCompatActivity {
     private TextView mostrarUsuario, mostrarTexto, mostrarFecha;
     private LinearLayout primerContenedor;
     private LinearLayout comentarioLayout;
-    private String usuario, formattedDate, msg, nombreUsuario;
-    public Usuario_Global global;
-
+    private String usuario, formattedDate, msg, nombreUsuario, idTipo;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault());
 
     @Override
@@ -70,6 +68,9 @@ public class Preguntas_Foro extends AppCompatActivity {
         setContentView(R.layout.activity_preguntas_foro);
         db = FirebaseFirestore.getInstance();
         recuperarComentarios();
+
+        Bundle extras = getIntent().getExtras();
+        idTipo = extras.getString("tipo");
 
         Button button = (Button) findViewById(R.id.btn_Volver12);
         button.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +94,7 @@ public class Preguntas_Foro extends AppCompatActivity {
     }
 
     public void reOpenForo() {
-        if(global.getIdTipo() == "Estudiante"){
+        if(idTipo.equals("Estudiante")){
             Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
             startActivity(intent);
         }else{
@@ -176,7 +177,7 @@ public class Preguntas_Foro extends AppCompatActivity {
 
     private void buscarUsuario(){
         CollectionReference collectionRef = db.collection("usuario");
-        DocumentReference docRef = collectionRef.document(global.getIdUsuario());
+        DocumentReference docRef = collectionRef.document("2021104026");
 
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override

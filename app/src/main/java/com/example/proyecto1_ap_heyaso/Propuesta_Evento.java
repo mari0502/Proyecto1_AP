@@ -28,16 +28,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class Propuesta_Evento extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private String titulo, descripcion, categoria,objetivos, actividades;
+    private String titulo, descripcion, categoria,objetivos, actividades, idTipo;
     private  TextInputEditText InputTitulo,InputDescripcion, InputObjetivos, InputActividades;
     private Spinner spinnerCategoria;
     private FirebaseFirestore base;
-    public Usuario_Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propuesta_evento);
+
+        Bundle extras = getIntent().getExtras();
+        idTipo= extras.getString("tipo");
+
         activarSpinner();
 
         Button button = (Button) findViewById(R.id.btn_VolverForo);
@@ -73,7 +76,7 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
     }
 
     public void reOpenForo() {
-        if(global.getIdTipo() == "Estudiante"){
+        if(idTipo.equals("Estudiante")){
             Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
             startActivity(intent);
         }else{

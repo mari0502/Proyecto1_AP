@@ -59,11 +59,13 @@ public class Pantalla_Foro_Estudiante extends AppCompatActivity {
 
     public void OpenPropuesta() {
         Intent intent = new Intent(this, Propuesta_Evento.class);
+        intent.putExtra("tipo", "Estudainte");
         startActivity(intent);
     }
 
     public void OpenPreguntas() {
         Intent intent = new Intent(this, Preguntas_Foro.class);
+        intent.putExtra("tipo", "Estudainte");
         startActivity(intent);
     }
 
