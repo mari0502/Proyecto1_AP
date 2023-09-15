@@ -67,12 +67,12 @@ public class AdministrarAgenda extends AppCompatActivity {
     }
 
     public void OpenModificarActividad() {
-        Intent intent = new Intent(this, modificar_actividad.class);
+        Intent intent = new Intent(this, modificar_actividad1.class);
         startActivity(intent);
     }
 
     public void OpenEliminarActividad() {
-        Intent intent = new Intent(this, Eliminar_Actividad.class);
+        Intent intent = new Intent(this, eliminar_actividad1.class);
         startActivity(intent);
     }
 }
