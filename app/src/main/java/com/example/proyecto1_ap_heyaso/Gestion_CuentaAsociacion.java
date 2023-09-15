@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Gestion_CuentaAsociacion extends AppCompatActivity {
-    private Button btn_modAso, btn_adminColab, btn_EliminarAso, btn_back;
+    private Button btn_modAso, btn_adminColab, btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class Gestion_CuentaAsociacion extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_back = (Button) findViewById(R.id.btn_volver21);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
