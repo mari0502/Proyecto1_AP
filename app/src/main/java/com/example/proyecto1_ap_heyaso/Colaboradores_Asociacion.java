@@ -49,7 +49,6 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
     private Spinner spinner, spinAsociaciones;
     private String puesto, asociacion;
     private List<String> listaAsociaciones;
-    private Usuarios usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,6 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
         //Obtiene el objeto
         Intent intent = getIntent();
-        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
