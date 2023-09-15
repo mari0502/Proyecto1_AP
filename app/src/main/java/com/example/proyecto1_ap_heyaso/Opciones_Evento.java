@@ -29,12 +29,6 @@ public class Opciones_Evento extends AppCompatActivity {
             }
         });
 
-        Button button3 = (Button) findViewById(R.id.btn_gestionar);
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                OpenGestionarColaboradores();
-            }
-        });
     }
 
 
@@ -48,9 +42,6 @@ public class Opciones_Evento extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void OpenGestionarColaboradores() {
-        Intent intent = new Intent(this, Gestionar_colabores.class);
-        startActivity(intent);
-    }
+
 
 }

@@ -91,9 +91,6 @@
             android:name=".Inscribirse_a_evento"
             android:exported="false" />
         <activity
-            android:name=".Gestionar_colabores"
-            android:exported="false" />
-        <activity
             android:name=".modificar_actividad"
             android:exported="false" />
         <activity
