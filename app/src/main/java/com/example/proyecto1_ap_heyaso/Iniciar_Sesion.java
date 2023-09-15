@@ -86,6 +86,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
                             String correoCuenta = document.getString("correo");
                             String claveCuenta = document.getString("contraseña");
                             String tipoCuenta = document.getString("idTipo");
+                            System.out.println("TIPOS: "+ tipoCuenta);
 
                             if (correoCuenta.equals(correoUsuario)) {
                                 //correoExiste = true;
