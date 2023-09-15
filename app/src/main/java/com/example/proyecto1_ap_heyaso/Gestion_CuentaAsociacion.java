@@ -39,8 +39,7 @@ public class Gestion_CuentaAsociacion extends AppCompatActivity {
     }
 
     public void openAdminColaborador() {
-        /*Intent intent = new Intent(this, Administrar_Colaboradores.class);
-        startActivity(intent);*/
-        onBackPressed();
+        Intent intent = new Intent(this, Administrar_Colaboradores.class);
+        startActivity(intent);
     }
 }

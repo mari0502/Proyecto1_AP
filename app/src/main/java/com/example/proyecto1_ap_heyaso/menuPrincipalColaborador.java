@@ -42,12 +42,6 @@ public class menuPrincipalColaborador extends AppCompatActivity {
             }
         });
 
-        Button admiColaborador = (Button) findViewById(R.id.btn_adminColaborador);
-        admiColaborador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) { openAdminColaborador();}
-        });
-
         Button adminEvento = (Button) findViewById(R.id.btn_adminEvento);
         adminEvento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,11 +74,6 @@ public class menuPrincipalColaborador extends AppCompatActivity {
 
     public void openCuentaAso() {
         Intent intent = new Intent(this, Gestion_CuentaAsociacion.class);
-        startActivity(intent);
-    }
-
-    public void openAdminColaborador() {
-        Intent intent = new Intent(this, Administrar_Colaboradores.class);
         startActivity(intent);
     }
 

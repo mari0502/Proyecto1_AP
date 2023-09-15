@@ -50,7 +50,10 @@ public class Modificar_Asociacion extends AppCompatActivity {
         btn_actualizarAso = findViewById(R.id.btn_actualizar);
         btn_back = findViewById(R.id.btn_volver19);
         btn_actualizarAso.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) { validarAso(); }
+            public void onClick(View v) {
+                validarAso();
+                limpiarCampos();
+            }
         });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +145,14 @@ public class Modificar_Asociacion extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public void limpiarCampos(){
+        idAso.setText("");
+        nombreAsocia.setText("");
+        codCarrera.setText("");
+        contacto.setText("");
+        descripcion.setText("");
     }
 
     public void OpenVolverPantallaPrincipal() {

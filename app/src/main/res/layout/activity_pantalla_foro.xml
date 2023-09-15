@@ -31,6 +31,8 @@
             android:id="@+id/DescripcionPagina"
             android:layout_width="339dp"
             android:layout_height="58dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="34dp"
             android:fontFamily="sans-serif-medium"
             android:text="Foro de discusión"
             android:textAlignment="center"
@@ -38,9 +40,10 @@
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.161"
-            tools:layout_editor_absoluteX="38dp" />
+            app:layout_constraintVertical_bias="0.161" />
 
         <TextView
             android:id="@+id/texto2"
@@ -52,16 +55,14 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.264" />
+            app:layout_constraintVertical_bias="0.268"
+            tools:layout_editor_absoluteX="43dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/propuesta"
-            android:layout_width="147dp"
-            android:layout_height="53dp"
+            android:layout_width="179dp"
+            android:layout_height="63dp"
             android:background="@drawable/round_button_white_background"
             android:fontFamily="sans-serif-medium"
             android:text="Propuesta de Evento"
@@ -77,8 +78,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/aprobarPropuesta"
-            android:layout_width="157dp"
-            android:layout_height="53dp"
+            android:layout_width="172dp"
+            android:layout_height="59dp"
             android:background="@drawable/round_button_white_background"
             android:fontFamily="sans-serif-medium"
             android:text="Gestionar Propuesta"
@@ -94,8 +95,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/preguntas"
-            android:layout_width="147dp"
-            android:layout_height="47dp"
+            android:layout_width="176dp"
+            android:layout_height="57dp"
             android:background="@drawable/round_button_white_background"
             android:fontFamily="sans-serif-medium"
             android:text="Preguntas"
@@ -111,8 +112,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/evaluarEvento"
-            android:layout_width="152dp"
-            android:layout_height="55dp"
+            android:layout_width="176dp"
+            android:layout_height="58dp"
             android:background="@drawable/round_button_white_background"
             android:fontFamily="sans-serif-medium"
             android:text="Evaluar Evento"

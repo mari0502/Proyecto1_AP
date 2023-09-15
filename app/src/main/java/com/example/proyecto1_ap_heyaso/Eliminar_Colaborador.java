@@ -37,12 +37,13 @@ public class Eliminar_Colaborador extends AppCompatActivity {
         btnVolver = findViewById(R.id.btn_volver14);
         spinner = findViewById(R.id.colaborador2);
 
+        getColaboradores();
+
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 eliminarColaborador();
-                Intent intent = new Intent(getApplicationContext(), Administrar_Colaboradores.class);
-                startActivity(intent);
+                spinner.setSelection(0);
             }
         });
 

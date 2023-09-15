@@ -8,23 +8,6 @@
     tools:context=".menuPrincipalColaborador">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_adminCuenta"
-        android:layout_width="216dp"
-        android:layout_height="57dp"
-        android:background="@drawable/round_button_white_background"
-        android:fontFamily="sans-serif-medium"
-        android:text="Administrar Cuenta"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_adminEvento"
         android:layout_width="216dp"
         android:layout_height="57dp"
@@ -39,15 +22,15 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534" />
+        app:layout_constraintVertical_bias="0.568" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_adminColaborador"
+        android:id="@+id/btn_adminCuenta"
         android:layout_width="216dp"
         android:layout_height="57dp"
         android:background="@drawable/round_button_white_background"
         android:fontFamily="sans-serif-medium"
-        android:text="Administrar Colaborador"
+        android:text="Administrar Cuenta"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="14sp"
@@ -56,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.468" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_foro"
@@ -73,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.743" />
+        app:layout_constraintVertical_bias="0.672" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_adminAso"
@@ -90,13 +73,13 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.856" />
+        app:layout_constraintVertical_bias="0.784" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_salir"
         android:layout_width="182dp"
         android:layout_height="56dp"
-        android:layout_marginTop="664dp"
+        android:layout_marginTop="644dp"
         android:background="@drawable/round_button_background"
         android:fontFamily="sans-serif-medium"
         android:text="Salir"
@@ -104,6 +87,7 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
