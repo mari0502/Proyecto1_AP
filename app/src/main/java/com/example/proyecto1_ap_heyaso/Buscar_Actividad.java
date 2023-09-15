@@ -27,7 +27,7 @@ public class Buscar_Actividad extends AppCompatActivity {
     private TextInputEditText descripcion;
     private TextInputEditText duracion;
     private TextInputEditText encargado;
-    private TextInputEditText capacidad;
+    //private TextInputEditText capacidad;
     private TextInputEditText titulo;
 
 
@@ -42,7 +42,7 @@ public class Buscar_Actividad extends AppCompatActivity {
         descripcion = findViewById(R.id.descripcion);
         duracion = findViewById(R.id.duracion);
         encargado = findViewById(R.id.encargado);
-        capacidad = findViewById(R.id.capacidad);
+        //capacidad = findViewById(R.id.capacidad);
         idActividad = findViewById(R.id.IdActividad);
         titulo = findViewById(R.id.titulo);
         infoActividad = new ArrayList<>();
@@ -80,8 +80,8 @@ public class Buscar_Actividad extends AppCompatActivity {
                                 descripcion.setText(infoActividad.get(2));
                                 duracion.setText(infoActividad.get(3));
                                 encargado.setText(infoActividad.get(4));
-                                capacidad.setText(infoActividad.get(5));
-                                titulo.setText(infoActividad.get(6));
+                                //capacidad.setText(infoActividad.get(5));
+                                titulo.setText(infoActividad.get(5));
 
 
                             }
@@ -129,7 +129,7 @@ public class Buscar_Actividad extends AppCompatActivity {
                                             infoActividad.add(documentSnapshot.getString("descripcion"));
                                             infoActividad.add(documentSnapshot.getString("duracion"));
                                             infoActividad.add(documentSnapshot.getString("encargado"));
-                                            infoActividad.add(documentSnapshot.getString("capacidad"));
+                                            //infoActividad.add(documentSnapshot.getString("capacidad"));
                                             infoActividad.add(documentSnapshot.getString("titulo"));
                                         }
                                     }
@@ -141,7 +141,7 @@ public class Buscar_Actividad extends AppCompatActivity {
         descripcion.setText("");
         duracion.setText("");
         encargado.setText("");
-        capacidad.setText("");
+        //capacidad.setText("");
         titulo.setText("");
 
     }
