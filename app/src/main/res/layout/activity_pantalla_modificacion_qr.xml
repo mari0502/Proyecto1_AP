@@ -29,9 +29,10 @@
         android:id="@+id/imageView"
         android:layout_width="253dp"
         android:layout_height="368dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangulo_fondo_mediano"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="39dp" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/solicitudAdm"
@@ -42,7 +43,8 @@
         android:textColor="@color/design_default_color_secondary"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="103dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="191dp" />
 
     <TextView
@@ -51,15 +53,18 @@
         android:layout_height="35dp"
         android:text="Nombre del evento: XXX"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="518dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toEndOf="@+id/imagenModificacion_QR"
+        tools:layout_editor_absoluteY="516dp" />
 
     <ImageView
         android:id="@+id/imagenHeyASO"
         android:layout_width="77dp"
         android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="67dp" />
 
     <TextView
@@ -68,7 +73,9 @@
         android:layout_height="wrap_content"
         android:text="Fecha:"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toEndOf="@+id/imagenModificacion_QR"
         tools:layout_editor_absoluteY="570dp" />
 
     <TextView
@@ -77,14 +84,18 @@
         android:layout_height="wrap_content"
         android:text="Lugar:"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toEndOf="@+id/imagenModificacion_QR"
         tools:layout_editor_absoluteY="606dp" />
 
     <ImageView
         android:id="@+id/imagenModificacion_QR"
         android:layout_width="181dp"
         android:layout_height="181dp"
-        tools:layout_editor_absoluteX="37dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="497dp" />
 
 

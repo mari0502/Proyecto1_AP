@@ -30,7 +30,7 @@ public class Opciones_Evento extends AppCompatActivity {
         });
 
         Button button3 = (Button) findViewById(R.id.btn_volver5);
-        button2.setOnClickListener(new View.OnClickListener() {
+        button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 OpenAdministrarEvento();
             }
@@ -50,8 +50,9 @@ public class Opciones_Evento extends AppCompatActivity {
     }
 
     public void OpenAdministrarEvento() {
-        Intent intent = new Intent(this, Administrar_Evento.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, Administrar_Evento.class);
+        startActivity(intent);*/
+        onBackPressed();
     }
 
 }
