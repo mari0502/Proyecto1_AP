@@ -34,7 +34,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private TextInputEditText asociacion, carnet;
+    private TextInputEditText asociacion;
     private Button btn_back, btn_agregarColab;
     private Spinner spinner;
     private String puesto;
@@ -53,10 +53,6 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         asociacion = findViewById(R.id.asoPertenece);
-        carnet = findViewById(R.id.carnet2);
-        //correo = findViewById(R.id.correo2);
-        //puesto = findViewById(R.id.puesto);
-
 
         activarSpinner();
 
@@ -95,7 +91,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
     }
 
     private void validarColaborador(){
-        String carnetEst = carnet.getText().toString().trim();
+        String carnetEst = usuario.getCarnetUsuario();
         //String correoEst = correo.getText().toString().trim();
         String aso = asociacion.getText().toString().trim();
         String posicion = puesto;
