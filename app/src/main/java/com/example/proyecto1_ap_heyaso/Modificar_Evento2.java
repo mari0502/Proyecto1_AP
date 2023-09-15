@@ -113,7 +113,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
                 else{
                     dayString = Integer.toString(dayOfMonth);
                 }
-                String selectedDate = dayString + "/" + monthString + "/" + year;
+                String selectedDate = dayString + "/" + monthString + "/" + Integer.toString(year).substring(2,4);
                 inputFecha.setText(selectedDate);
             }
         };
@@ -239,7 +239,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
                         docRef.update("requisitos", inputRequisitos.getText().toString());
                         docRef.update("fecha", inputFecha.getText().toString());
                         docRef.update("capacidad", inputCapacidad.getText().toString());
-                        docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString().substring(0, 5));
+                        docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString());
                         docRef.update("categoria", inputCategoria.getSelectedItem().toString());
                         docRef.update("encuesta", (inputEncuesta.isChecked()) ? true : false);
                     }
