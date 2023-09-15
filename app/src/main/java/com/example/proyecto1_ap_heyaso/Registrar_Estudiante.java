@@ -84,8 +84,7 @@ public class Registrar_Estudiante extends AppCompatActivity {
         String contactoEst = contacto.getText().toString().trim();
         String descripcionEst = descripcion.getText().toString().trim();
 
-        if(nombreEst.isEmpty() && carreraEst.isEmpty() && carnetEst.isEmpty() && correoEst.isEmpty() && claveEst.isEmpty() &&
-                contactoEst.isEmpty() && descripcionEst.isEmpty()){
+        if(nombreEst.isEmpty() && carreraEst.isEmpty() && carnetEst.isEmpty() && correoEst.isEmpty() && claveEst.isEmpty() && contactoEst.isEmpty()){
             Toast.makeText(Registrar_Estudiante.this, "Complete los datos solicitados para el registro.", Toast.LENGTH_SHORT).show();
             return;
         } else {

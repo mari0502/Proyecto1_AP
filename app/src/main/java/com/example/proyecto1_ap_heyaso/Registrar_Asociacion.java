@@ -72,7 +72,7 @@ public class Registrar_Asociacion extends AppCompatActivity {
 
         String idAso = "Aso"+idAsociacion;
 
-        if(idAsociacion.isEmpty() && nombreAso.isEmpty() && carrera.isEmpty() && info.isEmpty() && detalle.isEmpty()){
+        if(idAsociacion.isEmpty() && nombreAso.isEmpty() && carrera.isEmpty() && info.isEmpty()){
             Toast.makeText(Registrar_Asociacion.this, "Complete los datos solicitados para el registro.", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -141,11 +141,6 @@ public class Registrar_Asociacion extends AppCompatActivity {
                         Toast.makeText(Registrar_Asociacion.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Registrar_Asociacion.this, "Error al registrar", Toast.LENGTH_SHORT).show();
             }
         });
     }

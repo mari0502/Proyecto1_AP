@@ -72,7 +72,7 @@ public class Modificar_Asociacion extends AppCompatActivity {
 
         //String idAso = "Aso"+idAsociacion;
 
-        if(identificador.isEmpty() && nombreAso.isEmpty() && carrera.isEmpty() && info.isEmpty() && detalle.isEmpty()){
+        if(identificador.isEmpty() && nombreAso.isEmpty() && carrera.isEmpty() && info.isEmpty()){
             Toast.makeText(Modificar_Asociacion.this, "Complete los datos solicitados para el registro.", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -135,15 +135,11 @@ public class Modificar_Asociacion extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         finish();
-                        startActivity(new Intent(Modificar_Asociacion.this, Modificar_Asociacion.class));
-                        Toast.makeText(Modificar_Asociacion.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
+                        /* startActivity(new Intent(Modificar_Asociacion.this, Modificar_Asociacion.class));
+                        Toast.makeText(Modificar_Asociacion.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();*/
+                        onBackPressed();
                     }
                 });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Modificar_Asociacion.this, "Error al actualizar", Toast.LENGTH_SHORT).show();
             }
         });
     }

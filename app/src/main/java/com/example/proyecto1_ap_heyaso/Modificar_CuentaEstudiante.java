@@ -81,8 +81,7 @@ public class Modificar_CuentaEstudiante extends AppCompatActivity {
         String contactoEst = contacto.getText().toString().trim();
         String descripcionEst = descripcion.getText().toString().trim();
 
-        if(nombreEst.isEmpty() && carreraEst.isEmpty() && carnetEst.isEmpty() && correoEst.isEmpty() && claveEst.isEmpty() &&
-                contactoEst.isEmpty() && descripcionEst.isEmpty()){
+        if(nombreEst.isEmpty() && carreraEst.isEmpty() && carnetEst.isEmpty() && correoEst.isEmpty() && claveEst.isEmpty() && contactoEst.isEmpty()){
             Toast.makeText(Modificar_CuentaEstudiante.this, "Complete los datos solicitados para el registro.", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -156,8 +155,9 @@ public class Modificar_CuentaEstudiante extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         finish();
-                        startActivity(new Intent(Modificar_CuentaEstudiante.this, Modificar_CuentaEstudiante.class));
-                        Toast.makeText(Modificar_CuentaEstudiante.this, "Usuario actualizado con éxito", Toast.LENGTH_SHORT).show();
+                       /*startActivity(new Intent(Modificar_CuentaEstudiante.this, Modificar_CuentaEstudiante.class));
+                        Toast.makeText(Modificar_CuentaEstudiante.this, "Usuario actualizado con éxito", Toast.LENGTH_SHORT).show();*/
+                        onBackPressed();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
