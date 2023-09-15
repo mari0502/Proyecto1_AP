@@ -20,12 +20,6 @@ public class menuPrincipalColaborador extends AppCompatActivity {
             }
         });
 
-        Button calendario = (Button) findViewById(R.id.btn_calendario);
-        calendario.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                OpenCalendario();
-            }
-        });
 
         Button button2 = (Button) findViewById(R.id.btn_foro);
         button2.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +54,7 @@ public class menuPrincipalColaborador extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void OpenCalendario() {
-        Intent intent = new Intent(this, Calendario.class);
-        startActivity(intent);
-    }
+
     public void openCuentaEst() {
         Intent intent = new Intent(this, Gestion_CuentaEstudiante.class);
         startActivity(intent);

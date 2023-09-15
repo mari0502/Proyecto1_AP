@@ -75,21 +75,17 @@ public class Calendario extends AppCompatActivity{
             }
         });
 
-        Button btnVolver = (Button) findViewById(R.id.btnVolverMenuEstCalendario);
+        Button btnVolver = (Button) findViewById(R.id.btnCalendarioVolver);
         btnVolver.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                reOpenMenuEstudiante();
+                Intent intent = new Intent(Calendario.this, menuPrincipalEstudiante.class);
+                startActivity(intent);
             }
         });
-
 
         recuperarEventos();
     }
 
-    private void reOpenMenuEstudiante(){
-        Intent intent = new Intent(this, menuPrincipalEstudiante.class);
-        startActivity(intent);
-    }
     private void crearCanalNotificaciones(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "canalEventos";
@@ -206,6 +202,7 @@ public class Calendario extends AppCompatActivity{
                     titulo = documentSnapshot.getString("titulo");
                     descripcion  = documentSnapshot.getString("descripcion");
                     fecha = documentSnapshot.getString("fecha");
+                    System.out.println(fecha);
                     lugar = documentSnapshot.getString("lugar");
                     categoria = documentSnapshot.getString("categoria");
                     duracion = documentSnapshot.getString("duracion");

@@ -7,13 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class menuPrincipalEstudiante extends AppCompatActivity {
+public class menuPrincipalEstudiante extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal_estudiante);
 
+        Button calendario = (Button) findViewById(R.id.btn_calendario);
+        calendario.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent( menuPrincipalEstudiante.this, Calendario.class);
+                startActivity(intent);
+            }
+        });
 
         Button button = (Button) findViewById(R.id.btn_salir);
         button.setOnClickListener(new View.OnClickListener() {
@@ -50,8 +57,6 @@ public class menuPrincipalEstudiante extends AppCompatActivity {
             }
         });
     }
-
-
 
     public void rePantallaInicio() {
         Intent intent = new Intent(this, Pagina_Principal.class);
