@@ -41,7 +41,7 @@ public class Crear_Evento extends AppCompatActivity {
     private TextInputEditText inputFecha;
     private TextInputEditText inputRequisitos;
     private CheckBox inputEncuesta;
-    private CheckBox inputCapacidad;
+    private TextInputEditText inputCapacidad;
     private Button btnCrear;
     private Button btnVolver;
 
@@ -89,7 +89,7 @@ public class Crear_Evento extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot documento : task.getResult()){
-                        asociaciones.add(documento.getString("idAsociacion") + " -" + " " + documento.getString("nombre"));
+                        asociaciones.add(documento.getString("idAsociacion"));
                     }
                     inputAsociacion.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, asociaciones));
                 }
