@@ -50,6 +50,14 @@ public class Gestion_CuentaEstudiante extends AppCompatActivity {
                 openEliminaUsuario();
             }
         });
+
+        btn_modificarUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openModificarestudiante();
+            }
+        });
+
         //Regresar a la pantalla principal
         btn_close.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) { openVolverMenuEst(); }
@@ -99,6 +107,11 @@ public class Gestion_CuentaEstudiante extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void openModificarestudiante(){
+        Intent intent = new Intent(Gestion_CuentaEstudiante.this, Modificar_CuentaEstudiante.class);
+        startActivity(intent);
     }
 
     public void openVolverMenuEst() {
