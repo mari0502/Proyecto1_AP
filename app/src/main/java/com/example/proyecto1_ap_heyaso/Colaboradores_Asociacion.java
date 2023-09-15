@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,8 +34,10 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private TextInputEditText asociacion, carnet, puesto;
+    private TextInputEditText asociacion, carnet;
     private Button btn_back, btn_agregarColab;
+    private Spinner spinner;
+    private String puesto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,9 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         asociacion = findViewById(R.id.asoPertenece);
         carnet = findViewById(R.id.carnet2);
         //correo = findViewById(R.id.correo2);
-        puesto = findViewById(R.id.puesto);
+        //puesto = findViewById(R.id.puesto);
+
+        activarSpinner();
 
         btn_agregarColab = (Button) findViewById(R.id.btn_annadirColab);
         btn_agregarColab.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +69,30 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         });
     }
 
+    private void activarSpinner(){
+        spinner = findViewById(R.id.spinner2);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.Puesto, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                puesto = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //No hace nada
+            }
+        });
+    }
+
     private void validarColaborador(){
         String carnetEst = carnet.getText().toString().trim();
         //String correoEst = correo.getText().toString().trim();
         String aso = asociacion.getText().toString().trim();
-        String posicion = puesto.getText().toString().trim();
+        String posicion = puesto;
 
         if(carnetEst.isEmpty() && aso.isEmpty() && posicion.isEmpty()){
             Toast.makeText(Colaboradores_Asociacion.this, "Complete los datos solicitados para el añadir el colaborador.", Toast.LENGTH_SHORT).show();
