@@ -143,8 +143,8 @@ public class Calendario extends AppCompatActivity{
         calendar.set(Calendar.YEAR, fechaObtenida.getYear());
         calendar.set(Calendar.MONTH, fechaObtenida.getMonth());
         calendar.set(Calendar.DAY_OF_MONTH, fechaObtenida.getDay());
-        calendar.set(Calendar.HOUR_OF_DAY, 10); // Establece la hora del día (formato de 24 horas)
-        calendar.set(Calendar.MINUTE, 20); // Establece los minutos
+        calendar.set(Calendar.HOUR_OF_DAY, 17); // Establece la hora del día (formato de 24 horas)
+        calendar.set(Calendar.MINUTE, 50); // Establece los minutos
 
         //Crear un AlarmClockInfo
         AlarmManager.AlarmClockInfo alarmClockInfo = new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(), pendingIntent);

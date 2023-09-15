@@ -163,7 +163,9 @@ public class Crear_Evento extends AppCompatActivity {
 
         String NewidEvento = "Evento" + idEvento;
 
-        if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(idEvento) ||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(capacidad) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria.equals("Seleccione una categoría") || asociacion.equals("Seleccione una asociación")){
+        if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(idEvento) ||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(capacidad) ||
+                TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria.equals("Seleccione una categoría") ||
+                asociacion.equals("Seleccione una asociación")){
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -222,7 +224,7 @@ public class Crear_Evento extends AppCompatActivity {
                                             // revisa checkbox encuesta
                                             Boolean encuesta = false;
                                             if (inputEncuesta.isChecked()) { encuesta = true; }
-                                            crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion.substring(0, 5), lugar, duracion, fecha, requisitos, encuesta, capacidad);
+                                            crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion, lugar, duracion, fecha, requisitos, encuesta, capacidad);
                                         }
                                     }
                                 }
