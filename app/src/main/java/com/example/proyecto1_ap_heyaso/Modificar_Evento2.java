@@ -66,7 +66,6 @@ public class Modificar_Evento2 extends AppCompatActivity {
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
 
-
         getAsociaciones();
         getInfoEvento(id);
 
@@ -197,7 +196,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
                     Toast.makeText(Modificar_Evento2.this, "Evento modificado correctamente", Toast.LENGTH_SHORT).show();
                     limpiarCampos();
                 } else {
-                    Toast.makeText(Modificar_Evento2.this, "Error al modificar el vento", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Modificar_Evento2.this, "Error al modificar el evento", Toast.LENGTH_SHORT).show();
                 }
             });
         }

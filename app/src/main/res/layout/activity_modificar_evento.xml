@@ -18,10 +18,10 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_buscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoadmincolaborador5" />
+        app:layout_constraintTop_toBottomOf="@+id/textoadminevento5" />
 
     <TextView
-        android:id="@+id/textoadmincolaborador5"
+        android:id="@+id/textoadminevento5"
         android:layout_width="333dp"
         android:layout_height="29dp"
         android:layout_marginStart="38dp"
