@@ -7,7 +7,7 @@
     tools:context=".Inscribirse_a_evento">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_volver"
+        android:id="@+id/btn_volverI"
         android:layout_width="158dp"
         android:layout_height="48dp"
         android:layout_marginEnd="28dp"
@@ -36,23 +36,6 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_consultar"
-        android:layout_width="158dp"
-        android:layout_height="48dp"
-        android:background="@drawable/round_button_background"
-        android:fontFamily="sans-serif-medium"
-        android:text="Consultar Disponibilidad"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.838" />
 
     <TextView
         android:id="@+id/descripcionPagina"
@@ -84,7 +67,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/nombre"
+        android:id="@+id/nombreEst"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
@@ -100,7 +83,7 @@
 
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/contacto"
+        android:id="@+id/contactoEst"
         android:layout_width="334dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
@@ -108,7 +91,7 @@
         android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Contacto"
-        android:inputType="number"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,7 +114,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinnerInscripcion"
         android:layout_width="335dp"
         android:layout_height="52dp"
         android:backgroundTint="#DC68E4"
