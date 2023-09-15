@@ -42,7 +42,7 @@ public class Modificar_CuentaEstudiante extends AppCompatActivity {
 
         nombre = findViewById(R.id.nombre4);
         carrera = findViewById(R.id.carrera3);
-        carnet = findViewById(R.id.carnet4);
+        //carnet = findViewById(R.id.carnet4);
         correo = findViewById(R.id.correo5);
         clave = findViewById(R.id.contrasenna5);
         contacto = findViewById(R.id.contacto5);
@@ -50,10 +50,13 @@ public class Modificar_CuentaEstudiante extends AppCompatActivity {
         btn_salir = findViewById(R.id.btn_salir7);
         btn_actualizar = findViewById(R.id.btn_actualizarCuenta);
 
+        Intent intent = getIntent();
+        String carnetRecibido = intent.getStringExtra("carnet");
+
         btn_actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validarUsuario();
+                validarUsuario(carnetRecibido);
             }
         });
         //Regresar a la pantalla principal
@@ -72,10 +75,10 @@ public class Modificar_CuentaEstudiante extends AppCompatActivity {
         onBackPressed();
     }
 
-    private void validarUsuario(){
+    private void validarUsuario(String carnetEst){
         String nombreEst = nombre.getText().toString().trim();
         String carreraEst = carrera.getText().toString().trim();
-        String carnetEst = carnet.getText().toString().trim();
+        //String carnetEst = carnet.getText().toString().trim();
         String correoEst = correo.getText().toString().trim();
         String claveEst = clave.getText().toString().trim();
         String contactoEst = contacto.getText().toString().trim();

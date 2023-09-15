@@ -54,7 +54,10 @@ public class Gestion_CuentaEstudiante extends AppCompatActivity {
         btn_modificarUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openModificarestudiante();
+                //que pase a modificar 2 y lleve el id del evento
+                Intent intent = new Intent(Gestion_CuentaEstudiante.this, Modificar_CuentaEstudiante.class);
+                intent.putExtra("carnet", carnet.getText().toString());
+                startActivity(intent);
             }
         });
 
