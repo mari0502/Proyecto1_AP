@@ -28,6 +28,13 @@ public class Gestion_CuentaAsociacion extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), menuPrincipalColaborador.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void openAdminColaborador() {
