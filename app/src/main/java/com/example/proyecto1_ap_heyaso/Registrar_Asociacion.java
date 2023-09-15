@@ -138,7 +138,7 @@ public class Registrar_Asociacion extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         finish();
                         startActivity(new Intent(Registrar_Asociacion.this, Colaboradores_Asociacion.class));
-                        Toast.makeText(Registrar_Asociacion.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Registrar_Asociacion.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
