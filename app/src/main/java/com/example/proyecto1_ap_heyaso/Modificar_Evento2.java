@@ -39,6 +39,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
     private TextInputEditText inputFecha;
     private TextInputEditText inputDuracion;
     private TextInputEditText inputRequisitos;
+    private TextInputEditText inputCapacidad;
     private CheckBox inputEncuesta;
 
     @Override
@@ -58,6 +59,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
         inputFecha = findViewById(R.id.fecha2);
         inputRequisitos = findViewById(R.id.requisitos2);
         inputEncuesta = findViewById(R.id.encuesta2);
+        inputCapacidad = findViewById(R.id.capacidad2);
         btnVolver = findViewById(R.id.btn_volver4);
         btnModificar = findViewById(R.id.btn_modificar);
 
@@ -117,6 +119,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
                             infoEvento.add(documento.getString("lugar"));
                             infoEvento.add(documento.getString("requisitos"));
                             infoEvento.add(documento.getString("idAsociacion"));
+                            infoEvento.add(documento.getString("capacidad"));
 
                             if(documento.getBoolean("encuesta")) {
                                 inputEncuesta.setChecked(true);
@@ -147,6 +150,8 @@ public class Modificar_Evento2 extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) inputAsociacion.getAdapter();
         int position2 = adapter2.getPosition(infoEvento.get(7));
         inputAsociacion.setSelection(position2);
+
+        inputCapacidad.setText(infoEvento.get(8));
     }
 
     private boolean validarCampos(){
@@ -155,12 +160,13 @@ public class Modificar_Evento2 extends AppCompatActivity {
         String categoria = inputCategoria.getSelectedItem().toString();
         String asociacion = inputAsociacion.getSelectedItem().toString();
         String lugar = inputLugar.getText().toString();
+        String capacidad = inputCapacidad.getText().toString();
         String duracion = inputDuracion.getText().toString();
         String fecha = inputFecha.getText().toString();
 
         System.out.println(inputCategoria.getSelectedItem().toString());
 
-        if (TextUtils.isEmpty(titulo)||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria.equals("Seleccione una categoría") || asociacion.equals("Seleccione una asociación")){
+        if (TextUtils.isEmpty(titulo)||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(capacidad) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria.equals("Seleccione una categoría") || asociacion.equals("Seleccione una asociación")){
             Toast.makeText(Modificar_Evento2.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             limpiarCampos();
             return false;
@@ -183,6 +189,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
                         docRef.update("lugar", inputLugar.getText().toString());
                         docRef.update("requisitos", inputRequisitos.getText().toString());
                         docRef.update("fecha", inputFecha.getText().toString());
+                        docRef.update("capacidad", inputCapacidad.getText().toString());
                         docRef.update("idAsociacion", inputAsociacion.getSelectedItem().toString().substring(0, 5));
                         docRef.update("categoria", inputCategoria.getSelectedItem().toString());
                         docRef.update("encuesta", (inputEncuesta.isChecked()) ? true : false);

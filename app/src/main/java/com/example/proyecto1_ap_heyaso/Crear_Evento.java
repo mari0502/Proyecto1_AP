@@ -41,6 +41,7 @@ public class Crear_Evento extends AppCompatActivity {
     private TextInputEditText inputFecha;
     private TextInputEditText inputRequisitos;
     private CheckBox inputEncuesta;
+    private CheckBox inputCapacidad;
     private Button btnCrear;
     private Button btnVolver;
 
@@ -61,6 +62,7 @@ public class Crear_Evento extends AppCompatActivity {
         inputFecha = findViewById(R.id.fecha);
         inputRequisitos = findViewById(R.id.requisitos);
         inputEncuesta = findViewById(R.id.encuesta);
+        inputCapacidad = findViewById(R.id.capacidad3);
         btnVolver = findViewById(R.id.btn_volver20);
         btnCrear = findViewById(R.id.btn_crear);
 
@@ -104,6 +106,7 @@ public class Crear_Evento extends AppCompatActivity {
         String descripcion = inputDescripcion.getText().toString();
         String categoria = inputCategoria.getSelectedItem().toString();
         String asociacion = inputAsociacion.getSelectedItem().toString();
+        String capacidad = inputCapacidad.getText().toString();
         String lugar = inputLugar.getText().toString();
         String duracion = inputDuracion.getText().toString();
         String fecha = inputFecha.getText().toString();
@@ -111,7 +114,7 @@ public class Crear_Evento extends AppCompatActivity {
 
         String NewidEvento = "Evento" + idEvento;
 
-        if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(idEvento) ||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria.equals("Seleccione una categoría") || asociacion.equals("Seleccione una asociación")){
+        if (TextUtils.isEmpty(titulo) || TextUtils.isEmpty(idEvento) ||  TextUtils.isEmpty(descripcion) || TextUtils.isEmpty(capacidad) || TextUtils.isEmpty(lugar) || TextUtils.isEmpty(duracion) || TextUtils.isEmpty(fecha) || categoria.equals("Seleccione una categoría") || asociacion.equals("Seleccione una asociación")){
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -171,7 +174,7 @@ public class Crear_Evento extends AppCompatActivity {
                                             Boolean encuesta = false;
                                             if (inputEncuesta.isChecked()) { encuesta = true; }
 
-                                            crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion.substring(0, 5), lugar, duracion, fecha, requisitos, encuesta);
+                                            crearEvento("Evento" + idEvento, titulo, descripcion, categoria, asociacion.substring(0, 5), lugar, duracion, fecha, requisitos, encuesta, capacidad);
                                         }
                                     }
                                 }
@@ -187,9 +190,9 @@ public class Crear_Evento extends AppCompatActivity {
 
     }
 
-    private void crearEvento(String idEvento, String titulo, String descripcion, String categoria, String asociacion, String lugar, String duracion, String fecha, String requisitos, Boolean encuesta){
+    private void crearEvento(String idEvento, String titulo, String descripcion, String categoria, String asociacion, String lugar, String duracion, String fecha, String requisitos, Boolean encuesta, String capacidad){
         CollectionReference eventosCollection = db.collection("Evento");
-        Evento evento = new Evento(idEvento, titulo, descripcion, categoria, asociacion, lugar, duracion, fecha, requisitos, encuesta);
+        Evento evento = new Evento(idEvento, titulo, descripcion, categoria, asociacion, lugar, duracion, fecha, requisitos, encuesta, capacidad);
         eventosCollection.add(evento)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
@@ -213,6 +216,7 @@ public class Crear_Evento extends AppCompatActivity {
         inputFecha.setText("");
         inputDuracion.setText("");
         inputRequisitos.setText("");
+        inputCapacidad.setText("");
         inputEncuesta.setChecked(false);
         inputCategoria.setSelection(0);
         inputAsociacion.setSelection(0);

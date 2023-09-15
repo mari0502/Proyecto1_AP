@@ -155,8 +155,8 @@ public class Registrar_Estudiante extends AppCompatActivity {
                 map.put("contraseña", contrasenna);
                 map.put("descripcion", descripcion);
                 map.put("idTipo", "Estudiante");
-                map.put("Asociacion", " ");
-                map.put("puesto", " ");
+                map.put("asociacion", "");
+                map.put("puesto", "");
 
                 db.collection("usuario").document(carnet).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
