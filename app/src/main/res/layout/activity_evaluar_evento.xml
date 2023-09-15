@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Evaluar_Evento">
 
-    <Spinner
-        android:id="@+id/spinnereventos"
-        android:layout_width="335dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="38dp"
-        android:backgroundTint="#DC68E4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripcionPagina" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Enviar"
         android:layout_width="158dp"
@@ -90,31 +78,41 @@
         android:layout_width="334dp"
         android:layout_height="277dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="34dp"
         android:layout_marginEnd="39dp"
+        android:layout_marginBottom="124dp"
         android:backgroundTint="@color/white"
         android:drawableTint="#00A54646"
         android:foreground="@android:drawable/editbox_background"
         android:foregroundTint="#1703A9F4"
         android:hint="Comentario"
         android:inputType="text|textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="334dp"
+        android:layout_height="51dp"
+        android:entries="@array/Calificacion"
+        app:layout_constraintBottom_toTopOf="@+id/comentario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calificacion" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnereventos"
+        app:layout_constraintVertical_bias="0.678" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/calificacion"
-        android:layout_width="334dp"
+    <Spinner
+        android:id="@+id/spinnereventos"
+        android:layout_width="335dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="260dp"
-        android:layout_marginEnd="39dp"
-        android:backgroundTint="#2FBCF8"
-        android:hint="Calificación (1 al 5)"
-        android:inputType="number"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="38dp"
+        android:backgroundTint="#DC68E4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/descripcionPagina" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

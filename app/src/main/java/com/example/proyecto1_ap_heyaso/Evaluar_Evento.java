@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -36,7 +37,8 @@ public class Evaluar_Evento extends AppCompatActivity {
     private List<String> eventosPasados;
     private Spinner idEvento;
     private TextInputEditText comentario;
-    private TextInputEditText calificacion;
+    private Spinner spinCalificar;
+    private String calificacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,9 @@ public class Evaluar_Evento extends AppCompatActivity {
         btnVolver = findViewById(R.id.btn_volver17);
         btnEnviar = findViewById(R.id.btn_Enviar);
         comentario = findViewById(R.id.comentario);
-        calificacion = findViewById(R.id.calificacion);
+        //calificacion = findViewById(R.id.calificacion);
 
+        activarSpinner();
         getEventos();
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +67,25 @@ public class Evaluar_Evento extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 guardarEvaluacion();
+            }
+        });
+    }
+
+    private void activarSpinner(){
+        spinCalificar = findViewById(R.id.spinner3);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.Calificacion, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinCalificar.setAdapter(adapter);
+        spinCalificar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                calificacion = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //No hace nada
             }
         });
     }
@@ -95,7 +117,7 @@ public class Evaluar_Evento extends AppCompatActivity {
     private void guardarEvaluacion(){
         String id = idEvento.getSelectedItem().toString();
         String textocomentario = comentario.getText().toString();
-        String textocalificacion = calificacion.getText().toString();
+        String textocalificacion = calificacion;
 
         if (TextUtils.isEmpty(textocalificacion)|| TextUtils.isEmpty(textocomentario) || id.equals("Seleccione un evento")){
             Toast.makeText(Evaluar_Evento.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
@@ -128,7 +150,7 @@ public class Evaluar_Evento extends AppCompatActivity {
     }
 
     public void limpiarCampos() {
-        calificacion.setText("");
+        //calificacion.setText("");
         comentario.setText("");
         idEvento.setSelection(0);
     }
