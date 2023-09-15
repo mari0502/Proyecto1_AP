@@ -46,15 +46,6 @@
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="186dp" />
 
-    <TextView
-        android:id="@+id/nombreEvento"
-        android:layout_width="111dp"
-        android:layout_height="35dp"
-        android:text="Nombre del evento: XXX"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="515dp" />
-
     <ImageView
         android:id="@+id/imagenHeyASO"
         android:layout_width="77dp"
@@ -62,33 +53,6 @@
         app:srcCompat="@drawable/logo"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="67dp" />
-
-    <TextView
-        android:id="@+id/fechaEvento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha:"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="550dp" />
-
-    <TextView
-        android:id="@+id/lugarEvento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lugar:"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="569dp" />
-
-    <TextView
-        android:id="@+id/nombreEstudianteEvento"
-        android:layout_width="123dp"
-        android:layout_height="39dp"
-        android:text="Nombre del estudiante:"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="588dp" />
 
     <ImageView
         android:id="@+id/imagenEliminacion_QR"
