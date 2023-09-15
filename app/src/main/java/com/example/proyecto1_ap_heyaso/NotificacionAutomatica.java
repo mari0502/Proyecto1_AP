@@ -69,6 +69,15 @@ public class NotificacionAutomatica extends AsyncTask<Void, Void, Void>{
         this.imagen = false;
     }
 
+    //Constructor para compartir en redes
+    public NotificacionAutomatica(Context contenido, String asunto, String mensaje) {
+        this.contenido = contenido;
+        this.asunto = asunto;
+        this.mensaje = mensaje;
+        this.destinario = "null";
+        this.imagen = false;
+    }
+
     //Constructor para enviar correo a un SOLO estudiante con IMAGEN
     public NotificacionAutomatica(Context contenido, File rutaArchivo, String nombreArchivo, String asunto, String mensaje, String destinario) {
         this.contenido = contenido;
