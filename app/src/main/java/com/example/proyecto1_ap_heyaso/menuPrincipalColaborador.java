@@ -47,6 +47,18 @@ public class menuPrincipalColaborador extends AppCompatActivity {
             @Override
             public void onClick(View view) { openAdminColaborador();}
         });
+
+        Button adminEvento = (Button) findViewById(R.id.btn_adminEvento);
+        adminEvento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { openAdminEvento();}
+        });
+
+    }
+
+    public void openAdminEvento() {
+        Intent intent = new Intent(this, Administrar_Evento.class);
+        startActivity(intent);
     }
 
     public void rePantallaInicio() {

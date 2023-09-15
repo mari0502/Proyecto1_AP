@@ -24,6 +24,7 @@ public class Administrar_Evento extends AppCompatActivity {
         btn_buscarEvento = findViewById(R.id.btn_buscarevento);
         btn_modificarEvento = findViewById(R.id.btn_modificarevento);
         btn_eliminarEvento = findViewById(R.id.btn_eliminarevento);
+        btn_OpcionesEvento = findViewById(R.id.btn_opcionesEvento);
         btn_salir = findViewById(R.id.btn_salir2);
 
         btn_crearEvento.setOnClickListener(new View.OnClickListener() {
@@ -67,12 +68,12 @@ public class Administrar_Evento extends AppCompatActivity {
         });
 
 
-        /*btn_OpcionesEvento.setOnClickListener(new View.OnClickListener() {
+        btn_OpcionesEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Opciones_Evento.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }

@@ -124,11 +124,11 @@ public class Inscribirse_a_evento extends AppCompatActivity {
                         return;
                     }
                 });
-        Intent intent = new Intent(this, menuPrincipalEstudiante.class);
+        //Intent intent = new Intent(this, menuPrincipalEstudiante.class);
 
         //falta pasar datos
-        startActivity(intent);
-        //OpenQR();
+        //startActivity(intent);
+        OpenQR();
     }
 
     public void limpiarCampos() {
