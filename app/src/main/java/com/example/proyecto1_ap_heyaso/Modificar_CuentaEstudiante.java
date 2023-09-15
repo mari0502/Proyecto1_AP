@@ -66,8 +66,10 @@ public class Modificar_CuentaEstudiante extends AppCompatActivity {
 
     //Funciones ir pantallas
     public void OpenVolverPantallaPrincipal() {
-        Intent intent = new Intent(this, Pagina_Principal.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, Pagina_Principal.class);
+        startActivity(intent);*
+         */
+        onBackPressed();
     }
 
     private void validarUsuario(){

@@ -149,7 +149,8 @@ public class Modificar_Asociacion extends AppCompatActivity {
     }
 
     public void OpenVolverPantallaPrincipal() {
-        Intent intent = new Intent(this, Pagina_Principal.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, Pagina_Principal.class);
+        startActivity(intent);*/
+        onBackPressed();
     }
 }

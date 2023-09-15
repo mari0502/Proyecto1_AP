@@ -115,7 +115,9 @@ public class Gestion_CuentaEstudiante extends AppCompatActivity {
     }
 
     public void openVolverMenuEst() {
+        /*
         Intent intent = new Intent(Gestion_CuentaEstudiante.this, Pagina_Principal.class);
-        startActivity(intent);
+        startActivity(intent);*/
+        onBackPressed();
     }
 }
