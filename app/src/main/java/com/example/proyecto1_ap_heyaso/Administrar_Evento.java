@@ -14,7 +14,6 @@ public class Administrar_Evento extends AppCompatActivity {
     Button btn_modificarEvento;
     Button btn_eliminarEvento;
     Button btn_salir;
-
     Button btn_OpcionesEvento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,14 @@ public class Administrar_Evento extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Modificar_Evento.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_eliminarEvento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Eliminar_Evento.class);
                 startActivity(intent);
             }
         });
