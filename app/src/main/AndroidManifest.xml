@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Proyecto1_AP_HeyAso"
         tools:targetApi="31">
         <activity
+            android:name=".Modificar_Colaborador"
+            android:exported="false" />
+        <activity
             android:name=".eliminar_actividad1"
             android:exported="false" />
         <activity
@@ -41,7 +44,7 @@
             android:name=".Eliminar_Colaborador"
             android:exported="false" />
         <activity
-            android:name=".Modificar_Colaborador"
+            android:name=".Modificar_Colaborador2"
             android:exported="false" />
         <activity
             android:name=".Buscar_Colaborador"
@@ -89,9 +92,6 @@
             android:exported="false" />
         <activity
             android:name=".Gestionar_colabores"
-            android:exported="false" />
-        <activity
-            android:name=".Eliminar_Actividad"
             android:exported="false" />
         <activity
             android:name=".modificar_actividad"
