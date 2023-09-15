@@ -170,6 +170,7 @@
         android:backgroundTint="#2FBCF8"
         android:hint="Fecha"
         android:inputType="date"
+        android:focusableInTouchMode="false"
         app:layout_constraintEnd_toStartOf="@+id/duracion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lugar" />
