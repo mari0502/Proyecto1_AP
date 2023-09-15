@@ -79,17 +79,18 @@ public class Buscar_Colaborador extends AppCompatActivity {
     }
 
     private void getInfoColaborador(String carnet){
-        if(carnet != "Seleccione un colaborador"){
+        if(carnet != "Seleccione un colaborador") {
             db.collection("usuario").whereEqualTo("carnet", carnet).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
-                        for(QueryDocumentSnapshot documento : task.getResult()) {
+                        for (QueryDocumentSnapshot documento : task.getResult()) {
                             String info = "Nombre: " + documento.getString("nombre") + "\nPuesto: " + documento.getString("puesto") + "\nDescripción: " + documento.getString("descripcion") +
                                     "\nCorreo: " + documento.getString("correo")/*.substring(10)*/ + "\nContacto: " + documento.getString("contacto") + "\nCarrera: " +
                                     documento.getString("carrera") + "\nCarnet: " + carnet + "\nAsociación: " + documento.getString("idAsociacion");
                             viewInfoColaborador.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
                             viewInfoColaborador.setText(info);
+                        }
                     }
                 }
             });
