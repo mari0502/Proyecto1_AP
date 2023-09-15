@@ -38,11 +38,16 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
     private Button btn_back, btn_agregarColab;
     private Spinner spinner;
     private String puesto;
+    private Usuarios usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colaboradores_asociacion);
+
+        //Obtiene el objeto
+        Intent intent = getIntent();
+        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -51,6 +56,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         carnet = findViewById(R.id.carnet2);
         //correo = findViewById(R.id.correo2);
         //puesto = findViewById(R.id.puesto);
+
 
         activarSpinner();
 
@@ -135,6 +141,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
                                             String nombreAso = document.getString("nombre");
 
                                             if (nombreAso.equals(aso)) {
+                                                usuario.setIdAsociacionUsuario(nombreAso);
                                                 asoExiste = true;
                                                 break;
                                             }

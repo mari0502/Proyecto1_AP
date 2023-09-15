@@ -9,10 +9,15 @@ import android.widget.Button;
 
 public class menuPrincipalEstudiante extends AppCompatActivity{
 
+    private Usuarios usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal_estudiante);
+
+        //Obtiene el objeto
+        Intent intent = getIntent();
+        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         Button calendario = (Button) findViewById(R.id.btn_calendario);
         calendario.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +75,7 @@ public class menuPrincipalEstudiante extends AppCompatActivity{
 
     public void OpenForo() {
         Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
+        intent.putExtra("usuarioActual", usuario);
         startActivity(intent);
     }
 

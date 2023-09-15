@@ -9,10 +9,16 @@ import android.widget.Button;
 
 public class Gestion_CuentaAsociacion extends AppCompatActivity {
     private Button btn_modAso, btn_adminColab, btn_back;
+    private Usuarios usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_cuenta_asociacion);
+
+        //Obtiene el objeto
+        Intent intent = getIntent();
+        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         btn_adminColab = (Button) findViewById(R.id.btn_gestionColaborador);
         btn_adminColab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +46,7 @@ public class Gestion_CuentaAsociacion extends AppCompatActivity {
 
     public void openAdminColaborador() {
         Intent intent = new Intent(this, Administrar_Colaboradores.class);
+        intent.putExtra("usuarioActual", usuario);
         startActivity(intent);
     }
 }

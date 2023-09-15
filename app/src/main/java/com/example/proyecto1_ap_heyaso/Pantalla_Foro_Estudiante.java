@@ -12,11 +12,16 @@ import org.checkerframework.checker.units.qual.C;
 public class Pantalla_Foro_Estudiante extends AppCompatActivity {
 
     private Button btnPreguntas, btnPropuesta, btnEvaluar, btnVolver;
+    private Usuarios usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_foro_estudiante);
+
+        //Obtiene el objeto
+        Intent intent = getIntent();
+        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         btnEvaluar = findViewById(R.id.btnEvaluarEventEst);
         btnEvaluar.setOnClickListener(new View.OnClickListener() {
@@ -59,13 +64,12 @@ public class Pantalla_Foro_Estudiante extends AppCompatActivity {
 
     public void OpenPropuesta() {
         Intent intent = new Intent(this, Propuesta_Evento.class);
-        intent.putExtra("tipo", "Estudainte");
         startActivity(intent);
     }
 
     public void OpenPreguntas() {
         Intent intent = new Intent(this, Preguntas_Foro.class);
-        intent.putExtra("tipo", "Estudainte");
+        intent.putExtra("usuarioActual", usuario);
         startActivity(intent);
     }
 

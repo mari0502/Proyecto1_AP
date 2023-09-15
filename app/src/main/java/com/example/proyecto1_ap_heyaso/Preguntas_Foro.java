@@ -59,8 +59,9 @@ public class Preguntas_Foro extends AppCompatActivity {
     private TextView mostrarUsuario, mostrarTexto, mostrarFecha;
     private LinearLayout primerContenedor;
     private LinearLayout comentarioLayout;
-    private String usuario="anonimo", formattedDate, msg, nombreUsuario, idTipo;
+    private String formattedDate, msg, nombreUsuario;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault());
+    private Usuarios usuarioActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +70,9 @@ public class Preguntas_Foro extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         recuperarComentarios();
 
-        Bundle extras = getIntent().getExtras();
-        idTipo = extras.getString("tipo");
+        //Obtiene el objeto
+        Intent intent = getIntent();
+        usuarioActual = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         Button button = (Button) findViewById(R.id.btn_Volver12);
         button.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +88,6 @@ public class Preguntas_Foro extends AppCompatActivity {
         btnEnviar =  findViewById(R.id.btnEnviarComentario);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //buscarUsuario();
                 agregarComentario();
             }
         });
@@ -94,13 +95,7 @@ public class Preguntas_Foro extends AppCompatActivity {
     }
 
     public void reOpenForo() {
-        if(idTipo.equals("Estudiante")){
-            Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
-            startActivity(intent);
-        }else{
-            Intent intent = new Intent(this, Pantalla_Foro.class);
-            startActivity(intent);
-        }
+        onBackPressed();
     }
 
 
@@ -175,27 +170,12 @@ public class Preguntas_Foro extends AppCompatActivity {
     }
 
 
-    private void buscarUsuario(){
-        CollectionReference collectionRef = db.collection("usuario");
-        DocumentReference docRef = collectionRef.document("2021104026");
-
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    usuario = documentSnapshot.getString("nombre");
-                } else {
-                    // El documento no existe
-                }
-            }
-        });
-    }
     private void agregarComentario(){
         if(!comentario.getText().toString().isEmpty()){
             //Crea el objeto a agregar
             Map<String, Object> datos = new HashMap<>();
             datos.put("mensaje", comentario.getText().toString());
-            datos.put("usuario", usuario);
+            datos.put("usuario", usuarioActual.getNombreEstudiante());
             datos.put("timestamp", FieldValue.serverTimestamp());
 
             // Inserta a la base

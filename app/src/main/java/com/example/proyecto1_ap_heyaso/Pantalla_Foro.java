@@ -10,10 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Pantalla_Foro extends AppCompatActivity{
 
+    private Usuarios usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_foro);
+
+        //Obtiene el objeto
+        Intent intent = getIntent();
+        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         Button btnEvaluar = (Button) findViewById(R.id.evaluarEvento);
         btnEvaluar.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +66,12 @@ public class Pantalla_Foro extends AppCompatActivity{
 
     public void OpenPropuesta() {
         Intent intent = new Intent(this, Propuesta_Evento.class);
-        intent.putExtra("tipo", "Admin");
         startActivity(intent);
     }
 
     public void OpenPreguntas() {
         Intent intent = new Intent(this, Preguntas_Foro.class);
-        intent.putExtra("tipo", "Admin");
+        intent.putExtra("usuarioActual", usuario);
         startActivity(intent);
     }
 
