@@ -34,7 +34,7 @@ public class Administrar_Colaboradores extends AppCompatActivity {
         btnModificarColaborador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Modificar_Colaborador.class);
+                Intent intent = new Intent(getApplicationContext(), Modificar_Colaborador2.class);
                 startActivity(intent);
             }
         });
