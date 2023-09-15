@@ -31,7 +31,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private TextInputEditText asociacion, carnet, correo, puesto;
+    private TextInputEditText asociacion, carnet, puesto;
     private Button btn_back, btn_agregarColab;
 
     @Override
@@ -44,7 +44,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
         asociacion = findViewById(R.id.asoPertenece);
         carnet = findViewById(R.id.carnet2);
-        correo = findViewById(R.id.correo2);
+        //correo = findViewById(R.id.correo2);
         puesto = findViewById(R.id.puesto);
 
         btn_agregarColab = (Button) findViewById(R.id.btn_annadirColab);
@@ -64,11 +64,11 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
     private void validarColaborador(){
         String carnetEst = carnet.getText().toString().trim();
-        String correoEst = correo.getText().toString().trim();
+        //String correoEst = correo.getText().toString().trim();
         String aso = asociacion.getText().toString().trim();
         String posicion = puesto.getText().toString().trim();
 
-        if(carnetEst.isEmpty() && correoEst.isEmpty() && aso.isEmpty() && posicion.isEmpty()){
+        if(carnetEst.isEmpty() && aso.isEmpty() && posicion.isEmpty()){
             Toast.makeText(Colaboradores_Asociacion.this, "Complete los datos solicitados para el añadir el colaborador.", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -85,7 +85,6 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
                     if(task.isSuccessful()){
                         System.out.println("Entry task is successfull");
                         boolean carnetExiste = false;
-                        boolean correoExiste = false;
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             System.out.println("Entre a document query");
@@ -94,12 +93,9 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
                             if (carnetUsuario.equals(carnetEst)) {
                                 carnetExiste = true;
-                                if(correoUsuario.equals(correoEst)) {
-                                    correoExiste = true;
-                                }
                             }
                         }
-                        if (carnetExiste && correoExiste) {
+                        if (carnetExiste) {
                             //Existe el usuario validar asociacion
                             queryAso.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
@@ -119,7 +115,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
                                         }
                                         if (asoExiste) {
                                             //Existe  aso y usuario insertar colab
-                                            agregarColaborador(carnetEst, correoEst, posicion, aso);
+                                            agregarColaborador(carnetEst, posicion, aso);
                                         }
                                         else {
                                             Toast.makeText(Colaboradores_Asociacion.this, "La asociación no esta registrada.", Toast.LENGTH_SHORT).show();
@@ -145,7 +141,7 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         }
     }
 
-    private void agregarColaborador(String carnet, String correo, String puesto, String asociacion){
+    private void agregarColaborador(String carnet, String puesto, String asociacion){
 
         DocumentReference updateUsuario = db.collection("usuario").document(carnet);
 
@@ -196,8 +192,9 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
     //Funciones ir pantallas
     public void OpenVolverPantallaPrincipal() {
-        Intent intent = new Intent(this, Pagina_Principal.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, Pagina_Principal.class);
+        startActivity(intent);*/
+        onBackPressed();
     }
 
 }

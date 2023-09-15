@@ -12,6 +12,7 @@ public class Administrar_Colaboradores extends AppCompatActivity {
     private Button btnModificarColaborador;
     private Button btnEliminarColaborador;
     private Button btnSalir;
+    private Button btnAgregarColab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class Administrar_Colaboradores extends AppCompatActivity {
         btnModificarColaborador = findViewById(R.id.btn_modificarcolaborador);
         btnEliminarColaborador = findViewById(R.id.btn_eliminarcolaborador);
         btnSalir = findViewById(R.id.btn_salir3);
+        btnAgregarColab = findViewById(R.id.btn_agregarColab);
 
         btnBuscarColaborador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +45,14 @@ public class Administrar_Colaboradores extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Eliminar_Colaborador.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAgregarColab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Colaboradores_Asociacion.class);
                 startActivity(intent);
             }
         });
