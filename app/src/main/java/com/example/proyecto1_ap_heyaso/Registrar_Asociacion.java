@@ -133,7 +133,7 @@ public class Registrar_Asociacion extends AppCompatActivity {
                 map.put("contacto", info);
                 map.put("descripcion", detalle);
 
-                db.collection("Asociacion").document(nombreAso).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                db.collection("Asociacion").document(idAso).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         finish();

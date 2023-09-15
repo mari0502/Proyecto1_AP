@@ -15,8 +15,8 @@ public class menuPrincipalColaborador extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal_colaborador);
 
 
-        Bundle extras = getIntent().getExtras();
-        idUsuarioActual = extras.getString("idUsuario");
+        //Bundle extras = getIntent().getExtras();
+        //idUsuarioActual = extras.getString("idUsuario");
 
         Button button = (Button) findViewById(R.id.btn_salir);
         button.setOnClickListener(new View.OnClickListener() {

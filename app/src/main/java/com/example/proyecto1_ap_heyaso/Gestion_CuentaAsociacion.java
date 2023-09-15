@@ -20,6 +20,14 @@ public class Gestion_CuentaAsociacion extends AppCompatActivity {
                 openAdminColaborador();
             }
         });
+
+        btn_modAso = (Button) findViewById(R.id.btn_editarCuenta4);
+        btn_modAso.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Gestion_CuentaAsociacion.this, Modificar_Asociacion.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void openAdminColaborador() {
