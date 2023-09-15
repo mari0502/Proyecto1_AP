@@ -19,6 +19,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,18 +31,24 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class Colaboradores_Asociacion extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private TextInputEditText asociacion, carnet;
+    private TextInputEditText carnet;
     private Button btn_back, btn_agregarColab;
-    private Spinner spinner;
-    private String puesto;
-    private Usuarios usuario;
+    private Spinner spinner, spinAsociaciones;
+    private String puesto, asociacion;
+    private List<String> listaAsociaciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +57,15 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
 
         //Obtiene el objeto
         Intent intent = getIntent();
-        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        asociacion = findViewById(R.id.asoPertenece);
         carnet = findViewById(R.id.carnet2);
-        //correo = findViewById(R.id.correo2);
-        //puesto = findViewById(R.id.puesto);
-
+        spinAsociaciones = findViewById(R.id.spinner5);
 
         activarSpinner();
+        activarSpinnerAsociacion();
 
         btn_agregarColab = (Button) findViewById(R.id.btn_annadirColab);
         btn_agregarColab.setOnClickListener(new View.OnClickListener() {
@@ -94,11 +101,51 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
         });
     }
 
+    private void activarSpinnerAsociacion(){
+        ;
+        ArrayList<String> nombresAsociacion = new ArrayList<>();
+
+        db.collection("Asociacion")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                // Recupera el campo "nombre" (ajusta esto según tu estructura de datos)
+                                String nombre = document.getString("nombre");
+                                nombresAsociacion.add(nombre);
+                            }
+
+                            // Llena el Spinner con la lista de nombres
+                            ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
+                                    android.R.layout.simple_spinner_item, nombresAsociacion);
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinAsociaciones.setAdapter(adapter);
+                        } else {
+                            // Manejar errores aquí
+                        }
+                    }
+                });
+        spinAsociaciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                asociacion = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //No hace nada
+            }
+        });
+    }
+
     private void validarColaborador(){
         String carnetEst = carnet.getText().toString().trim();
         //String correoEst = correo.getText().toString().trim();
-        String aso = asociacion.getText().toString().trim();
+        String aso = asociacion;
         String posicion = puesto;
+        Toast.makeText(Colaboradores_Asociacion.this, aso, Toast.LENGTH_SHORT).show();
 
         if(carnetEst.isEmpty() && aso.isEmpty() && posicion.isEmpty()){
             Toast.makeText(Colaboradores_Asociacion.this, "Complete los datos solicitados para el añadir el colaborador.", Toast.LENGTH_SHORT).show();
@@ -139,15 +186,16 @@ public class Colaboradores_Asociacion extends AppCompatActivity {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             System.out.println("Entre a document query");
                                             String nombreAso = document.getString("nombre");
+                                            String idAso = document.getString("idAsociacion");
 
                                             if (nombreAso.equals(aso)) {
-                                                usuario.setIdAsociacionUsuario(nombreAso);
                                                 asoExiste = true;
                                                 break;
                                             }
                                         }
                                         if (asoExiste) {
                                             //Existe  aso y usuario insertar colab
+                                            Toast.makeText(Colaboradores_Asociacion.this, "va a entrar a insertar", Toast.LENGTH_SHORT).show();
                                             agregarColaborador(carnetEst, posicion, aso);
                                         }
                                         else {

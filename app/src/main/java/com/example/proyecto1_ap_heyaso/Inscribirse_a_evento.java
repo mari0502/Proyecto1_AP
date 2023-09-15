@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,14 +14,19 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +37,6 @@ public class Inscribirse_a_evento extends AppCompatActivity {
     private FirebaseFirestore mfirestore;
 
     private Spinner InputidEvento;
-
-
-
 
     private List<String> eventos;
 
@@ -69,7 +72,7 @@ public class Inscribirse_a_evento extends AppCompatActivity {
                 String nombreusuario = nombre.getText().toString();
                 String contactousuario = correo.getText().toString();
                 if (!idEvento.equals("Seleccione un Evento")) {
-                    crearInscripcion(idEvento, nombreusuario, contactousuario);
+                    validarInscripcion(idEvento, nombreusuario, contactousuario);
                 } else {
                     Toast.makeText(Inscribirse_a_evento.this, "Por favor, seleccione un evento válido", Toast.LENGTH_SHORT).show();
                 }
@@ -111,25 +114,93 @@ public class Inscribirse_a_evento extends AppCompatActivity {
         CollectionReference eventosCollection = mfirestore.collection("Inscripcion");
         Inscripcion inscripcion = new Inscripcion(idEvento,nombreusuario,contactousuario );
         eventosCollection.add(inscripcion)
+
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+
                     @Override
                     public void onComplete(@androidx.annotation.NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
+                            actualizarCapacidadEvento(idEvento);
                             limpiarCampos();
 
-                            Toast.makeText(Inscribirse_a_evento.this, "Inscripcion agregado correctamente", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Inscribirse_a_evento.this, "Inscripcion agregada correctamente", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(Inscribirse_a_evento.this, "Error al agregar el evento", Toast.LENGTH_SHORT).show();
                         }
                         return;
                     }
                 });
-        //Intent intent = new Intent(this, menuPrincipalEstudiante.class);
 
-        //falta pasar datos
-        //startActivity(intent);
         OpenQR();
     }
+    private void validarInscripcion(String idEvento, String nombreusuario, String contactousuario) {
+        // Realiza una consulta para verificar si el nombre y el correo existen en las inscripciones
+        mfirestore.collection("Inscripcion")
+                .whereEqualTo("idEvento", idEvento)
+                .whereEqualTo("nombre", nombreusuario)
+                .whereEqualTo("correo", contactousuario)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (task.getResult().isEmpty()) {
+                                // No se encontraron inscripciones con el mismo nombre y correo
+                                crearInscripcion(idEvento, nombreusuario, contactousuario);
+                            } else {
+                                // Ya existe una inscripción con el mismo nombre y correo
+                                Toast.makeText(Inscribirse_a_evento.this, "Ya existe una inscripción con este nombre y correo.", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(Inscribirse_a_evento.this, "Error al verificar la inscripción", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void actualizarCapacidadEvento(String idEvento) {
+        CollectionReference collectionRef = mfirestore.collection("Evento");
+
+        // Obtener la capacidad actual del evento
+        collectionRef.whereEqualTo("idEvento", idEvento).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                for (QueryDocumentSnapshot documentSnapshot : querySnapshot) {
+                    DocumentReference docRef = documentSnapshot.getReference();
+                    String capacidadActualStr = documentSnapshot.getString("capacidad");
+
+                    if (!TextUtils.isEmpty(capacidadActualStr)) { // Verificar que haya capacidad disponible
+                        int capacidadActual = Integer.parseInt(capacidadActualStr);
+
+                        if (capacidadActual > 0) { // Verificar que haya capacidad disponible
+                            // Decrementar la capacidad en 1 (o según sea necesario)
+                            int nuevaCapacidad = capacidadActual - 1;
+                            String nuevaCapacidadStr = String.valueOf(nuevaCapacidad);
+
+                            // Actualizar el valor de capacidad en la base de datos
+                            docRef.update("capacidad", nuevaCapacidadStr)
+                                    .addOnCompleteListener(updateTask -> {
+                                        if (updateTask.isSuccessful()) {
+                                            Toast.makeText(Inscribirse_a_evento.this, "Capacidad modificada correctamente", Toast.LENGTH_SHORT).show();
+                                            limpiarCampos();
+                                        } else {
+                                            Toast.makeText(Inscribirse_a_evento.this, "Error al modificar la capacidad", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(Inscribirse_a_evento.this, "No hay capacidad disponible", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(Inscribirse_a_evento.this, "No hay capacidad disponible", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } else {
+                Toast.makeText(Inscribirse_a_evento.this, "Error al obtener la capacidad", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 
     public void limpiarCampos() {
 

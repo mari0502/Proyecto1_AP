@@ -105,7 +105,7 @@
             android:id="@+id/btn_salir2"
             android:layout_width="210dp"
             android:layout_height="45dp"
-            android:layout_marginTop="652dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/round_button_background"
             android:fontFamily="sans-serif-medium"
             android:text="Salir"
@@ -115,7 +115,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_opcionesEvento" />
 
         <TextView
             android:id="@+id/textoadminevento2"

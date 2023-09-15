@@ -13,7 +13,6 @@ public class Administrar_Colaboradores extends AppCompatActivity {
     private Button btnEliminarColaborador;
     private Button btnSalir;
     private Button btnAgregarColab;
-    private Usuarios usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,6 @@ public class Administrar_Colaboradores extends AppCompatActivity {
 
         //Obtiene el objeto
         Intent intent = getIntent();
-        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         btnBuscarColaborador = findViewById(R.id.btn_buscarcolaborador);
         btnModificarColaborador = findViewById(R.id.btn_modificarcolaborador);
@@ -58,7 +56,6 @@ public class Administrar_Colaboradores extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Colaboradores_Asociacion.class);
-                intent.putExtra("usuarioActual", usuario);
                 startActivity(intent);
             }
         });

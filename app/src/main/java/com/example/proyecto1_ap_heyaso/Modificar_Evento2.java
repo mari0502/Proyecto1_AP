@@ -46,6 +46,8 @@ public class Modificar_Evento2 extends AppCompatActivity {
     private CheckBox inputEncuesta;
     private DatePickerDialog.OnDateSetListener dateSetListener;
 
+    private String pasarTitulo, pasarFecha, pasarLugar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +85,10 @@ public class Modificar_Evento2 extends AppCompatActivity {
         btnModificar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 modificarEvento(id);
-                Intent intent = new Intent(getApplicationContext(), Modificar_Evento.class);
+                Intent intent = new Intent(getApplicationContext(), Pantalla_Modificacion_QR.class);
+                intent.putExtra("tituloEvento", pasarTitulo);
+                intent.putExtra("fechaEvento", pasarFecha);
+                intent.putExtra("lugarEvento", pasarLugar);
                 startActivity(intent);
             }
         });
@@ -243,6 +248,9 @@ public class Modificar_Evento2 extends AppCompatActivity {
                         docRef.update("categoria", inputCategoria.getSelectedItem().toString());
                         docRef.update("encuesta", (inputEncuesta.isChecked()) ? true : false);
                     }
+                    pasarTitulo =  inputTitulo.getText().toString();
+                    pasarFecha = inputFecha.getText().toString();
+                    pasarLugar = inputLugar.getText().toString();
                     Toast.makeText(Modificar_Evento2.this, "Evento modificado correctamente", Toast.LENGTH_SHORT).show();
                     limpiarCampos();
                 } else {
