@@ -158,7 +158,7 @@ public class modificar_actividad extends AppCompatActivity {
 
 
         ArrayAdapter<String> adapter1 = (ArrayAdapter<String>) inputEncargados.getAdapter();
-        int position1 = adapter1.getPosition(infoActividades.get(1));
+        int position1 = adapter1.getPosition(infoActividades.get(3));
         inputEncargados.setSelection(position1);
 
         inputLugar.setText(infoActividades.get(4));
@@ -176,7 +176,7 @@ public class modificar_actividad extends AppCompatActivity {
 
         System.out.println(inputEncargados.getSelectedItem().toString());
 
-        if (TextUtils.isEmpty(titulo)||  TextUtils.isEmpty(descripcion)  || TextUtils.isEmpty(duracion)  || encargado.equals("Seleccione un encargado")|| TextUtils.isEmpty(lugar) || TextUtils.isEmpty(recursos)){
+        if (TextUtils.isEmpty(titulo)||  TextUtils.isEmpty(descripcion)  || TextUtils.isEmpty(duracion)  || encargado.equals("Seleccione un encargado")|| TextUtils.isEmpty(lugar)){
             Toast.makeText(modificar_actividad.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
             limpiarCampos();
             return false;

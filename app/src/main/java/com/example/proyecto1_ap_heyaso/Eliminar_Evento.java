@@ -43,6 +43,7 @@ public class Eliminar_Evento extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 eliminarEvento();
+                spinnerEventos.setSelection(0);
             }
         });
 

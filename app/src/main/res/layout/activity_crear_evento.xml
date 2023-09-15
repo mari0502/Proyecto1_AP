@@ -150,11 +150,15 @@
         android:id="@+id/capacidad3"
         android:layout_width="163dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="39dp"
         android:backgroundTint="#2FBCF8"
         android:hint="Capacidad"
         android:inputType="number"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="434dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lugar"
+        app:layout_constraintTop_toBottomOf="@+id/categoria" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/fecha"

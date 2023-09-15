@@ -63,6 +63,7 @@ public class eliminar_actividad1 extends AppCompatActivity {
                 } else {
                     // Si se selecciona "Seleccione un Evento", limpia el spinner de actividades
                     actividades.clear();
+                    eventos.clear();
                     actividades.add("Seleccione una Actividad");
                     idActividad.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, actividades));
                 }
@@ -78,6 +79,8 @@ public class eliminar_actividad1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 eliminarActividad();
+                idEvento.setSelection(0);
+                idActividad.setSelection(0);
             }
         });
         btnVolver.setOnClickListener(new View.OnClickListener() {
