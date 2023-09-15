@@ -91,9 +91,6 @@
             android:name=".Gestionar_colabores"
             android:exported="false" />
         <activity
-            android:name=".Eliminar_Actividad"
-            android:exported="false" />
-        <activity
             android:name=".modificar_actividad"
             android:exported="false" />
         <activity
