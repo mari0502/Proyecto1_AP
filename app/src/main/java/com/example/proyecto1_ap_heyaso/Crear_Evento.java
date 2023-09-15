@@ -110,7 +110,7 @@ public class Crear_Evento extends AppCompatActivity {
                 else{
                     dayString = Integer.toString(dayOfMonth);
                 }
-                String selectedDate = dayString + "/" + monthString + "/" + year;
+                String selectedDate = dayString + "/" + monthString + "/" + Integer.toString(year).substring(2,4);
                 inputFecha.setText(selectedDate);
             }
         };
