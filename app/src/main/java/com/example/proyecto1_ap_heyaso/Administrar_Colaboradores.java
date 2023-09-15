@@ -50,7 +50,8 @@ public class Administrar_Colaboradores extends AppCompatActivity {
         btnSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplicationContext(), menuPrincipalColaborador.class);
+                startActivity(intent);
             }
         });
     }
