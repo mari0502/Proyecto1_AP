@@ -46,6 +46,7 @@ public class Buscar_Colaborador extends AppCompatActivity {
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println(spinner.getSelectedItem().toString());
                 getInfoColaborador(spinner.getSelectedItem().toString());
             }
         });
@@ -60,7 +61,7 @@ public class Buscar_Colaborador extends AppCompatActivity {
     }
 
     private void getColaboradores(){
-        colaboradores.add("Seleccione un evento");
+        colaboradores.add("Seleccione un colaborador");
         db.collection("usuario").whereEqualTo("idTipo", "Admin").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -79,7 +80,7 @@ public class Buscar_Colaborador extends AppCompatActivity {
 
     private void getInfoColaborador(String nombre){
         if(nombre != "Seleccione un colaborador"){
-            db.collection("Colaborador").whereEqualTo("nombre", nombre).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            db.collection("usuario").whereEqualTo("nombre", nombre).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
@@ -88,7 +89,7 @@ public class Buscar_Colaborador extends AppCompatActivity {
                             if(Boolean.TRUE.equals(documento.getBoolean("encuesta"))){ resultado = "habilitada"; } else {resultado = "deshabilitada";};
                             String info = "Nombre: " + nombre + "\nPuesto: " + documento.getString("puesto") + "\nDescripción: " + documento.getString("descripcion") +
                                     "\nCorreo: " + documento.getString("correo")/*.substring(10)*/ + "\nContacto: " + documento.getString("contacto") + "\nCarrera: " +
-                                    documento.getString("carrera") + "\nCarnet: " + documento.getString("duracion") + "\nAsociación: " + documento.getString("asociacion");
+                                    documento.getString("carrera") + "\nCarnet: " + documento.getString("carnet") + "\nAsociación: " + documento.getString("Asociacion");
                             viewInfoColaborador.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
                             viewInfoColaborador.setText(info);
                         }
