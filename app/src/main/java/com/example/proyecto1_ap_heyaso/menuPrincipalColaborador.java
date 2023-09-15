@@ -7,11 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class menuPrincipalColaborador extends AppCompatActivity {
-
+    private Usuarios usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal_colaborador);
+
+        //Obtiene el objeto
+        Intent intent = getIntent();
+        usuario = (Usuarios) intent.getSerializableExtra("usuarioActual");
 
         Button button = (Button) findViewById(R.id.btn_salir);
         button.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +67,7 @@ public class menuPrincipalColaborador extends AppCompatActivity {
 
     public void OpenForo() {
         Intent intent = new Intent(this, Pantalla_Foro.class);
+        intent.putExtra("usuarioActual", usuario);
         startActivity(intent);
     }
 
@@ -74,6 +79,7 @@ public class menuPrincipalColaborador extends AppCompatActivity {
 
     public void openCuentaAso() {
         Intent intent = new Intent(this, Gestion_CuentaAsociacion.class);
+        intent.putExtra("usuarioActual", usuario);
         startActivity(intent);
     }
 

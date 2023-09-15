@@ -38,9 +38,6 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propuesta_evento);
 
-        Bundle extras = getIntent().getExtras();
-        idTipo= extras.getString("tipo");
-
         activarSpinner();
 
         Button button = (Button) findViewById(R.id.btn_VolverForo);
@@ -76,15 +73,8 @@ public class Propuesta_Evento extends AppCompatActivity implements AdapterView.O
     }
 
     public void reOpenForo() {
-        if(idTipo.equals("Estudiante")){
-            Intent intent = new Intent(this, Pantalla_Foro_Estudiante.class);
-            startActivity(intent);
-        }else{
-            Intent intent = new Intent(this, Pantalla_Foro.class);
-            startActivity(intent);
-        }
+        onBackPressed();
     }
-
 
 
     private void  limpiarCampos(){

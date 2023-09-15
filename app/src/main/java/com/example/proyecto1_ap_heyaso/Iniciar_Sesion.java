@@ -86,7 +86,13 @@ public class Iniciar_Sesion extends AppCompatActivity {
                             String correoCuenta = document.getString("correo");
                             String claveCuenta = document.getString("contraseña");
                             String tipoCuenta = document.getString("idTipo");
-                            System.out.println("TIPOS: "+ tipoCuenta);
+
+                            //Obtener otra info
+                            String carnet = document.getString("carnet");
+                            String nombre = document.getString("nombre");
+
+                            //Crear el objeto usuario
+                            Usuarios usuario = new Usuarios(carnet, nombre,"Sin", tipoCuenta, correoCuenta, claveCuenta);
 
                             if (correoCuenta.equals(correoUsuario)) {
                                 //correoExiste = true;
@@ -94,10 +100,12 @@ public class Iniciar_Sesion extends AppCompatActivity {
                                     //claveExiste = true;
                                     if (tipoCuenta.equals("Estudiante")) {
                                         Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalEstudiante.class);
+                                        intent.putExtra("usuarioActual", usuario);
                                         startActivity(intent);
                                         Toast.makeText(Iniciar_Sesion.this, "Bienvenido Menu Estudiante.", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Intent intent = new Intent(Iniciar_Sesion.this, menuPrincipalColaborador.class);
+                                        intent.putExtra("usuarioActual", usuario);
                                         startActivity(intent);
                                         Toast.makeText(Iniciar_Sesion.this, "Bienvenido Menu Colaborador.", Toast.LENGTH_SHORT).show();
                                     }
