@@ -85,15 +85,6 @@
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.992" />
 
-    <TextView
-        android:id="@+id/nombreEvento"
-        android:layout_width="111dp"
-        android:layout_height="35dp"
-        android:text="Nombre del evento: XXX"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="506dp" />
-
     <ImageView
         android:id="@+id/imagenHeyASO"
         android:layout_width="77dp"
@@ -105,50 +96,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.094"
         app:srcCompat="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/fechaEvento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Fecha:"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toEndOf="@+id/imagenQR"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
-
-    <TextView
-        android:id="@+id/lugarEvento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="136dp"
-        android:text="Lugar:"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imagenQR"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
-
-    <TextView
-        android:id="@+id/nombreEstudianteEvento"
-        android:layout_width="123dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="52dp"
-        android:text="Nombre del estudiante:"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imagenQR"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
 
     <ImageView
         android:id="@+id/imagenQR"
