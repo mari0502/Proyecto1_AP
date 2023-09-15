@@ -161,9 +161,9 @@ public class Crear_Actividad extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Crear_Actividad.this, "Data uploaded successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Crear_Actividad.this, "Actividad creada con exito", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(Crear_Actividad.this, "Failed to upload data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Crear_Actividad.this, "Error al crear actividad", Toast.LENGTH_SHORT).show();
                         }
                         return;
                     }
