@@ -177,7 +177,7 @@ public class NotificacionAutomatica extends AsyncTask<Void, Void, Void>{
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
-                    destinarios.add(documentSnapshot.getString("contacto"));
+                    destinarios.add(documentSnapshot.getString("correo"));
                 }
             }
         });
