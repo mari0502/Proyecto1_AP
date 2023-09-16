@@ -80,17 +80,19 @@
             android:id="@+id/btn_volver"
             android:layout_width="182dp"
             android:layout_height="56dp"
-            android:layout_marginTop="632dp"
+            android:layout_marginTop="41dp"
             android:background="@drawable/round_button_background"
             android:fontFamily="sans-serif-medium"
             android:text="Volver"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_eliminarActividad"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textoadminagenda"

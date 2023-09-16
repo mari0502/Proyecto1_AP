@@ -13,7 +13,7 @@
             android:layout_width="158dp"
             android:layout_height="48dp"
             android:layout_marginStart="117dp"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="79dp"
             android:layout_marginEnd="136dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/round_button_background"
@@ -24,8 +24,10 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/evaluarEvento" />
+            app:layout_constraintTop_toBottomOf="@+id/aprobarPropuesta"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/DescripcionPagina"

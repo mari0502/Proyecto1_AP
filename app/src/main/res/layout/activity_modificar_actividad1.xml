@@ -11,30 +11,27 @@
         android:layout_width="265dp"
         android:layout_height="53dp"
         android:layout_marginStart="73dp"
+        android:layout_marginTop="13dp"
         android:layout_marginEnd="73dp"
-        android:layout_marginBottom="225dp"
         android:backgroundTint="#DC68E4"
-        app:layout_constraintBottom_toTopOf="@+id/btn_buscarMA"
+        app:layout_constraintBottom_toTopOf="@+id/textoadmincolaboradorA2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imagen7"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintTop_toBottomOf="@+id/textoadmincolaboradorA"
+        app:layout_constraintVertical_bias="0.023" />
 
     <Spinner
         android:id="@+id/spinnerMActividades"
         android:layout_width="265dp"
         android:layout_height="53dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="225dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#DC68E4"
         app:layout_constraintBottom_toTopOf="@+id/btn_buscarMA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imagen7"
-        app:layout_constraintVertical_bias="0.97" />
+        app:layout_constraintTop_toBottomOf="@+id/textoadmincolaboradorA2"
+        app:layout_constraintVertical_bias="0.042" />
 
     <TextView
         android:id="@+id/textoadmincolaboradorA"
@@ -57,18 +54,15 @@
         android:id="@+id/textoadmincolaboradorA2"
         android:layout_width="333dp"
         android:layout_height="29dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="83dp"
         android:fontFamily="sans-serif"
         android:text="Seleccione una Actividad"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripcionPaginaM" />
+        app:layout_constraintTop_toBottomOf="@+id/textoadmincolaboradorA" />
 
     <ImageView
         android:id="@+id/imagen7"

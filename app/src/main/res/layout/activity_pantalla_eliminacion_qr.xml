@@ -30,9 +30,12 @@
         android:id="@+id/imageView"
         android:layout_width="253dp"
         android:layout_height="368dp"
-        app:srcCompat="@drawable/rectangulo_fondo_mediano"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="39dp" />
+        app:layout_constraintBottom_toTopOf="@+id/DescripcionPagina"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.489"
+        app:srcCompat="@drawable/rectangulo_fondo_mediano" />
 
     <TextView
         android:id="@+id/solicitudAdm"
@@ -43,8 +46,10 @@
         android:textColor="@color/design_default_color_secondary"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="186dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imagenHeyASO"

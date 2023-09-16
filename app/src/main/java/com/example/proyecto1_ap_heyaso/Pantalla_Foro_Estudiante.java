@@ -51,7 +51,7 @@ public class Pantalla_Foro_Estudiante extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reOpenMenu();
+                reOpenMenuEst();
             }
         });
     }
@@ -73,7 +73,7 @@ public class Pantalla_Foro_Estudiante extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void reOpenMenu() {
+    public void reOpenMenuEst() {
         Intent intent = new Intent(this, menuPrincipalEstudiante.class);
         startActivity(intent);
     }

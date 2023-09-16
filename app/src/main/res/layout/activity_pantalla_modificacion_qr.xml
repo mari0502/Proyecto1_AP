@@ -27,12 +27,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="253dp"
-        android:layout_height="368dp"
+        android:layout_width="245dp"
+        android:layout_height="353dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toTopOf="@+id/DescripcionPagina"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/rectangulo_fondo_mediano"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/rectangulo_fondo_mediano" />
 
     <TextView
         android:id="@+id/solicitudAdm"
@@ -51,12 +54,14 @@
         android:id="@+id/nombreEventoModificar"
         android:layout_width="111dp"
         android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
         android:text="Nombre del evento: XXX"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toEndOf="@+id/imagenModificacion_QR"
-        tools:layout_editor_absoluteY="516dp" />
+        app:layout_constraintTop_toBottomOf="@+id/DescripcionPagina" />
 
     <ImageView
         android:id="@+id/imagenHeyASO"
@@ -71,32 +76,37 @@
         android:id="@+id/fechaEventoModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
         android:text="Fecha:"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toEndOf="@+id/imagenModificacion_QR"
-        tools:layout_editor_absoluteY="570dp" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreEventoModificar" />
 
     <TextView
         android:id="@+id/lugarEventoModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
         android:text="Lugar:"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toEndOf="@+id/imagenModificacion_QR"
-        tools:layout_editor_absoluteY="606dp" />
+        app:layout_constraintTop_toBottomOf="@+id/fechaEventoModificar" />
 
     <ImageView
         android:id="@+id/imagenModificacion_QR"
         android:layout_width="181dp"
         android:layout_height="181dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="497dp" />
+        app:layout_constraintTop_toBottomOf="@+id/DescripcionPagina" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

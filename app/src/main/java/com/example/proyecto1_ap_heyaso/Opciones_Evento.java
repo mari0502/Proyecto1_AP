@@ -50,9 +50,8 @@ public class Opciones_Evento extends AppCompatActivity {
     }
 
     public void OpenAdministrarEvento() {
-        /*Intent intent = new Intent(this, Administrar_Evento.class);
-        startActivity(intent);*/
-        onBackPressed();
+        Intent intent = new Intent(this, Administrar_Evento.class);
+        startActivity(intent);
     }
 
 }
