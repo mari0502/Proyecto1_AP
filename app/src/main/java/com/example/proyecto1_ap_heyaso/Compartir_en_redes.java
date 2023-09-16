@@ -83,7 +83,7 @@ public class Compartir_en_redes extends AppCompatActivity {
             shareIntent.setType("text/plain");
 
             // Añade el texto que quieres compartir
-            shareIntent.putExtra(Intent.EXTRA_TEXT, descripcion.getText().toString()+
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Atentos a nuestro proximo evento\n"+descripcion.getText().toString()+
                     "\n"+tags.getText().toString()+
                     "\n"+"Lugar: "+lugar.getText().toString());
 
