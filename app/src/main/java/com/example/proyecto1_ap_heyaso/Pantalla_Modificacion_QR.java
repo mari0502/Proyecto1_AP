@@ -2,8 +2,11 @@ package com.example.proyecto1_ap_heyaso;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +27,7 @@ public class Pantalla_Modificacion_QR extends AppCompatActivity{
     private File rutaArchivo;
     private String titulo,fecha, lugar, nombreArchivo;
     private TextView tituloEvento, fechaEvento, lugarEvento;
+    private Button btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,6 +41,7 @@ public class Pantalla_Modificacion_QR extends AppCompatActivity{
         tituloEvento = findViewById(R.id.nombreEventoModificar);
         fechaEvento = findViewById(R.id.fechaEventoModificar);
         lugarEvento = findViewById(R.id.lugarEventoModificar);
+        btn_back = findViewById(R.id.btn_volver16);
 
         qr = (ImageView) findViewById(R.id.imagenModificacion_QR);
         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
@@ -47,6 +52,14 @@ public class Pantalla_Modificacion_QR extends AppCompatActivity{
         } catch (WriterException e) {
             throw new RuntimeException(e);
         }
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Pantalla_Modificacion_QR.this, Administrar_Evento.class);
+                startActivity(intent);
+            }
+        });
 
         //Setea elementos
         qr.setImageBitmap(bitmap);

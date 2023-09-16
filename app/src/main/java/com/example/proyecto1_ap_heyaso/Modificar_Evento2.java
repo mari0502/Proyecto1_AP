@@ -86,9 +86,9 @@ public class Modificar_Evento2 extends AppCompatActivity {
             public void onClick(View v) {
                 modificarEvento(id);
                 Intent intent = new Intent(getApplicationContext(), Pantalla_Modificacion_QR.class);
-                intent.putExtra("tituloEvento", pasarTitulo);
-                intent.putExtra("fechaEvento", pasarFecha);
-                intent.putExtra("lugarEvento", pasarLugar);
+                intent.putExtra("tituloEvento", inputTitulo.getText().toString());
+                intent.putExtra("fechaEvento", inputFecha.getText().toString());
+                intent.putExtra("lugarEvento", inputLugar.getText().toString());
                 startActivity(intent);
             }
         });
@@ -248,9 +248,7 @@ public class Modificar_Evento2 extends AppCompatActivity {
                         docRef.update("categoria", inputCategoria.getSelectedItem().toString());
                         docRef.update("encuesta", (inputEncuesta.isChecked()) ? true : false);
                     }
-                    pasarTitulo =  inputTitulo.getText().toString();
-                    pasarFecha = inputFecha.getText().toString();
-                    pasarLugar = inputLugar.getText().toString();
+
                     Toast.makeText(Modificar_Evento2.this, "Evento modificado correctamente", Toast.LENGTH_SHORT).show();
                     limpiarCampos();
                 } else {
